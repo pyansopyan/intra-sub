@@ -20,7 +20,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
-Laravel by Ksatria F. Nasywaan : Framework PHP merupakan suatu platform yang digunakan sebagai kerangka kerja dalam membangun aplikasi web dengan menggunakan Bahasa pemrograman PHP. Pada proses pengembangan aplikasi web, terdapat beberapa alat bantu yang dapat digunakan untuk mengurangi waktu yang diperlukan dalam pengembangan aplikasi web. Kumpulan alat bantu ini disebut framework
+Laravel by Ksatria F. Nasywaan : Framework PHP merupakan suatu platform yang digunakan sebagai kerangka kerja dalam membangun aplikasi web dengan menggunakan Bahasa pemrograman PHP. Pada proses pengembangan aplikasi web, terdapat beberapa alat bantu yang dapat digunakan untuk mengurangi waktu yang diperlukan dalam pengembangan aplikasi web. Kumpulan alat bantu ini disebut framework laravel
 
 ## Learning Laravel
 
