@@ -1,7 +1,7 @@
 <?php
 
+use App\Livewire\Welcome;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CobaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,5 @@ use App\Http\Controllers\CobaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('hello', [CobaController::class ,'index']);
-
-
+Route::get('/', Welcome::class);
+Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
