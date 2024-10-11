@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Welcome::class);
+Route::get('/', Welcome::class)->name('welcome');
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
