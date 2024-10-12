@@ -20,3 +20,5 @@ Route::middleware('auth') -> group(function () {
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
+Route::post('/logout', \App\Http\Controllers\LogoutController::class)->name('logout');
+
