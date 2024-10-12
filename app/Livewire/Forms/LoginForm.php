@@ -10,8 +10,8 @@ use Illuminate\Validation\Rule;
 
 class LoginForm extends Form
 {
-    #[Rule('required|email')]
-    public string $email = '';
+    #[Rule('required|nrp')]
+    public string $nrp = '';
     #[Rule('required')]
     public string $password = '';
 
@@ -23,7 +23,7 @@ class LoginForm extends Form
         }
 
         throw ValidationException::withMessages([
-            'email' => 'The provided credentialas do not match our records',
+            'nrp' => 'The provided credentialas do not match our records',
         ]);
 
     }

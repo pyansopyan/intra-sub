@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory()->create([
             'name' => 'Admin Intra-sub',
-            'email' => 'adminintrasub@gmail.com',
+            'nrp'=> '230501',
             'password' => bcrypt('adminintrasub')
-        ]); 
+        ]);
     }
 }

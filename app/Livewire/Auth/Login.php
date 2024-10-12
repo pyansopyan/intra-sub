@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -10,25 +11,31 @@ class Login extends Component
 
     #[Title('Login')]
     public $form = [
-        'email' => '',
+        'nrp'=>'',
         'password' => '',
     ];
+
     public function login()
     {
         // Validasi data sebelum login
         $this->validate([
-            'form.email' => 'required|email',
+            'form.nrp' => 'required',
             'form.password' => 'required|min:6',
         ]);
 
-        // Logika autentikasi login di sini
-        // Misalnya, kamu bisa menggunakan Auth::attempt()
-        if (auth()->attempt(['email' => $this->form['email'], 'password' => $this->form['password']])) {
-            return redirect()->route('welcome'); // Arahkan ke halaman setelah login sukses
+        // Memeriksa apakah NRP terdaftar
+        $user = User::where('nrp', $this->form['nrp'])->first();
+        if (!$user) {
+            session()->flash('error', 'NRP tidak terdaftar.');
+            return;
+        }
+        if (auth()->attempt(['nrp' => $this->form['nrp'], 'password' => $this->form['password']])) {
+            return redirect()->route('welcome');
         } else {
-            session()->flash('error', 'Email atau password salah');
+            session()->flash('error', 'Password salah.');
         }
     }
+
     public function render()
     {
         return view('livewire.auth.login');
