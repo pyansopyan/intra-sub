@@ -19,7 +19,8 @@ Route::middleware('auth') -> group(function () {
 
     Route::get('/user', App\Livewire\Pages\User\Index::class)->name('user.index');
     Route::get('/user/create', App\Livewire\Pages\User\Create::class)->name('user.create');
-    Route::get('/user/{id}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
+    Route::get('/user/edit/{userId}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
+    Route::get('/user/{userId}', App\Livewire\Pages\User\Show::class)->name('user.show');
 
     // role
     Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
