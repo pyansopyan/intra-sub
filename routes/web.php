@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth') -> group(function () {
     Route::get('/', Welcome::class)->name('welcome');
-    Route::get('/masteruser', \App\Livewire\MasterUser\Index::class)->name('masteruser.index');
-    Route::get('/masteruser/create', \App\Livewire\MasterUser\Create::class)->name('masteruser.create');
+
+    Route::get('/user', App\Livewire\Pages\User\Index::class)->name('user.index');
+    Route::get('/user/create', App\Livewire\Pages\User\Create::class)->name('user.create');
+    Route::get('/user/{id}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
