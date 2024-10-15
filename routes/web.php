@@ -3,6 +3,11 @@
 use App\Livewire\Welcome;
 use Illuminate\Support\Facades\Route;
 
+use App\Livewire\Permission\Index;
+use App\Livewire\Permission\Create;
+use App\Livewire\Permission\Show;
+use App\Livewire\Permission\Edit;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +30,7 @@ Route::middleware('auth') -> group(function () {
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
 Route::post('/logout', \App\Http\Controllers\LogoutController::class)->name('logout');
 
+Route::get('permissions', Index::class)->name('permission.index');
+Route::get('permissions/create', Create::class)->name('permission.create');
+Route::get('permissions/show/{id}', Show::class)->name('permission.show');
+Route::get('permissions/edit/{id}', Edit::class)->name('permission.edit');
