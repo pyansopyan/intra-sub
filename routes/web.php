@@ -20,6 +20,12 @@ Route::middleware('auth') -> group(function () {
     Route::get('/user', App\Livewire\Pages\User\Index::class)->name('user.index');
     Route::get('/user/create', App\Livewire\Pages\User\Create::class)->name('user.create');
     Route::get('/user/{id}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
+
+    // role
+    Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
+    Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');
+    Route::get('/role/edit/{roleId}', App\Livewire\Role\Edit::class)->name('role.edit');
+    Route::get('/role/{roleId}', App\Livewire\Role\Show::class)->name('role.show');
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
