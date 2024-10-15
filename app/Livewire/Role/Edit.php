@@ -26,26 +26,32 @@ class Edit extends Component
      * Update function
      */
     public function update()
-    {
-        // Validasi nama role
-        $this->validate([
-            'name' => 'required',
-        ]);
+{
+    // Validate role name
+    $this->validate([
+        'name' => 'required',
+    ]);
 
-        // Temukan role dan perbarui namanya
-        $role = Role::findOrFail($this->roleId);
-        $role->name = $this->name;
-        $role->save();
+    // Find the role and update the name
+    $role = Role::findOrFail($this->roleId);
+    $role->name = $this->name;
+    $role->save();
 
-        // Sync permissions yang terpilih
-        $role->syncPermissions($this->Getpermissions);
+    // Filter valid permissions
+    $validPermissions = Permission::whereIn('id', $this->Getpermissions)
+                                  ->where('guard_name', 'web')  // Only select permissions for the 'web' guard
+                                  ->pluck('id')
+                                  ->toArray();
 
-        // Flash message
-        session()->flash('message', 'Data Berhasil Diperbarui.');
+    // Sync only valid permissions
+    $role->syncPermissions($validPermissions);
 
-        // Redirect ke halaman index role
-        return redirect()->route('role.index');
-    }
+    // Flash message
+    session()->flash('message', 'Data Berhasil Diperbarui.');
+
+    // Redirect to role index
+    return redirect()->route('role.index');
+}
 
     public function render()
     {

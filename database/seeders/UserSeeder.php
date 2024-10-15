@@ -77,5 +77,20 @@ class UserSeeder extends Seeder
         // Memberikan permission tertentu untuk staff
         $roleTeacher->givePermissionTo(Permission::whereIn('id', ['16', '17'])->get());
         $userTeacher->assignRole($roleTeacher);
+
+        // membuat role manager
+        $roleManager = Role::updateOrCreate(['name' => 'role-manager']);
+        $roleManager->givePermissionTo([]);
+
+        $userManager = User::updateOrCreate(
+            ['email' => 'manager@gmail.com'],
+            [
+                'name' => 'Role Manager',
+                'password' => bcrypt('password'),
+                'nrp' => '456',
+            ]
+        );
+        $userManager->assignRole($roleManager);
     }
 }
+
