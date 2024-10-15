@@ -3,8 +3,9 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 
 class Login extends Component
 {
@@ -15,6 +16,7 @@ class Login extends Component
         'password' => '',
     ];
 
+    #[Layout('components.layouts.app-auth')]
     public function login()
     {
         // Validasi data sebelum login
