@@ -1,12 +1,8 @@
+web.blade.php :
 <?php
 
 use App\Livewire\Welcome;
 use Illuminate\Support\Facades\Route;
-
-use App\Livewire\Permission\Index;
-use App\Livewire\Permission\Create;
-use App\Livewire\Permission\Show;
-use App\Livewire\Permission\Edit;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +20,6 @@ Route::middleware('auth') -> group(function () {
 
     Route::get('/user', App\Livewire\Pages\User\Index::class)->name('user.index');
     Route::get('/user/create', App\Livewire\Pages\User\Create::class)->name('user.create');
-<<<<<<< HEAD
-    Route::get('/user/{id}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
-=======
     Route::get('/user/edit/{userId}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
     Route::get('/user/{userId}', App\Livewire\Pages\User\Show::class)->name('user.show');
 
@@ -35,13 +28,7 @@ Route::middleware('auth') -> group(function () {
     Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');
     Route::get('/role/edit/{roleId}', App\Livewire\Role\Edit::class)->name('role.edit');
     Route::get('/role/{roleId}', App\Livewire\Role\Show::class)->name('role.show');
->>>>>>> d3cbe80ae8bdf078bdd1e3e8779cc0393e28f9ac
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
 Route::post('/logout', \App\Http\Controllers\LogoutController::class)->name('logout');
-
-Route::get('permissions', Index::class)->name('permission.index');
-Route::get('permissions/create', Create::class)->name('permission.create');
-Route::get('permissions/show/{id}', Show::class)->name('permission.show');
-Route::get('permissions/edit/{id}', Edit::class)->name('permission.edit');

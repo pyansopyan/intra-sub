@@ -4,10 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -70,12 +68,25 @@ class UserSeeder extends Seeder
             ]
         );
 
-
         // Membuat atau memperbarui role staff
         $roleTeacher = Role::updateOrCreate(['name' => 'staff']);
 
         // Memberikan permission tertentu untuk staff
         $roleTeacher->givePermissionTo(Permission::whereIn('id', ['16', '17'])->get());
         $userTeacher->assignRole($roleTeacher);
+
+        // membuat role manager
+        $roleManager = Role::updateOrCreate(['name' => 'role-manager']);
+        $roleManager->givePermissionTo([]);
+
+        $userManager = User::updateOrCreate(
+            ['email' => 'manager@gmail.com'],
+            [
+                'name' => 'Role Manager',
+                'password' => bcrypt('password'),
+                'nrp' => '456',
+            ]
+        );
+        $userManager->assignRole($roleManager);
     }
 }
