@@ -21,7 +21,7 @@ class Index extends Component
         if ($role) {
             $role->delete();
         }
-        session()->flash('message', 'Data Berhasil Dihapus.');
+        session()->flash('message', 'Data Berhasil Dihapuss.');
 
         return redirect()->route('role.index');
     }

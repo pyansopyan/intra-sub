@@ -47,7 +47,7 @@ class Edit extends Component
         $role->syncPermissions($validPermissions);
 
         // Flash message
-        session()->flash('message', 'Data Berhasil Diperbarui.');
+        session()->flash('message', 'Data Berhasil Diperbaruii.');
 
         // Redirect to role index
         return redirect()->route('role.index');

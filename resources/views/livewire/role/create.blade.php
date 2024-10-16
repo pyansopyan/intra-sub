@@ -37,10 +37,10 @@
 
         <div class="flex space-x-2">
             <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-300">
-                Simpan
+                Save
             </button>
             <a href="{{ route('role.index') }}" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300">
-                Kembali
+                Back
             </a>
         </div>
     </form>

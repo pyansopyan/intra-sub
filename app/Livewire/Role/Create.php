@@ -30,7 +30,7 @@ class Create extends Component
         $permissions = Permission::whereIn('id', $this->Getpermissions)->get();
         $role->givePermissionTo($permissions);
 
-        session()->flash('message', 'Data Berhasil Disimpan.');
+        session()->flash('message', 'Data Berhasil Disimpann.');
 
         return redirect()->route('role.index');
     }

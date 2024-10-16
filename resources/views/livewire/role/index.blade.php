@@ -1,5 +1,5 @@
 <div>
-    <a href="{{ route('role.create') }}" class="btn btn-md btn-success mt-3">TAMBAH ROLE</a>
+    <a href="{{ route('role.create') }}" class="btn btn-md btn-success mt-3">TAMBAH ROLE!</a>
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>

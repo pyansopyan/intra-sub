@@ -19,6 +19,6 @@
     </ul>
 
     <a href="{{ route('role.index') }}" class="inline-block px-4 py-2 mt-4 bg-gray-600 text-white rounded hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300">
-        Kembali
+        Kembalii
     </a>
 </div>
