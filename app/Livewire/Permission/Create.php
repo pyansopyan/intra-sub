@@ -2,14 +2,19 @@
 
 namespace App\Livewire\Permission;
 
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
 
 class Create extends Component
 {
+        /**
+     * define public variable
+     */
     public $name;
 
+        /**
+     * store function
+     */
     public function store()
     {
         $this->validate([
@@ -26,7 +31,6 @@ class Create extends Component
         //redirect
         return redirect()->route('permission.index');
     }
-
 
 
     public function render()

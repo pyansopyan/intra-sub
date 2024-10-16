@@ -1,5 +1,11 @@
-<div>
-    <h1 class="mt-4">Detail Permission</h1>
-    <p class="mt-1">Nama: {{ $permission->name }}</p>
-    <a href="{{ route('permission.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+<div class="container mx-auto mt-8">
+    <h1 class="text-2xl font-bold mb-4 text-gray-800">Detail Permission</h1>
+
+    <!-- Detail Nama Permission -->
+    <p class="text-lg text-gray-700 mb-4">Nama: {{ $permission->name }}</p>
+
+    <!-- Tombol Kembali -->
+    <a href="{{ route('permission.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300">
+        Kembali
+    </a>
 </div>

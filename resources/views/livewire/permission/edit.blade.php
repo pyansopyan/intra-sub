@@ -1,12 +1,25 @@
-<div>
-    <h1 class="mt-4">Edit Permission</h1>
+<div class="container mx-auto mt-8">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">Edit Permission</h1>
+
     <form wire:submit.prevent="update">
-        <div class="form-group">
-            <label for="nrp" class="block text-sm font-medium leading-6 text-gray-900 mt-1">Nama</label>
-             <input id="masukan nama" name="nama" type="text" placeholder="Masukan Nama" autocomplete="Masukan Nama" wire:model="form.nama" required class="block w-full pl-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+        <!-- Input Nama -->
+        <div class="mb-5">
+            <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">Nama</label>
+            <input id="nama" name="nama" type="text" placeholder="Masukan Nama" autocomplete="off" wire:model="form.nama" required
+                   class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900">
+            @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
-        <a href="{{ route('permission.index') }}" class="btn btn-primary mt-4">Update</a>
-        <a href="{{ route('permission.index') }}" class="btn btn-secondary">Kembali</a>
+
+        <!-- Buttons Section -->
+        <div class="flex space-x-4">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-5 rounded-md transition duration-300">
+                Update
+            </button>
+            <a href="{{ route('permission.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-md transition duration-300">
+                Kembali
+            </a>
+        </div>
     </form>
 </div>
