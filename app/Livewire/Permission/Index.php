@@ -15,7 +15,7 @@ class Index extends Component
     public function destroy($permissionId)
     {
         //get permission
-        $permission = Permission::findOrFail($permissionId);
+        $permission = Permission::find($permissionId);
 
         if ($permission) {
             $permission->delete();
@@ -27,6 +27,7 @@ class Index extends Component
         //redirect
         return redirect()->route('permission.index');
     }
+
     public function render()
     {
         return view('livewire.permission.index', [

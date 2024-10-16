@@ -1,4 +1,4 @@
-web.blade.php :
+
 <?php
 
 use App\Livewire\Welcome;
@@ -23,11 +23,16 @@ Route::middleware('auth') -> group(function () {
     Route::get('/user/edit/{userId}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
     Route::get('/user/{userId}', App\Livewire\Pages\User\Show::class)->name('user.show');
 
-    // role
-    Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
-    Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');
-    Route::get('/role/edit/{roleId}', App\Livewire\Role\Edit::class)->name('role.edit');
-    Route::get('/role/{roleId}', App\Livewire\Role\Show::class)->name('role.show');
+    // // role
+    // Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
+    // Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');
+    // Route::get('/role/edit/{roleId}', App\Livewire\Role\Edit::class)->name('role.edit');
+    // Route::get('/role/{roleId}', App\Livewire\Role\Show::class)->name('role.show');
+
+    Route::get('permissions', App\Livewire\Permission\Index::class)->name('permission.index');
+    Route::get('permissions/create', App\Livewire\Permission\Create::class)->name('permission.create');
+    Route::get('permissions/show/{id}', App\Livewire\Permission\Show::class)->name('permission.show');
+    Route::get('permissions/edit/{permissionId}', App\Livewire\Permission\Edit::class)->name('permission.edit');
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');

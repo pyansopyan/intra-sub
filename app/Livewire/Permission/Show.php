@@ -7,12 +7,12 @@ use Spatie\Permission\Models\Permission;
 
 class Show extends Component
 {
-    // public $permission;
+    public $permission;
 
-    // public function mount($id)
-    // {
-    //     $this->permission = Permission::find($id);
-    // }
+    public function mount($id)
+    {
+        $this->permission = Permission::findOrFail($id);
+    }
 
     public function render()
     {
