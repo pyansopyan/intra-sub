@@ -38,6 +38,12 @@ Route::middleware('auth') -> group(function () {
     Route::get('permissions/create', App\Livewire\Permission\Create::class)->name('permission.create');
     Route::get('permissions/show/{id}', App\Livewire\Permission\Show::class)->name('permission.show');
     Route::get('permissions/edit/{permissionId}', App\Livewire\Permission\Edit::class)->name('permission.edit');
+
+    // Bagian
+    Route::get('/bagian', App\Livewire\Bagian\Index::class)->name('bagian.index');
+    Route::get('/bagian/create', App\Livewire\Bagian\Create::class)->name('bagian.create');
+    Route::get('/bagian/edit/{id}', App\Livewire\Bagian\Edit::class)->name('bagian.edit');
+    Route::get('/bagian/{id}', App\Livewire\Bagian\Show::class)->name('bagian.show');
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');

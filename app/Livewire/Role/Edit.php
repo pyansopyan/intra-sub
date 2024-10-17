@@ -8,9 +8,9 @@ use Spatie\Permission\Models\Role;
 
 class Edit extends Component
 {
-    public $permissions;
     public $roleId;
     public $name;
+    public $permissions = [];
     public $Getpermissions = [];
 
     public function mount($roleId)
@@ -18,41 +18,28 @@ class Edit extends Component
         $role = Role::findOrFail($roleId);
         $this->roleId = $role->id;
         $this->name = $role->name;
+
+        // Ambil semua permissions dan yang sudah terpilih untuk role ini
         $this->permissions = Permission::all();
         $this->Getpermissions = $role->permissions()->pluck('id')->toArray();
     }
 
-    /**
-     * Update function
-     */
     public function update()
     {
-        // Validate role name and ensure it's unique except for the current role
         $this->validate([
-            'name' => 'required|unique:roles,name,' . $this->roleId . ',id,guard_name,web',
+            'name' => 'required|unique:roles,name,' . $this->roleId,
         ]);
 
-        // Find the role and update the name
         $role = Role::findOrFail($this->roleId);
-        $role->name = $this->name;
-        $role->save();
+        $role->update(['name' => $this->name]);
 
-        // Filter valid permissions
-        $validPermissions = Permission::whereIn('id', $this->Getpermissions)
-                                      ->where('guard_name', 'web')  // Only select permissions for the 'web' guard
-                                      ->pluck('id')
-                                      ->toArray();
+        // Sync permissions yang dipilih ke role
+        $role->syncPermissions($this->Getpermissions);
 
-        // Sync only valid permissions
-        $role->syncPermissions($validPermissions);
+        session()->flash('message', 'Role berhasil diperbarui.');
 
-        // Flash message
-        session()->flash('message', 'Data Berhasil Diperbaruii.');
-
-        // Redirect to role index
         return redirect()->route('role.index');
     }
-
 
     public function render()
     {

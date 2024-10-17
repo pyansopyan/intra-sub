@@ -8,29 +8,28 @@ use Spatie\Permission\Models\Role;
 
 class Create extends Component
 {
-    public $permissions;
     public $name;
+    public $permissions = [];
     public $Getpermissions = [];
 
     public function mount()
     {
-        $this->permissions = Permission::all();
+        $this->permissions = Permission::all();  // Ambil semua permissions
     }
 
     public function store()
     {
         $this->validate([
             'name' => 'required',
+            'Getpermissions' => 'required|array',  // Pastikan permission dipilih
         ]);
 
-        // Debugging: Log data yang ingin disimpan
-        logger('Menyimpan role:', ['name' => $this->name, 'permissions' => $this->Getpermissions]);
-
         $role = Role::create(['name' => $this->name]);
-        $permissions = Permission::whereIn('id', $this->Getpermissions)->get();
-        $role->givePermissionTo($permissions);
 
-        session()->flash('message', 'Data Berhasil Disimpann.');
+        // Berikan permissions ke role
+        $role->givePermissionTo($this->Getpermissions);
+
+        session()->flash('message', 'Role berhasil ditambahkan.');
 
         return redirect()->route('role.index');
     }

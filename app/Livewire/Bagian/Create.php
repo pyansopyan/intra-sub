@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Livewire\Permission;
+namespace App\Livewire\Bagian;
 
-use Livewire\Component;
+use App\Models\Bagian;
 use Spatie\Permission\Models\Permission;
+use Livewire\Component;
 
 class Create extends Component
 {
@@ -15,17 +16,17 @@ class Create extends Component
             'name' => 'required',
         ]);
 
-        Permission::create([
+        Bagian::create([
             'name' => $this->name,
         ]);
 
-        session()->flash('message', 'Permission berhasil ditambahkan.');
+        session()->flash('message', 'Data berhasil ditambahkan.');
 
-        return redirect()->route('permission.index');
+        return redirect()->route('bagian.index');
     }
 
     public function render()
     {
-        return view('livewire.permission.create');
+        return view('livewire.bagian.create');
     }
 }
