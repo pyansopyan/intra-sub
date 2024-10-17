@@ -44,6 +44,11 @@ Route::middleware('auth') -> group(function () {
     Route::get('/bagian/create', App\Livewire\Bagian\Create::class)->name('bagian.create');
     Route::get('/bagian/edit/{id}', App\Livewire\Bagian\Edit::class)->name('bagian.edit');
     Route::get('/bagian/{id}', App\Livewire\Bagian\Show::class)->name('bagian.show');
+
+    Route::get('/jabatan', App\Livewire\Jabatan\Index::class)->name('jabatan.index');
+    Route::get('/jabatan/create', App\Livewire\Jabatan\Create::class)->name('jabatan.create');
+    Route::get('/jabatan/edit/{id}', App\Livewire\Jabatan\Edit::class)->name('jabatan.edit');
+    Route::get('/jabatan/{id}', App\Livewire\Jabatan\Show::class)->name('jabatan.show');
 });
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');

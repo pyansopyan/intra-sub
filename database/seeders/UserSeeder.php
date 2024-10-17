@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'Permission',
             'Departement',
             'Bagian',
+            'Jabatan',
         ]);
 
         $subPermission = collect([
@@ -118,5 +119,20 @@ class UserSeeder extends Seeder
              ]
          );
          $userBagian->assignRole($bagian);
+
+
+          // membuat role jabatan
+         $jabatan = Role::updateOrCreate(['name' => 'jabatan']);
+         $jabatan->givePermissionTo([]);
+
+         $userJabatan = User::updateOrCreate(
+             ['email' => 'bagian@gmail.com'],
+             [
+                 'name' => 'Jabatan',
+                 'password' => bcrypt('password'),
+                 'nrp' => '111',
+             ]
+         );
+         $userJabatan->assignRole($jabatan);
     }
 }
