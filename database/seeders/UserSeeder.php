@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'User',
             'Role',
             'Permission',
+            'Departement',
         ]);
 
         $subPermission = collect([
@@ -88,5 +89,19 @@ class UserSeeder extends Seeder
             ]
         );
         $userManager->assignRole($roleManager);
+
+        // membuat role departement
+        $departementManager = Role::updateOrCreate(['name' => 'departement-manager']);
+        $departementManager->givePermissionTo([]);
+
+        $userDepartement = User::updateOrCreate(
+            ['email' => 'departement@gmail.com'],
+            [
+                'name' => 'Departement',
+                'password' => bcrypt('password'),
+                'nrp' => '789',
+            ]
+        );
+        $userDepartement->assignRole($departementManager);
     }
 }

@@ -22,3 +22,4 @@ class Show extends Component
         return view('livewire.pages.user.show', ['user' => $this->user]);
     }
 }
+ 
