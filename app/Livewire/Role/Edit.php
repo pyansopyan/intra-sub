@@ -8,35 +8,45 @@ use Spatie\Permission\Models\Role;
 
 class Edit extends Component
 {
-    public $roleId;
     public $name;
     public $permissions = [];
     public $Getpermissions = [];
+    public $roleId;
 
     public function mount($roleId)
     {
-        $role = Role::findOrFail($roleId);
+        $role = Role::findOrFail($roleId);  // Cari role berdasarkan ID
         $this->roleId = $role->id;
         $this->name = $role->name;
+        $this->permissions = Permission::all();  // Ambil semua permissions
+        $this->Getpermissions = $role->permissions->pluck('id')->toArray();  // Permissions yang sudah di-assign
+    }
 
-        // Ambil semua permissions dan yang sudah terpilih untuk role ini
-        $this->permissions = Permission::all();
-        $this->Getpermissions = $role->permissions()->pluck('id')->toArray();
+    public function toggleSelectAllPermissions()
+    {
+        if (count($this->Getpermissions) === $this->permissions->count()) {
+            // Jika semua sudah dicentang, hilangkan centang semua (Uncheck All)
+            $this->Getpermissions = [];
+        } else {
+            // Jika tidak semua dicentang, centang semua (Check All)
+            $this->Getpermissions = $this->permissions->pluck('id')->toArray();
+        }
     }
 
     public function update()
     {
         $this->validate([
-            'name' => 'required|unique:roles,name,' . $this->roleId,
+            'name' => 'required',
         ]);
 
         $role = Role::findOrFail($this->roleId);
-        $role->update(['name' => $this->name]);
+        $role->name = $this->name;
+        $role->save();
 
-        // Sync permissions yang dipilih ke role
+        // Sinkronisasi permissions
         $role->syncPermissions($this->Getpermissions);
 
-        session()->flash('message', 'Role berhasil diperbarui.');
+        session()->flash('message', 'Role berhasil diupdate.');
 
         return redirect()->route('role.index');
     }

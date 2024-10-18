@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Livewire\Role;
-// a
+
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -19,9 +19,13 @@ class Show extends Component
 
     public function render()
     {
-        // Return the view with the role data
+        // Mengambil semua permission yang ada
+        $permissions = Permission::all();
+
+        // Return the view with the role and permissions data
         return view('livewire.role.show', [
             'role' => $this->role,
+            'permissions' => $permissions, // Tambahkan ini
         ]);
     }
 }

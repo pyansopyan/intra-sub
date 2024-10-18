@@ -17,19 +17,35 @@ class Create extends Component
         $this->permissions = Permission::all();  // Ambil semua permissions
     }
 
+    // Method untuk toggle "Check All"
+    public function toggleSelectAllPermissions()
+    {
+        if (count($this->Getpermissions) === $this->permissions->count()) {
+            $this->Getpermissions = [];  // Jika semua sudah dicentang, hilangkan centang semua
+        } else {
+            $this->Getpermissions = $this->permissions->pluck('id')->toArray();  // Centang semua
+        }
+    }
+
     public function store()
     {
         $this->validate([
             'name' => 'required',
-            'Getpermissions' => 'required|array',  // Pastikan permission dipilih
+            // Hapus validasi untuk Getpermissions agar tidak wajib
         ]);
 
         $role = Role::create(['name' => $this->name]);
 
-        // Berikan permissions ke role
-        $role->givePermissionTo($this->Getpermissions);
+        // Ambil permissions yang valid dari database
+        $validPermissions = Permission::whereIn('id', $this->Getpermissions)->pluck('id')->toArray();
 
-        session()->flash('message', 'Role berhasil ditambahkan.');
+        // Hanya memberikan permissions yang valid ke role
+        if (!empty($validPermissions)) {
+            $role->givePermissionTo($validPermissions);
+        }
+
+        // Set flash message
+        session()->flash('message', 'Data berhasil ditambahkan.');
 
         return redirect()->route('role.index');
     }
