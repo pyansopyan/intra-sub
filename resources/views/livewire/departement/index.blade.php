@@ -60,7 +60,7 @@
                                     @can('manageDepartement-delete')
                                     <button wire:click="destroy({{ $departement->id }})"
                                         class="flex items-center justify-center w-10 h-10 text-red-500 bg-red-100 rounded-full hover:bg-red-200"
-                                        onclick="return confirm('Are you sure you want to delete this user?')"
+                                        onclick="return confirm('Are you sure you want to delete this departement?')"
                                         title="Delete">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">

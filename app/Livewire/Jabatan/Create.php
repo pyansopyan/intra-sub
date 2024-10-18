@@ -2,9 +2,8 @@
 
 namespace App\Livewire\Jabatan;
 
-use App\Models\Jabatan;
-use Spatie\Permission\Models\Permission;
 use Livewire\Component;
+use App\Models\Jabatan;
 
 class Create extends Component
 {
@@ -14,10 +13,12 @@ class Create extends Component
     {
         $this->validate([
             'name' => 'required',
+        ], [
+            'name.required' => 'Nama departemen wajib diisi'
         ]);
 
-        Jabatan::create([
-            'name' => $this->name,
+        $jabatan = Jabatan::create([
+            'name' => $this->name
         ]);
 
         session()->flash('message', 'Data berhasil ditambahkan.');
