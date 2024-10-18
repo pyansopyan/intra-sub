@@ -25,6 +25,9 @@ class User extends Authenticatable
         'is_active',
         'avatar',
         'password',
+        'departement_id',
+        'bagian_id',
+        'jabatan_id',
     ];
 
     /**
@@ -37,6 +40,20 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function departement()
+    {
+        return $this->belongsTo(Departement::class, 'departement_id');
+    }
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class, 'bagian_id');
+    }
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'jabatan_id');
+    }
     /**
      * The attributes that should be cast.
      *

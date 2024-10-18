@@ -16,7 +16,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Nama departement:</strong>
+                            <strong>Departement Name:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                             {{ $departement->name }}
@@ -25,6 +25,6 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{ route('departement.index') }}" class="btn btn-md btn-success text-white mt-4 justify-content-end"><< Kembali</a>
+        <a href="{{ route('departement.index') }}" class="btn btn-md btn-success text-white mt-4 justify-content-end"><< Back</a>
     </div>
 </div>

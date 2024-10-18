@@ -4,7 +4,7 @@
         @can('manageDepartement-create')
         <a href="{{ route('departement.create') }}"
             class="px-4 py-2 text-sm font-medium justify-end leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-            + Tambah Data
+            + Add Data
         </a>
         @endcan
     </h2>
@@ -23,7 +23,7 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Nama Departement</th>
+                        <th class="px-4 py-3">Departement</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>

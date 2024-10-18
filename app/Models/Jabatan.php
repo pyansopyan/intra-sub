@@ -10,4 +10,9 @@ class Jabatan extends Model
     use HasFactory;
     protected $fillable = ['id', 'name'];
     public $timestamp = true;
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

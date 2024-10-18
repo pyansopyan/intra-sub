@@ -4,6 +4,9 @@ namespace App\Livewire\Pages\User;
 
 use App\Attributes\Title;
 use App\Models\User;
+use App\Models\Bagian;
+use App\Models\Departement;
+use App\Models\Jabatan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\Permission\Models\Role;
@@ -20,6 +23,9 @@ class Create extends Component
     public $is_active;
     public $avatar;
     public $role;
+    public $bagian_id;
+    public $jabatan_id;
+    public $departement_id;
 
     public function store()
     {
@@ -30,7 +36,10 @@ class Create extends Component
             'password' => 'required|string|min:6',
             'is_active' => 'required',
             'avatar' => 'nullable|image|max:1024|mimes:jpeg,png,jpg',
-            'role' => 'required|exists:roles,name', // Max size 1MB
+            'role' => 'required|exists:roles,name',
+            'departement_id' => 'required|exists:departements,id',
+            'bagian_id' => 'required|exists:bagians,id',
+            'jabatan_id' => 'required|exists:jabatans,id',
         ], [
 
             'name.required' => 'Nama wajib diisi.',
@@ -50,6 +59,12 @@ class Create extends Component
             'avatar.max' => 'Ukuran gambar maksimal 1MB.',
             'role.required' => 'Role wajib dipilih.',
             'role.exists' => 'Role tidak valid.',
+            'departement_id.required' => 'Departement wajib dipilih.',
+            'departement_id.exists' => 'Departement tidak valid.',
+            'bagian_id.required' => 'Bagian wajib dipilih.',
+            'bagian_id.exists' => 'Bagian tidak valid.',
+            'jabatan_id.required' => 'Jabatan wajib dipilih.',
+            'jabatan_id.exists' => 'Jabatan tidak valid.',
         ]);
 
         // Tentukan nama file
@@ -65,7 +80,10 @@ class Create extends Component
             'email' => $this->email,
             'password' => bcrypt($this->password),
             'is_active' => $this->is_active,
-            'avatar' => $avatarName, // Simpan nama file ke database
+            'avatar' => $avatarName,
+            'departement_id' => $this->departement_id,
+            'bagian_id' => $this->bagian_id,
+            'jabatan_id' => $this->jabatan_id, // Simpan nama file ke database
         ]);
 
         $user->assignRole($this->role);
@@ -79,6 +97,10 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.pages.user.create');
+        return view('livewire.pages.user.create', [
+            'departements' => Departement::all(),
+            'bagians' => Bagian::all(),
+            'jabatans' => Jabatan::all(),
+        ]);
     }
 }

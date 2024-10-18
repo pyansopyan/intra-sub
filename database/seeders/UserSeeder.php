@@ -92,47 +92,5 @@ class UserSeeder extends Seeder
         );
         $userManager->assignRole($roleManager);
 
-        // membuat role departement
-        $departementManager = Role::updateOrCreate(['name' => 'departement-manager']);
-        $departementManager->givePermissionTo([]);
-
-        $userDepartement = User::updateOrCreate(
-            ['email' => 'departement@gmail.com'],
-            [
-                'name' => 'Departement',
-                'password' => bcrypt('password'),
-                'nrp' => '789',
-            ]
-        );
-        $userDepartement->assignRole($departementManager);
-
-         // membuat role Bagian
-         $bagian = Role::updateOrCreate(['name' => 'bagian']);
-         $bagian->givePermissionTo([]);
-
-         $userBagian = User::updateOrCreate(
-             ['email' => 'bagian@gmail.com'],
-             [
-                 'name' => 'Bagian',
-                 'password' => bcrypt('password'),
-                 'nrp' => '111',
-             ]
-         );
-         $userBagian->assignRole($bagian);
-
-
-          // membuat role jabatan
-         $jabatan = Role::updateOrCreate(['name' => 'jabatan']);
-         $jabatan->givePermissionTo([]);
-
-         $userJabatan = User::updateOrCreate(
-             ['email' => 'bagian@gmail.com'],
-             [
-                 'name' => 'Jabatan',
-                 'password' => bcrypt('password'),
-                 'nrp' => '111',
-             ]
-         );
-         $userJabatan->assignRole($jabatan);
     }
 }

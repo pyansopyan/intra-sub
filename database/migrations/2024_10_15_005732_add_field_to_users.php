@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('nrp')->unique()->after('name');
             $table->smallInteger('is_active')->default(true)->after('password');
-            $table->text('avatar')->nullable()->after('is_active');
+            $table->unsignedBigInteger('departement_id')->nullable()->after('is_active');
+            $table->unsignedBigInteger('jabatan_id')->nullable()->after('departement_id');
+            $table->unsignedBigInteger('bagian_id')->nullable()->after('jabatan_id');
+            $table->text('avatar')->nullable()->after('bagian_id');
         });
     }
 

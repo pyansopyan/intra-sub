@@ -48,6 +48,30 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                            <strong>Departement:</strong>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                            {{ $user->departement->name ?? 'Tidak ada departemen' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                            <strong>Jabatan:</strong>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                            {{ $user->jabatan->name ?? 'Tidak ada jabatan' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                            <strong>Bagian:</strong>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                            {{ $user->bagian->name ?? 'Tidak ada bagian' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                             <strong>Role:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
@@ -57,6 +81,6 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{ route('user.index') }}" class="btn btn-md btn-success text-white mt-4 justify-content-end"><< Kembali</a>
+        <a href="{{ route('user.index') }}" class="btn btn-md btn-success text-white mt-4 justify-content-end"><< Back</a>
     </div>
 </div>
