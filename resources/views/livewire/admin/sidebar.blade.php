@@ -117,7 +117,7 @@
             </li>
             @endcan
             </ul>
-            <ul>
+            {{-- <ul>
                 <li class="relative px-6 py-3">
                     <form action="{{route('logout')}}" method="POST" wire:click.prevent>
                         @csrf
@@ -129,7 +129,7 @@
                         </button>
                     </form>
                 </li>
-            </ul>
+            </ul> --}}
 
         </div>
     </aside>

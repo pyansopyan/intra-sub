@@ -16,8 +16,8 @@
             </label>
         </div>
          <a href="{{ route('departement.index') }}" class="btn btn-md btn-success text-white"><< Back</a>
-         <button type="reset" class="btn btn-md btn-warning text-white">Reset</button>
-         <button type="submit" class="btn btn-md btn-primary">Save</button>
+         <button type="reset" class="btn btn-md btn-warning text-black hover:text-white">Reset</button>
+         <button type="submit" class="btn btn-md btn-primary text-black hover:text-white">Save</button>
     </form>
 </div>
 
