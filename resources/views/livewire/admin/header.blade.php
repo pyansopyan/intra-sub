@@ -58,6 +58,17 @@
                                                 <span>Log out</span>
                                             </a>
                                         </li> --}}
+                            <li class="flex">
+                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                    href="{{route('profile.edit')}}">
+                                    <svg class="w-5 h-5 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 22 22" >
+                                        <path
+                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                                        </path>
+                                    </svg>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button
