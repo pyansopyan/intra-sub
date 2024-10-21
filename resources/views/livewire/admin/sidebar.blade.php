@@ -117,6 +117,20 @@
             </li>
             @endcan
             </ul>
+            <ul>
+                <li class="relative px-6 py-3">
+                    <form action="{{route('logout')}}" method="POST" wire:click.prevent>
+                        @csrf
+                        <button type="submit" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H9a2 2 0 01-2-2V5a2 2 0 012-2h2a2 2 0 012 2v1"></path>
+                            </svg>
+                            <span class="ml-4">Logout</span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+
         </div>
     </aside>
     <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
