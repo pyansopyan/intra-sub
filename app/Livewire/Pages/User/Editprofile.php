@@ -23,7 +23,6 @@ class EditProfile extends Component
         // Inisialisasi properti dengan data pengguna
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->is_active = $user->is_active;
         $this->avatar = $user->avatar; // Ambil avatar yang sudah ada, tapi tidak di-upload ulang
     }
 
@@ -32,8 +31,6 @@ class EditProfile extends Component
         $this->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . auth()->id(),
-            'password' => 'nullable|string|min:6', // Password opsional, jika diisi akan diubah
-            'is_active' => 'required|boolean',
             'avatar' => 'nullable|max:1024|mimes:jpeg,png,jpg', // Avatar opsional
         ]);
 
@@ -43,12 +40,6 @@ class EditProfile extends Component
         $user->name = $this->name;
         $user->email = $this->email;
 
-        // Hanya update password jika diisi
-        if ($this->password) {
-            $user->password = bcrypt($this->password);
-        }
-
-        $user->is_active = $this->is_active;
 
         // Hanya update avatar jika ada gambar baru yang diunggah
         if ($this->avatar) {
@@ -70,7 +61,7 @@ class EditProfile extends Component
         $user->save();
 
         // Set pesan sukses untuk pengguna
-        session()->flash('message', 'Profil berhasil diupdate.');
+        session()->flash('message', 'Update Profile Successfully.');
 
         // Redirect kembali ke halaman edit profil
         return redirect()->route('profile.edit');
