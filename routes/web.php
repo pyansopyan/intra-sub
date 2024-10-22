@@ -31,6 +31,9 @@ Route::middleware('auth') -> group(function () {
     //edit profile user
     Route::get('/profile/edit', App\Livewire\Pages\User\EditProfile::class)->name('profile.edit');
 
+    //Change Password
+    Route::get('/changepassword', App\Livewire\Pages\User\ChangePassword::class)->name('change.password');
+
 
     // // role
     Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
