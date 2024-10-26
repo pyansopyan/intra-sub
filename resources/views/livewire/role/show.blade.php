@@ -5,7 +5,7 @@
                 Detail Role
             </h4>
             <table class="min-w-full divide-y divide-gray-200">
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                             <strong>ID:</strong>
@@ -26,10 +26,10 @@
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                             <strong>Permissions:</strong>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-600">
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 ">
                                 @foreach ($permissions as $permission)
-                                    <div class="flex items-center">
+                                    <div class="flex items-center dark:text-white">
                                         @if ($role->hasPermissionTo($permission->name))
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -39,7 +39,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                             </svg>
                                         @endif
-                                        <span class="ml-2 text-sm text-gray-700">{{ $permission->name }}</span>
+                                        <span class="ml-2 text-sm dark:text-gray-400 text-gray-600">{{ $permission->name }}</span>
                                     </div>
                                 @endforeach
                             </div>

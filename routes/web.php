@@ -34,6 +34,12 @@ Route::middleware('auth') -> group(function () {
     // //Change Password
     // Route::get('/changepassword', App\Livewire\Pages\User\ChangePassword::class)->name('change.password');
 
+    //task status
+    Route::get('/task-status', App\Livewire\TaskStatus\Index::class)->name('task-status.index');
+    Route::get('/task-status/create', App\Livewire\TaskStatus\Create::class)->name('task-status.create');
+    Route::get('/task-status/edit/{taskStatusId}', App\Livewire\TaskStatus\Edit::class)->name('task-status.edit');
+    Route::get('/task-status/{taskStatusId}', App\Livewire\TaskStatus\Show::class)->name('task-status.show');
+
 
     // // role
     Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');

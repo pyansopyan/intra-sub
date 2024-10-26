@@ -1,16 +1,14 @@
 <div>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Departement
-        @can('manageDepartement-create')
-        <a href="{{ route('departement.create') }}"
+        Task Status
+        <a href="{{ route('task-status.create') }}"
             class="px-4 py-2 text-sm font-medium justify-end leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
             + Add Data
         </a>
-        @endcan
     </h2>
 
     {{-- Message --}}
-     @if (session()->has('message'))
+    @if (session()->has('message'))
         <div class="mb-4 text-sm text-green-600 bg-green-100 rounded-lg p-4" role="alert">
             {{ session('message') }}
         </div>
@@ -23,20 +21,29 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Departement</th>
+                        <th class="px-4 py-3">Status Name</th>
+                        <th class="px-4 py-3">Status Color</th>
+                        <th class="px-4 py-3">Status Order</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach ($departements as $departement)
+                    @foreach ($taskStatus as $status)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">
-                                {{ $departement->name }}
+                                {{ $status->name }}
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                <span style="background-color: {{ $status->color }};"
+                                    class="rounded-sm px-2 py-1 text-white"
+                                    style="font-size: 0.8rem;">{{ $status->color }}</span>
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                {{ $status->order }}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
-                                    @can('manageDepartement-edit')
-                                    <a href="{{ route('departement.edit', $departement->id) }}"
+                                    <a href="{{ route('task-status.edit', $status->id) }}"
                                         class="flex items-center justify-center w-10 h-10 text-blue-500 bg-blue-100 rounded-full hover:bg-blue-200"
                                         title="Edit">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -45,9 +52,7 @@
                                                 d="M15.232 5.232a1 1 0 00-1.415 0L7.5 11.5V14h2.5l6.318-6.318a1 1 0 000-1.415z" />
                                         </svg>
                                     </a>
-                                    @endcan
-                                    @can('manageDepartement-view')
-                                    <a href="{{ route('departement.show', $departement->id) }}"
+                                    <a href="{{ route('task-status.show', $status->id) }}"
                                         class="flex items-center justify-center w-10 h-10 text-green-500 bg-green-100 rounded-full hover:bg-green-200"
                                         title="Show">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -56,9 +61,7 @@
                                                 d="M12 3C6 3 2 12 2 12s4 9 10 9 10-9 10-9-4-9-10-9zm0 12a3 3 0 110-6 3 3 0 010 6z" />
                                         </svg>
                                     </a>
-                                    @endcan
-                                   @can('manageDepartement-delete')
-                                        <button onclick="my_modal_{{ $departement->id }}.showModal()"
+                                    <button onclick="my_modal_{{ $status->id }}.showModal()"
                                         class="flex items-center justify-center w-10 h-10 text-red-500 bg-red-100 rounded-full hover:bg-red-200"
                                         title="Delete">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -67,10 +70,9 @@
                                                 d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
-                                    @endcan
 
-                                    <!-- Modal Konfirmasi -->
-                                    <dialog id="my_modal_{{ $departement->id }}" class="modal fixed inset-0 flex items-center justify-center">
+                                    <!-- DaisyUI Modal Confirmation -->
+                                    <dialog id="my_modal_{{ $status->id }}" class="modal fixed inset-0 flex items-center justify-center">
                                         <div
                                             class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
                                             <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
@@ -80,16 +82,16 @@
                                                     stroke-linejoin="round" stroke-width="2"
                                                     d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
-                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus departement ini</h3>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus status ini</h3>
                                             <div class="modal-action">
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
-                                                    wire:click="destroy({{ $departement->id }})">
+                                                    wire:click="destroy({{ $status->id }})">
                                                     Hapus
                                                 </button>
                                                 <button
                                                     class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
-                                                    onclick="my_modal_{{ $departement->id }}.close()">
+                                                    onclick="my_modal_{{ $status->id }}.close()">
                                                     Batal
                                                 </button>
                                             </div>
@@ -103,7 +105,6 @@
             </table>
         </div>
         {{-- paginate --}}
-        {{ $departements->links() }}
-
+        {{ $taskStatus->links() }}
     </div>
 </div>
