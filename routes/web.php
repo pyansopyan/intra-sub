@@ -40,7 +40,11 @@ Route::middleware('auth') -> group(function () {
     Route::get('/task-status/edit/{taskStatusId}', App\Livewire\TaskStatus\Edit::class)->name('task-status.edit');
     Route::get('/task-status/{taskStatusId}', App\Livewire\TaskStatus\Show::class)->name('task-status.show');
 
-
+    // task type
+    Route::get('/task-type', App\Livewire\TaskType\Index::class)->name('task-type.index');
+    Route::get('/task-type/create', App\Livewire\TaskType\Create::class)->name('task-type.create');
+    Route::get('/task-type/edit/{taskTypeId}', App\Livewire\TaskType\Edit::class)->name('task-type.edit');
+    Route::get('/task-type/{taskTypeId}', App\Livewire\TaskType\Show::class)->name('task-type.show');
     // // role
     Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
     Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');
