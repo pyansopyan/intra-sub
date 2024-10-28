@@ -26,11 +26,8 @@
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('user.index') }}" wire:navigate>
-                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.31 0-8 1.67-8 5v1h16v-1c0-3.33-4.69-5-8-5z"/>
                             </svg>
                             <span class="ml-4">User</span>
                         </a>
@@ -42,49 +39,43 @@
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('role.index') }}" wire:navigate>
-                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C7.03 2 2 3.5 2 7v6c0 3.5 5.03 5 10 5s10-1.5 10-5V7c0-3.5-5.03-5-10-5zm0 16c-2.84 0-5.64-.62-7.5-1.74v-5.26c1.86 1.12 4.66 1.74 7.5 1.74s5.64-.62 7.5-1.74v5.26C17.64 17.38 14.84 18 12 18z"/>
                             </svg>
                             <span class="ml-4">Role</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             <ul>
                 @can('managePermission')
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('permission.index') }}" wire:navigate>
-                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2a5 5 0 0 1 5 5v3h-1a5 5 0 1 0-10 0v5h12v2H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5zm5 13h2v4h-2z"/>
                             </svg>
                             <span class="ml-4">Permission</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             <ul>
                 @can('manageDepartement')
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('departement.index') }}" wire:navigate>
-                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 3h16v18H4V3zm3 2v14h2V5H7zm8 0v14h2V5h-2zm-6 6v8h2v-8H9zm4 0v8h2v-8h-2z" />
                             </svg>
                             <span class="ml-4">Departement</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             <ul>
                 @can('manageBagian')
                     <li class="relative px-6 py-3">
@@ -92,15 +83,16 @@
                             href="{{ route('bagian.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                                <path d="M16 12H8M16 16H8M16 8H8" />
+                                <path d="M4 6V18c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6H4z" />
                             </svg>
                             <span class="ml-4">Bagian</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
+
             <ul>
                 @can('manageJabatan')
                     <li class="relative px-6 py-3">
@@ -108,15 +100,14 @@
                             href="{{ route('jabatan.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                                <path d="M12 2C10.34 2 9 3.34 9 5c0 1.66 1.34 3 3 3s3-1.34 3-3c0-1.66-1.34-3-3-3zm-1 9c-5.52 0-10 3.58-10 8v1h20v-1c0-4.42-4.48-8-10-8z" />
                             </svg>
                             <span class="ml-4">Jabatan</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             <ul>
                 @can('manageTaskStatus')
                     <li class="relative px-6 py-3">
@@ -124,15 +115,15 @@
                             href="{{ route('task-status.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                                <path d="M12 2L2 7h20L12 2zm0 4l10 5-10 5L2 11l10-5z" />
+                                <path d="M2 17h20M2 22h20" />
                             </svg>
-                            <span class="ml-4">Task Status </span>
+                            <span class="ml-4">Task Status</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             <ul>
                 @can('manageTaskType')
                     <li class="relative px-6 py-3">
@@ -140,15 +131,14 @@
                             href="{{ route('task-type.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                                <path d="M9 3h6v4H9V3zm0 8h6v4H9v-4zm0 8h6v4H9v-4z" />
                             </svg>
-                            <span class="ml-4">Task Type </span>
+                            <span class="ml-4">Task Type</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             <ul>
                 @can('manageProjectStatuses')
                     <li class="relative px-6 py-3">
@@ -156,15 +146,14 @@
                             href="{{ route('project-statuses.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                                </path>
+                                <path d="M3 12l2-2 4 4 8-8 2 2-10 10-4-4z" />
                             </svg>
-                            <span class="ml-4">Project Statuses </span>
+                            <span class="ml-4">Project Statuses</span>
                         </a>
                     </li>
                 @endcan
             </ul>
+
             {{-- <ul>
                 <li class="relative px-6 py-3">
                     <form action="{{route('logout')}}" method="POST" wire:click.prevent>
