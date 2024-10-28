@@ -69,33 +69,32 @@
                                         </button>
                                     @endcan
 
-                                    <!-- Modal Konfirmasi -->
-                                    <dialog id="my_modal_{{ $bagian->id }}"
-                                        class="modal fixed inset-0 flex items-center justify-center">
-                                        <div
-                                            class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor 24 24" stroke="currentColor">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
-                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus bagian ini</h3>
-                                            <div class="modal-action">
-                                                <button
-                                                    class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
-                                                    wire:click="destroy({{ $bagian->id }})">
-                                                    Hapus
-                                                </button>
-                                                <button
-                                                    class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
-                                                    onclick="my_modal_{{ $bagian->id }}.close()">
-                                                    Batal
-                                                </button>
-                                            </div>
+                                   <!-- DaisyUI Modal Confirmation -->
+                                   <dialog id="my_modal_{{ $bagian->id }}"
+                                    class="modal fixed inset-0 flex items-center justify-center">
+                                    <div
+                                        class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+                                        <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor 24 24" stroke="currentColor">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                        <h3 class="text-lg font-bold">Apakah anda mau menghapus type ini</h3>
+                                        <div class="modal-action">
+                                            <button
+                                                class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
+                                                wire:click="destroy({{ $bagian->id }})">
+                                                Hapus
+                                            </button>
+                                            <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
+                                                onclick="my_modal_{{ $bagian->id }}.close()">
+                                                Batal
+                                            </button>
                                         </div>
-                                    </dialog>
+                                    </div>
+                                </dialog>
                                 </div>
                             </td>
                         </tr>
@@ -107,18 +106,3 @@
         {{ $bagians->links() }}
 
     </div>
-    <script>
-        function confirmDelete(id) {
-            // Tampilkan modal konfirmasi
-            const modal = document.getElementById('popup-modal');
-            modal.classList.remove('hidden');
-
-            // Tambahkan event listener ke tombol konfirmasi
-            const confirmBtn = document.getElementById('confirmDeleteBtn');
-            confirmBtn.onclick = function() {
-                @this.destroy(id); // Panggil metode destroy di Livewire dengan ID user
-                modal.classList.add('hidden'); // Sembunyikan modal setelah menghapus
-            }
-        }
-    </script>
-</div>
