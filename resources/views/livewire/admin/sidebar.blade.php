@@ -153,6 +153,20 @@
                     </li>
                 @endcan
             </ul>
+            <ul>
+                @can('manageTaskPriorities')
+                    <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="{{ route('priorities.index') }}" wire:navigate>
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <span class="ml-4">Task Priorities</span>
+                        </a>
+                    </li>
+                @endcan
+            </ul>
 
             {{-- <ul>
                 <li class="relative px-6 py-3">

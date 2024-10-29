@@ -52,6 +52,13 @@ Route::middleware('auth') -> group(function () {
     Route::get('/statuses/edit/{statusId}', App\Livewire\ProjectStatuses\Edit::class)->name('project-statuses.edit');
     Route::get('/statuses/{statusId}', App\Livewire\ProjectStatuses\Show::class)->name('project-statuses.show');
 
+    // Project priorities
+    Route::get('/priorities', App\Livewire\Priorities\Index::class)->name('priorities.index');
+    Route::get('/priorities/create', App\Livewire\Priorities\Create::class)->name('priorities.create');
+    Route::get('/priorities/edit/{prioritasId}', App\Livewire\Priorities\Edit::class)->name('priorities.edit');
+    Route::get('/priorities/{prioritasId}', App\Livewire\Priorities\Show::class)->name('priorities.show');
+
+
     // // role
     Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
     Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');
