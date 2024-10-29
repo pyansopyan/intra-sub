@@ -6,7 +6,7 @@
             </a>
             <a href="/user">User</a>
             <ul class="mt-6">
-                <li class=" px-6 py-3">
+                <li class=" px-6 py-3 {{ request()->routeIs('welcome') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                     <span class="absolute inset-y-0 left-0 w-1 bg-white-600 rounded-tr-lg rounded-br-lg"
                         aria-hidden="true"></span>
                     <a href="/" wire:navigate
@@ -23,8 +23,8 @@
             </ul>
             <ul>
                 @can('manageUser')
-                    <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    <li class="relative px-6 py-3 {{ request()->is('user*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
                             href="{{ route('user.index') }}" wire:navigate>
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.31 0-8 1.67-8 5v1h16v-1c0-3.33-4.69-5-8-5z"/>
@@ -36,7 +36,7 @@
             </ul>
             <ul>
                 @can('manageRole')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('role*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('role.index') }}" wire:navigate>
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@
 
             <ul>
                 @can('managePermission')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('permissions*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('permission.index') }}" wire:navigate>
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@
 
             <ul>
                 @can('manageDepartement')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('departement*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('departement.index') }}" wire:navigate>
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@
 
             <ul>
                 @can('manageBagian')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('bagian*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('bagian.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -95,7 +95,7 @@
 
             <ul>
                 @can('manageJabatan')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('jabatan*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('jabatan.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -110,7 +110,7 @@
 
             <ul>
                 @can('manageTaskStatus')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('task-status*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('task-status.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -126,7 +126,7 @@
 
             <ul>
                 @can('manageTaskType')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('task-type*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('task-type.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -141,7 +141,7 @@
 
             <ul>
                 @can('manageProjectStatuses')
-                    <li class="relative px-6 py-3">
+                    <li class="relative px-6 py-3 {{ request()->is('statuses*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="{{ route('project-statuses.index') }}" wire:navigate>
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
