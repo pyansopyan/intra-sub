@@ -29,7 +29,7 @@ Route::middleware('auth') -> group(function () {
     Route::get('/user/{userId}', App\Livewire\Pages\User\Show::class)->name('user.show');
 
     //edit profile user
-    Route::get('/profile/edit', App\Livewire\Pages\User\EditProfile::class)->name('profile.edit');
+    Route::get('/profile/edit', App\Livewire\Pages\User\Editprofile::class)->name('profile.edit');
 
     // //Change Password
     // Route::get('/changepassword', App\Livewire\Pages\User\ChangePassword::class)->name('change.password');
