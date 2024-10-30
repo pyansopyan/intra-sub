@@ -26,6 +26,7 @@
                         <th class="px-4 py-3">Status Name</th>
                         <th class="px-4 py-3">Status Color</th>
                         <th class="px-4 py-3">Status Order</th>
+                        <th class="px-4 py-3">Default</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>
@@ -42,6 +43,9 @@
                             </td>
                             <td class="px-4 py-3 text-sm">
                                 {{ $status->order }}
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                {{ $status->is_default == 1 ? 'true' : 'false' }}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
