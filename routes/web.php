@@ -28,6 +28,12 @@ Route::middleware('auth') -> group(function () {
     Route::get('/user/edit/{userId}', App\Livewire\Pages\User\Edit::class)->name('user.edit');
     Route::get('/user/{userId}', App\Livewire\Pages\User\Show::class)->name('user.show');
 
+    //modul project
+    Route::get('/project', App\Livewire\Project\Index::class)->name('project.index');
+    Route::get('/project/create', App\Livewire\Project\Create::class)->name('project.create');
+    Route::get('/project/edit/{projectId}', App\Livewire\Project\Edit::class)->name('project.edit');
+    Route::get('/project/{projectId}', App\Livewire\Project\Show::class)->name('project.show');
+
     //edit profile user
     Route::get('/profile/edit', App\Livewire\Pages\User\Editprofile::class)->name('profile.edit');
 
@@ -59,7 +65,7 @@ Route::middleware('auth') -> group(function () {
     Route::get('/priorities/{prioritasId}', App\Livewire\Priorities\Show::class)->name('priorities.show');
 
     // Activities
-    Route::get('/activites', App\Livewire\Activities\Index::class)->name('activities.index');
+    Route::get('/activities', App\Livewire\Activities\Index::class)->name('activities.index');
     Route::get('/activities/create', App\Livewire\Activities\Create::class)->name('activities.create');
     Route::get('/activities/edit/{aktivitasId}', App\Livewire\Activities\Edit::class)->name('activities.edit');
     Route::get('/activities/{aktivitasId}', App\Livewire\Activities\Show::class)->name('activities.show');

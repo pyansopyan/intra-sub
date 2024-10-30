@@ -54,6 +54,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Jabatan::class, 'jabatan_id');
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
     /**
      * The attributes that should be cast.
      *
