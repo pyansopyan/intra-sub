@@ -29,7 +29,8 @@ class UserSeeder extends Seeder
             'TaskPriorities',
             'ProjectStatuses',
             'Activities',
-            'Project'
+            'Project',
+            'AttachUser',
         ]);
 
         $subPermission = collect([

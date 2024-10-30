@@ -69,6 +69,12 @@ Route::middleware('auth') -> group(function () {
     Route::get('/activities/create', App\Livewire\Activities\Create::class)->name('activities.create');
     Route::get('/activities/edit/{aktivitasId}', App\Livewire\Activities\Edit::class)->name('activities.edit');
     Route::get('/activities/{aktivitasId}', App\Livewire\Activities\Show::class)->name('activities.show');
+
+    // attach user
+    Route::get('/attach-user', App\Livewire\AttachUser\Index::class)->name('attach-user.index');
+    Route::get('/attach-user/create', App\Livewire\AttachUser\Create::class)->name('attach-user.create');
+    Route::get('/attach-user/edit/{attachUserId}', App\Livewire\AttachUser\Edit::class)->name('attach-user.edit');
+    Route::get('/attach-user/{attachUserId}', App\Livewire\AttachUser\Show::class)->name('attach-user.show');
     // // role
     Route::get('/role', App\Livewire\Role\Index::class)->name('role.index');
     Route::get('/role/create', App\Livewire\Role\Create::class)->name('role.create');

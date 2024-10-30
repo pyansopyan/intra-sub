@@ -54,7 +54,7 @@
                 @endcan
             </ul>
 
-            
+
             <ul>
                 @can('manageDepartement')
                     <li
@@ -176,6 +176,20 @@
                                 href="{{ route('project.index') }}" wire:navigate>
                                 <i class='bx bxl-product-hunt' style="font-size: 20px"></i>
                                 <span class="ml-4">Project</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+                <ul>
+                     <ul>
+                <ul>
+                    @can('manageAttachUser')
+                        <li
+                            class="relative px-6 py-3 {{ request()->is('attach-user*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
+                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                href="{{ route('attach-user.index') }}" wire:navigate>
+                                <i class='bx bxs-user-plus' style="font-size: 20px"></i>
+                                <span class="ml-4">Attach User</span>
                             </a>
                         </li>
                     @endcan
