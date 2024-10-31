@@ -25,6 +25,7 @@
                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Type Name</th>
                         <th class="px-4 py-3">Type Color</th>
+                        <th class="px-4 py-3">Default</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>
@@ -38,6 +39,13 @@
                                 <span style="background-color: {{ $stats->color }};"
                                     class="rounded-sm px-2 py-1 text-white"
                                     style="font-size: 0.8rem;">{{ $stats->color }}</span>
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                @if ($stats->is_default == 1)
+                                    <i class='bx bxs-check-circle text-2xl text-green-500'></i>
+                                @else
+                                    <i class='bx bxs-x-circle text-2xl text-red-500'></i>
+                                @endif
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
