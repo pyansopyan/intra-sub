@@ -45,8 +45,13 @@
                                 {{ $status->order }}
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                {{ $status->is_default == 1 ? 'true' : 'false' }}
+                                @if ($status->is_default == 1)
+                                    <i class='bx bxs-check-circle text-2xl text-green-500'></i>
+                                @else
+                                    <i class='bx bxs-x-circle text-2xl text-red-500'></i>
+                                @endif
                             </td>
+
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
                                     @can('manageTaskStatus-edit')
