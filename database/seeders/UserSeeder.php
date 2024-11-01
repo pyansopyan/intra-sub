@@ -12,6 +12,7 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+    // 
     public function run(): void
     {
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();

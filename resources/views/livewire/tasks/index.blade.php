@@ -4,7 +4,7 @@
         @can('manageTask-create')
         <a href="{{ route('tasks.create') }}"
             class="px-4 py-2 text-sm font-medium justify-end leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-            + Add Task
+            + Add Tasks
         </a>
         @endcan
     </h2>

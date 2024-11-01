@@ -194,6 +194,7 @@
                         </li>
                     @endcan
                 </ul>
+                {{-- tasks --}}
                 <ul>
                     @can('manageTasks')
                         <li class="relative px-6 py-3 {{ request()->is('tasks*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">

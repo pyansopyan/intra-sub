@@ -64,7 +64,7 @@ Route::middleware('auth') -> group(function () {
     Route::get('/priorities/edit/{prioritasId}', App\Livewire\Priorities\Edit::class)->name('priorities.edit');
     Route::get('/priorities/{prioritasId}', App\Livewire\Priorities\Show::class)->name('priorities.show');
 
-     // Project Tasks
+     // Project Task
      Route::get('/tasks', App\Livewire\Tasks\Index::class)->name('tasks.index');
      Route::get('/tasks/create', App\Livewire\Tasks\Create::class)->name('tasks.create');
      Route::get('/tasks/edit/{tasksId}', App\Livewire\Tasks\Edit::class)->name('tasks.edit');
