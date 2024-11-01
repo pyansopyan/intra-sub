@@ -195,6 +195,18 @@
                     @endcan
                 </ul>
                 <ul>
+                    @can('manageTasks')
+                        <li class="relative px-6 py-3 {{ request()->is('tasks*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
+                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                href="{{ route('tasks.index') }}" wire:navigate>
+                                <i class='bx bx-task' style="font-size: 20px"></i> <!-- Changed icon here -->
+                                <span class="ml-4">Task</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+
+                <ul>
                     {{-- <ul>
                 <li class="relative px-6 py-3">
                     <form action="{{route('logout')}}" method="POST" wire:click.prevent>

@@ -10,4 +10,9 @@ class TaskType extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function Tasks()
+    {
+        return $this->hasMany(Tasks::class);
+    }
 }

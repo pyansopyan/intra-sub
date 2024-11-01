@@ -59,6 +59,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    public function Tasks()
+    {
+        return $this->hasMany(Tasks::class);
+    }
+    
+    public function responsibleTasks()
+    {
+        return $this->hasMany(Tasks::class, 'responsible_id');
+    }
     /**
      * The attributes that should be cast.
      *
