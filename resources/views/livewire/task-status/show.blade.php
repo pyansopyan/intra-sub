@@ -16,21 +16,26 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Status Color:</strong>
+                            <strong>Type Color:</strong>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ $taskStatus->color }}
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div style="width: 25px; height: 25px; background-color: {{ $taskStatus->color }}; border-radius: 3px;"></div>
                         </td>
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Status Default:</strong>
+                            <strong>Type Default:</strong>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400 flex items-center">
                             {{ $taskStatus->is_default ? 'Ya' : 'Tidak' }}
+                            <span class="mx-2">|</span>
+                            @if ($taskStatus->is_default == 1)
+                                <i class='bx bxs-check-circle text-2xl text-green-500'></i>
+                            @else
+                                <i class='bx bxs-x-circle text-2xl text-red-500'></i>
+                            @endif
                         </td>
                     </tr>
-                    <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                             <strong>Status Order:</strong>
                         </td>

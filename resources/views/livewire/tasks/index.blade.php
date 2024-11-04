@@ -1,7 +1,7 @@
 <div>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Tasks
-        @can('manageTask-create')
+        @can('manageTasks-create')
         <a href="{{ route('tasks.create') }}"
             class="px-4 py-2 text-sm font-medium justify-end leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
             + Add Tasks
@@ -51,7 +51,7 @@
                             <td class="px-4 py-3 text-sm">{{ $task->estimation }}</td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
-                                    @can('manageTask-edit')
+                                    @can('manageTasks-edit')
                                         <a href="{{ route('tasks.edit', $task->id) }}"
                                             class="flex items-center justify-center w-10 h-10 text-blue-500 bg-blue-100 rounded-full hover:bg-blue-200"
                                             title="Edit">
@@ -63,7 +63,7 @@
                                         </a>
                                     @endcan
 
-                                    @can('manageTask-view')
+                                    @can('manageTasks-view')
                                         <a href="{{ route('tasks.show', $task->id) }}"
                                             class="flex items-center justify-center w-10 h-10 text-green-500 bg-green-100 rounded-full hover:bg-green-200"
                                             title="Show">
@@ -75,7 +75,7 @@
                                         </a>
                                     @endcan
 
-                                    @can('manageTask-delete')
+                                    @can('manageTasks-delete')
                                         <button onclick="my_modal_{{ $task->id }}.showModal()"
                                             class="flex items-center justify-center w-10 h-10 text-red-500 bg-red-100 rounded-full hover:bg-red-200"
                                             title="Delete">
