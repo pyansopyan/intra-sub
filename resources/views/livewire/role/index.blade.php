@@ -1,4 +1,10 @@
 <div class="container mx-auto">
+     <div class="breadcrumbs text-sm mt-4">
+        <ul>
+            <li><a href="{{route('welcome')}}">Dashboard</a></li>
+            <li><a href="{{route('role.index')}}" class="text-gray-400 font-semibold">Role</a></li>
+        </ul>
+    </div>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Role
         @can('manageRole-create')

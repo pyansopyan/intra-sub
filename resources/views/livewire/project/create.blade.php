@@ -1,4 +1,14 @@
 <div>
+    <div class="breadcrumbs text-sm mt-4">
+        <ul>
+            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
+            <li><a href="{{ route('project.index') }}">Project</a></li>
+            <li><a class="text-gray-400 font-semibold">Add data Project</a></li>
+        </ul>
+    </div>
+    <a href="{{ route('project.index') }}" class="btn btn-md bg-white text-black mt-2">
+        <i class="bx bx-arrow-back text-xl"></i>
+    </a>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Add Project
     </h2>
@@ -34,18 +44,20 @@
                 @endforeach
             </select>
             @error('owner_id')
-                <span class="error">{{ $message }}</span>
+                <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
             <label for="status_id" class="block text-sm mt-4">Status</label>
             <select wire:model="status_id" id="status_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
                 <option value="">Choose Status</option>
                 @foreach ($statuses as $status)
-                    <option value="{{ $status->id }}">{{ $status->name }}</option>
+                    <option value="{{ $status->id }}">
+                        {{ $status->name }}
+                    </option>
                 @endforeach
             </select>
             @error('status_id')
-                <span class="error">{{ $message }}</span>
+                <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
             <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Cover</span>
@@ -66,10 +78,7 @@
                 @enderror
             </label>
         </div>
-
-        <a href="{{ route('project.index') }}" class="btn btn-md btn-success text-white">
-            << Back</a>
-                <button type="reset" class="btn btn-md btn-warning text-wh">Reset</button>
-                <button type="submit" class="btn btn-md btn-primary">Save</button>
+        <button type="reset" class="btn btn-md btn-warning text-wh">Reset</button>
+        <button type="submit" class="btn btn-md btn-primary">Save</button>
     </form>
 </div>

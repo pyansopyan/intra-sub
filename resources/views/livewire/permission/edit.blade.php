@@ -1,4 +1,14 @@
 <div>
+    <div class="breadcrumbs text-sm mt-4">
+        <ul>
+            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
+            <li><a href="{{ route('permission.index') }}">Permission</a></li>
+            <li><a class="text-gray-400 font-semibold">Edit data Permission</a></li>
+        </ul>
+    </div>
+    <a href="{{ route('permission.index') }}" class="btn btn-md bg-white text-black mt-2">
+        <i class="bx bx-arrow-back text-xl"></i>
+    </a>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Edit Permission
     </h2>
@@ -13,10 +23,10 @@
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
         </div>
-        <a href="{{ route('permission.index') }}" class="btn btn-md btn-success text-white">
-            << Back </a>
-                <button type="submit" class="btn btn-md btn-primary">
-                    Update
-                </button>
-    </form>
+
+        <button type="submit" class="btn btn-md btn-primary">
+            Update
+        </button>
+
+    </form>
 </div>

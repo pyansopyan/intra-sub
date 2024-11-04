@@ -1,4 +1,14 @@
 <div>
+     <div class="breadcrumbs text-sm mt-4">
+        <ul>
+            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
+            <li><a href="{{ route('departement.index') }}">Departement</a></li>
+            <li><a class="text-gray-400 font-semibold">Detail data Departement</a></li>
+        </ul>
+    </div>
+    <a href="{{ route('departement.index') }}" class="btn btn-md bg-white text-black mt-2">
+        <i class="bx bx-arrow-back text-xl"></i>
+    </a>
     <div class="mb-8 md:grid-cols-2 mt-4">
         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 flex flex-col">
             <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
@@ -25,7 +35,5 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{ route('departement.index') }}" class="btn btn-md btn-success text-white mt-4 justify-content-end">
-            << Back</a>
     </div>
 </div>
