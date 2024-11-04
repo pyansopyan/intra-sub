@@ -17,11 +17,11 @@ class AttachUser extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->hasMany(User::class, 'users_id');
     }
 
     public function projects()
     {
-        return $this->belongsTo(Project::class, 'projects_id');
+        return $this->hasMany(Project::class, 'projects_id');
     }
 }
