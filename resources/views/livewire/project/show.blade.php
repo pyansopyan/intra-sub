@@ -1,4 +1,5 @@
 <div>
+<div x-data="{ open: false }">
     <!-- Breadcrumbs and Back Button -->
     <div class="breadcrumbs text-sm mt-4">
         <ul>
@@ -19,11 +20,13 @@
             </h4>
             <div class="flex justify-center mb-4">
                 @if ($project->cover_image)
-                    <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover" class="h-60 w-30 rounded" />
+                    <!-- Main image with modal trigger (responsive size) -->
+                    <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover" class="rounded-lg cursor-pointer hover:shadow-lg transition-shadow max-h-80 w-auto" @click="open = true" />
                 @else
                     <p class="text-gray-700 dark:text-gray-400">Tidak ada Cover</p>
                 @endif
             </div>
+
             <table class="min-w-full divide-y divide-gray-200">
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                     <tr>
@@ -71,6 +74,21 @@
         </div>
     </div>
 
+    <!-- Modal for Enlarged Image Display -->
+    <div x-show="open" x-transition.opacity class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-64 z-64">
+        <div class="bg-white p-4 rounded-lg shadow-lg relative max-w-4xl mx-auto">
+            <!-- Close (X) Button -->
+            <button @click="open = false" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-xl font-bold">
+                &times;
+            </button>
+
+            <!-- Display the larger image in the modal -->
+            <div class="flex justify-center">
+                <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover" class="rounded-lg max-w-full max-h-screen" />
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Detail Attach User Section -->
     <div class="mb-8 md:grid-cols-2 mt-4">
         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 flex flex-col">

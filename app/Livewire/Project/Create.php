@@ -26,13 +26,13 @@ class Create extends Component
             'owner_id' => 'required|exists:users,id',
             'status_id' => 'required|exists:statuses,id',
             'ticket_prefix' => 'required|string|max:255',
-            'cover_image' => 'required|image|max:2048', // max 2MB
+            'cover_image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048', // Hanya gambar
         ]);
 
         // Simpan gambar dan dapatkan path-nya
         $covername = $this->cover_image->hashName();
 
-// Simpan cover_image dengan storeAs
+        // Simpan cover_image dengan storeAs
         $this->cover_image->storeAs('public/projects', $covername);
 
         // Simpan project ke database
@@ -58,3 +58,4 @@ class Create extends Component
         ]);
     }
 }
+

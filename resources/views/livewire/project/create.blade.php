@@ -16,7 +16,7 @@
     <form wire:submit.prevent="store">
         @csrf
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-
+            <!-- Nama Project -->
             <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Name</span>
                 <input
@@ -26,6 +26,8 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </label>
+
+            <!-- Deskripsi Project -->
             <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
                 <textarea id="description" name="description" rows="4" wire:model="description"
@@ -35,6 +37,8 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </label>
+
+            <!-- Owner Project -->
             <label for="owner_id" class="block text-sm mt-4">Owner</label>
             <select wire:model="owner_id" id="owner_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
@@ -46,6 +50,8 @@
             @error('owner_id')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
+
+            <!-- Status Project -->
             <label for="status_id" class="block text-sm mt-4">Status</label>
             <select wire:model="status_id" id="status_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
@@ -59,6 +65,8 @@
             @error('status_id')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
+
+            <!-- Cover Image -->
             <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Cover</span>
                 <input
@@ -68,16 +76,19 @@
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </label>
+
+            <!-- Ticket Prefix -->
             <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Ticket Prefix</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
-                    placeholder="Insert ticket prefix" type="name" wire:model="ticket_prefix" />
+                    placeholder="Insert ticket prefix" type="number" wire:model="ticket_prefix" />
                 @error('ticket_prefix')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </label>
         </div>
+
         <button type="reset" class="btn btn-md btn-warning text-wh">Reset</button>
         <button type="submit" class="btn btn-md btn-primary">Save</button>
     </form>
