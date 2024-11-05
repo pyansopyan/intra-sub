@@ -91,21 +91,29 @@
 </div>
     <!-- Detail Attach User Section -->
     <div class="mb-8 md:grid-cols-2 mt-4">
-        <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 flex flex-col">
-            <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-                Daftar Detail Attach User
-            </h4>
-            <table class="min-w-full divide-y divide-gray-200">
-                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>User:</strong>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ optional($users->firstWhere('user_id', $user_id))->name ?? 'Tidak ada user' }}
-                        </td>
-                    </tr>
-                    <tr>
+    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 flex flex-col">
+        <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+            Pilih User dan Project
+        </h4>
+
+        <table class="min-w-full divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200 dark:bg-white-700 dark:divide-white-600">
+                <!-- User Selection -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <strong>User:</strong>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <select id="user" name="user_id" wire:model="user_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md dark:bg-white-700 dark:text-black-300">
+                            <option value="">Attach User</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->user_id }}" {{ $user->user_id == $user_id ? 'selected' : '' }}>
+                                    {{ $user->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </td>
+                </tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                             <strong>Project:</strong>
                         </td>
