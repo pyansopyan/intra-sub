@@ -11,7 +11,7 @@
                 </svg>
             </button>
             <ul class="flex items-center flex-shrink-0 space-x-6">
-                <!-- Theme toggler -->
+                 <!-- Theme toggler -->
                 <li class="flex">
                     <button class="rounded-md focus:outline-none focus:shadow-outline-purple" @click="toggleTheme"
                         aria-label="Toggle color mode">
@@ -31,9 +31,16 @@
                     <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
                         @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                         aria-haspopup="true">
-                        <img class="object-cover w-8 h-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-                            alt="" aria-hidden="true" />
+                        <div
+                            class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-indigo-500 rounded-full dark:bg-indigo-500">
+                            @if (Auth::user()->avatar)
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                    alt="Profile Photo" class="w-full h-full object-cover rounded-full">
+                            @else
+                                <span
+                                    class="font-medium text-white dark:text-gray-300">{{ strtoupper(substr($name ?? Auth::user()->name, 0, 2)) }}</span>
+                            @endif
+                        </div>
                     </button>
                     <template x-if="isProfileMenuOpen">
                         <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
@@ -43,8 +50,9 @@
                             aria-label="submenu">
                             <li class="flex">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                    href="{{route('profile.edit')}}">
-                                    <svg class="w-5 h-5 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 22 22" >
+                                    href="{{ route('profile.edit') }}">
+                                    <svg class="w-5 h-5 mr-2" aria-hidden="true" fill="currentColor"
+                                        viewBox="0 0 22 22">
                                         <path
                                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
                                         </path>
@@ -52,9 +60,9 @@
                                     <span>Edit Profile</span>
                                 </a>
                             </li>
-                             <li class="flex">
+                            <li class="flex">
                                 <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                    href="{{route('change.password')}}">
+                                    href="{{ route('change.password') }}">
                                     <i class='bx bxs-lock' style="font-size: 16px;"></i>
                                     <span class="ml-2">Change Password</span>
                                 </a>

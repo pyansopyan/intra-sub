@@ -15,9 +15,11 @@
                         <span class="ml-4">Dashboard</span>
                     </a>
                 </li>
+                <li class="border-t border-gray-200 dark:border-gray-700"></li>
             </ul>
-            <ul>
+            <ul class="pt-4 space-y-2 font-medium">
                 @can('manageUser')
+                    <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">USER MANAGEMENT</li>
                     <li
                         class="relative px-6 py-3 {{ request()->is('user*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
@@ -51,12 +53,15 @@
                             <span class="ml-4">Permission</span>
                         </a>
                     </li>
+                    <li class="border-t border-gray-200 dark:border-gray-700"></li>
                 @endcan
             </ul>
 
 
-            <ul>
+            <ul class="pt-4 mt-1 space-y-2 font-medium">
                 @can('manageDepartement')
+                    <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">ORGANIZATION MANAGEMENT
+                    </li>
                     <li
                         class="relative px-6 py-3 {{ request()->is('departement*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -66,9 +71,6 @@
                         </a>
                     </li>
                 @endcan
-            </ul>
-
-            <ul>
                 @can('manageBagian')
                     <li
                         class="relative px-6 py-3 {{ request()->is('bagian*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
@@ -79,10 +81,6 @@
                         </a>
                     </li>
                 @endcan
-            </ul>
-
-
-            <ul>
                 @can('manageJabatan')
                     <li
                         class="relative px-6 py-3 {{ request()->is('jabatan*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
@@ -92,11 +90,15 @@
                             <span class="ml-4">Jabatan</span>
                         </a>
                     </li>
+                    <li class="border-t border-gray-200 dark:border-gray-700"></li>
                 @endcan
             </ul>
 
-            <ul>
+            <ul class="pt-4 mt-1 space-y-2 font-medium">
+
                 @can('manageTaskStatus')
+                    <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">TASK MANAGEMENT
+                    </li>
                     <li
                         class="relative px-6 py-3 {{ request()->is('task-status*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -153,10 +155,14 @@
                             <span class="ml-4">Task Priorities</span>
                         </a>
                     </li>
+                    <li class="border-t border-gray-200 dark:border-gray-700"></li>
                 @endcan
             </ul>
-            <ul>
+            <ul class="pt-4 mt-1 space-y-2 font-medium">
+
                 @can('manageActivities')
+                <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">PROJECT MANAGEMENT
+                </li>
                     <li
                         class="relative px-6 py-3 {{ request()->is('activities*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -181,34 +187,23 @@
                     @endcan
                 </ul>
                 <ul>
-                     <ul>
-                {{-- <ul>
-                    @can('manageAttachUser')
-                        <li
-                            class="relative px-6 py-3 {{ request()->is('attach-user*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="{{ route('attach-user.index') }}" wire:navigate>
-                                <i class='bx bxs-user-plus' style="font-size: 20px"></i>
-                                <span class="ml-4">Attach User</span>
-                            </a>
-                        </li>
-                    @endcan
-                </ul> --}}
-                {{-- tasks --}}
-                <ul>
-                    @can('manageTasks')
-                        <li class="relative px-6 py-3 {{ request()->is('tasks*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="{{ route('tasks.index') }}" wire:navigate>
-                                <i class='bx bx-task' style="font-size: 20px"></i> <!-- Changed icon here -->
-                                <span class="ml-4">Task</span>
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
+                    <ul>
+                        <ul>
+                            @can('manageTasks')
+                                <li
+                                    class="relative px-6 py-3 {{ request()->is('tasks*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
+                                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                        href="{{ route('tasks.index') }}" wire:navigate>
+                                        <i class='bx bx-task' style="font-size: 20px"></i> <!-- Changed icon here -->
+                                        <span class="ml-4">Task</span>
+                                    </a>
+                                </li>
+                            @endcan
+                            <li class="border-t border-gray-200 dark:border-gray-700"></li>
+                        </ul>
 
-                <ul>
-                    {{-- <ul>
+                        <ul>
+                            {{-- <ul>
                 <li class="relative px-6 py-3">
                     <form action="{{route('logout')}}" method="POST" wire:click.prevent>
                         @csrf

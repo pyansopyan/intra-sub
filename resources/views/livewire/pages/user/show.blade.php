@@ -16,10 +16,14 @@
             </h4>
             <div class="flex justify-center mb-4">
                 @if ($user->avatar)
-                    <img src="{{ asset('storage/avatars/' . $user->avatar) }}" alt="Avatar"
+                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar"
                         class="h-60 w-30 rounded-full" />
                 @else
-                    <p class="text-gray-700 dark:text-gray-400">Tidak ada avatar</p>
+                     <div class="inline-flex items-center justify-center w-40 h-40 overflow-hidden bg-indigo-500 rounded-full dark:bg-indigo-500">
+                        <span class="text-6xl font-medium text-white dark:text-gray-300">
+                             {{ strtoupper(substr($user->name, 0, 2)) }}
+                        </span>
+                    </div>
                 @endif
             </div>
             <table class="min-w-full divide-y divide-gray-200">
