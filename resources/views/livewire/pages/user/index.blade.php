@@ -15,9 +15,28 @@
         @endcan
     </h2>
 
+   {{-- Message --}}
     @if (session()->has('message'))
-        <div class="mb-4 text-sm text-green-600 bg-green-100 rounded-lg p-4" role="alert">
-            {{ session('message') }}
+        <div class="toast toast-top toast-end mt-12 transform translate-x-full transition-transform duration-500 ease-out"
+            x-data="{ show: true }" x-show="show" x-init="show = true;
+            setTimeout(() => show = false, 5000)">
+            <div class="flex flex-col gap-2 w-60 h-60 sm:w-72 text-[10px] sm:text-xs z-50 mt-6">
+                <div
+                    class="success-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-gray-800 dark:bg-gray-900 px-[10px]">
+                    <div class="flex gap-2">
+                        <div class="text-green-500 bg-white/10 dark:bg-white/20 p-1 rounded-lg">
+                            <i class='bx bx-check-circle text-3xl'></i>
+                        </div>
+                        <div>
+                            <p class="text-white mt-3">{{ session('message') }}</p>
+                        </div>
+                    </div>
+                    <button @click="show = false"
+                        class="text-gray-400 hover:bg-white/5 p-1 rounded-md transition-colors ease-linear">
+                        <i class='bx bx-x text-xl'></i>
+                    </button>
+                </div>
+            </div>
         </div>
     @endif
 
