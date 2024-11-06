@@ -134,12 +134,12 @@
         {{-- paginate --}}
         <div class="mt-8 mb-6 p-1 flex justify-between items-center">
             <div class="text-sm text-gray-500">
-                Showing {{ $prioritas->firstItem() }} to {{ $prioritas->lastItem() }} of {{ $prioritas->total() }} entries
+                Showing {{ $aktivitas->firstItem() }} to {{ $aktivitas->lastItem() }} of {{ $aktivitas->total() }} entries
             </div>
             <div class="flex items-center space-x-1">
 
                 {{-- Previous Button --}}
-                @if ($prioritas->onFirstPage())
+                @if ($aktivitas->onFirstPage())
                     <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
                 @else
                     <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
@@ -148,8 +148,8 @@
                 @endif
 
                 {{-- Pagination Numbers --}}
-                @foreach ($prioritas->getUrlRange(1, $prioritas->lastPage()) as $page => $url)
-                    @if ($page == $prioritas->currentPage())
+                @foreach ($aktivitas->getUrlRange(1, $aktivitas->lastPage()) as $page => $url)
+                    @if ($page == $aktivitas->currentPage())
                         <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
                             {{ $page }}
                         </span>
@@ -162,7 +162,7 @@
                 @endforeach
 
                 {{-- Next Button --}}
-                @if ($prioritas->hasMorePages())
+                @if ($aktivitas->hasMorePages())
                     <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
                         Next
                     </button>
