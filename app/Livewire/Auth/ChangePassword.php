@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\User;
+namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -40,6 +40,6 @@ class ChangePassword extends Component
 
     public function render()
     {
-        return view('livewire.pages.user.changepassword');
+        return view('livewire.auth.changepassword');
     }
 }

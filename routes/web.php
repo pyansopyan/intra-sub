@@ -38,7 +38,7 @@ Route::middleware('auth') -> group(function () {
     Route::get('/profile/edit', App\Livewire\Pages\User\Editprofile::class)->name('profile.edit');
 
     // //Change Password
-    Route::get('/changepassword', App\Livewire\Pages\User\ChangePassword::class)->name('change.password');
+    // Route::get('/changepassword', App\Livewire\Pages\User\ChangePassword::class)->name('change.password');
 
     //task status
     Route::get('/task-status', App\Livewire\TaskStatus\Index::class)->name('task-status.index');
@@ -104,5 +104,7 @@ Route::middleware('auth') -> group(function () {
     Route::get('/jabatan/{id}', App\Livewire\Jabatan\Show::class)->name('jabatan.show');
 });
 
+
+Route::get('/changepassword', \App\Livewire\Auth\ChangePassword::class)->name('change.password');
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
 Route::post('/logout', \App\Http\Controllers\LogoutController::class)->name('logout');
