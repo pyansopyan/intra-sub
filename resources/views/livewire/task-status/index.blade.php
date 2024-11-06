@@ -146,6 +146,44 @@
             </table>
         </div>
         {{-- paginate --}}
-        {{ $taskStatus->links() }}
+        <div class="mt-8 mb-6 p-1 flex justify-between items-center">
+            <div class="text-sm text-gray-500">
+                Showing {{ $prioritas->firstItem() }} to {{ $prioritas->lastItem() }} of {{ $prioritas->total() }} entries
+            </div>
+            <div class="flex items-center space-x-1">
+
+                {{-- Previous Button --}}
+                @if ($prioritas->onFirstPage())
+                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
+                @else
+                    <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        Previous
+                    </button>
+                @endif
+
+                {{-- Pagination Numbers --}}
+                @foreach ($prioritas->getUrlRange(1, $prioritas->lastPage()) as $page => $url)
+                    @if ($page == $prioritas->currentPage())
+                        <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
+                            {{ $page }}
+                        </span>
+                    @else
+                        <button wire:click="gotoPage({{ $page }})"
+                                class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                            {{ $page }}
+                        </button>
+                    @endif
+                @endforeach
+
+                {{-- Next Button --}}
+                @if ($prioritas->hasMorePages())
+                    <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        Next
+                    </button>
+                @else
+                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Next</span>
+                @endif
+            </div>
+        </div>
     </div>
 </div>
