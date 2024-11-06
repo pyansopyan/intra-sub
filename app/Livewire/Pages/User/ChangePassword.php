@@ -29,7 +29,7 @@ class ChangePassword extends Component
         // Update password
         $user = Auth::user(); // Ambil data user yang sedang login
         $user->password = Hash::make($this->new_password); // Hash password baru
-        $user->save(); // Simpan perubahan ke database
+        $user->$this->save(); // Simpan perubahan ke database
 
         // Reset field setelah berhasil
         $this->reset(['old_password', 'new_password', 'new_password_confirmation']);
