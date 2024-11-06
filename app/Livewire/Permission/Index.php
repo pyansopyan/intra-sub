@@ -31,7 +31,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.permission.index', [
-            'permissions' => Permission::latest()->get(),
+            'permissions' => Permission::latest()->paginate(5),
         ]);
     }
 }
