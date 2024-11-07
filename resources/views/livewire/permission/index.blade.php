@@ -1,25 +1,34 @@
 <div class="container mx-auto">
-     <div class="breadcrumbs text-sm mt-4">
+    <div class="breadcrumbs text-sm mt-4">
         <ul>
-            <li><a href="{{route('welcome')}}">Dashboard</a></li>
-            <li><a href="{{route('permission.index')}}" class="text-gray-400 font-semibold">Permission</a></li>
+            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
+            <li><a href="{{ route('permission.index') }}" class="text-gray-400 font-semibold">Permission</a></li>
         </ul>
     </div>
-    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Permissions
+    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <span>Permissions</span>
         @can('managePermission-create')
-            <a href="{{ route('permission.create') }}"
-                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                + Tambah Data
-            </a>
-        @endcan
+        <a href="{{ route('permission.create') }}"
+        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+        + Tambah Data
+    </a>
+    <div class="relative w-1/2">
+        <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
+        <input type="text"
+               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+               wire:model.live="search"
+               placeholder="Cari Permission...">
+    </div>
+
+    @endcan
     </h2>
+
+
 
     {{-- Message --}}
     @if (session()->has('message'))
         <div class="toast toast-top toast-end mt-12 transform translate-x-full transition-transform duration-500 ease-out"
-            x-data="{ show: true }" x-show="show" x-init="show = true;
-            setTimeout(() => show = false, 5000)">
+            x-data="{ show: true }" x-show="show" x-init="show = true; setTimeout(() => show = false, 5000)">
             <div class="flex flex-col gap-2 w-60 h-60 sm:w-72 text-[10px] sm:text-xs z-50 mt-6">
                 <div
                     class="success-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-gray-800 dark:bg-gray-900 px-[10px]">
@@ -39,24 +48,21 @@
             </div>
         </div>
     @endif
-
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Name</th> <!-- Adjust padding to match data cells -->
-                        <th class="px-4 py-3 text-center">Actions</th> <!-- Align the actions column to the center -->
+                        <th class="px-4 py-3">Name</th>
+                        <th class="px-4 py-3 text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($permissions as $permission)
                         <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                {{ $permission->name }}
-                            </td>
+                            <td class="px-4 py-3 text-sm">{{ $permission->name }}</td>
                             <td class="px-4 py-3">
-                                <div class="flex items-center justify-center space-x-4 text-sm"> <!-- Center the buttons inside the column -->
+                                <div class="flex items-center justify-center space-x-4 text-sm">
                                     @can('managePermission-edit')
                                         <a href="{{ route('permission.edit', $permission->id) }}"
                                             class="flex items-center justify-center w-10 h-10 text-blue-500 bg-blue-100 rounded-full hover:bg-blue-200"
@@ -86,10 +92,8 @@
                                             </svg>
                                         </button>
                                     @endcan
-                                    <dialog id="my_modal_{{ $permission->id }}"
-                                        class="modal fixed inset-0 flex items-center justify-center">
-                                        <div
-                                            class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+                                    <dialog id="my_modal_{{ $permission->id }}" class="modal fixed inset-0 flex items-center justify-center">
+                                        <div class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
                                             <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor 24 24" stroke="currentColor">
@@ -100,14 +104,14 @@
                                             <h3 class="text-lg font-bold">Apakah anda mau menghapus permission ini</h3>
                                             <div class="modal-action">
                                                 <button
-                                                    class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
+                                                    class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                                                     wire:click="destroy({{ $permission->id }})">
-                                                    Hapus
+                                                    Yes
                                                 </button>
                                                 <button
-                                                    class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
+                                                    class="btn bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300"
                                                     onclick="my_modal_{{ $permission->id }}.close()">
-                                                    Batal
+                                                    Cancel
                                                 </button>
                                             </div>
                                         </div>
@@ -119,73 +123,73 @@
                 </tbody>
             </table>
         </div>
-        <div class="mt-8 mb-6 p-1 flex justify-between items-center">
-            <div class="text-sm text-gray-500">
-                Showing {{ $permissions->firstItem() }} to {{ $permissions->lastItem() }} of {{ $permissions->total() }} entries
-            </div>
-            <div class="flex items-center space-x-1">
+       <div class="mt-8 mb-6 p-1 flex justify-between items-center">
+    <div class="text-sm text-gray-500">
+        Showing {{ $permissions->firstItem() }} to {{ $permissions->lastItem() }} of {{ $permissions->total() }} entries
+    </div>
+    <div class="flex items-center space-x-1">
 
-                {{-- Tombol Previous --}}
-                @if ($permissions->onFirstPage())
-                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
-                @else
-                    <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        Previous
-                    </button>
-                @endif
+        {{-- Tombol Previous --}}
+        @if ($permissions->onFirstPage())
+            <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
+        @else
+            <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                Previous
+            </button>
+        @endif
 
-                {{-- Angka Halaman --}}
-                @php
-                    $currentPage = $permissions->currentPage();
-                    $lastPage = $permissions->lastPage();
-                    $startPage = max(1, $currentPage - 2);
-                    $endPage = min($lastPage, $currentPage + 2);
-                @endphp
+        {{-- Angka Halaman --}}
+        @php
+            $currentPage = $permissions->currentPage();
+            $lastPage = $permissions->lastPage();
+            $startPage = max(1, $currentPage - 2);
+            $endPage = min($lastPage, $currentPage + 2);
+        @endphp
 
-                {{-- Tampilkan halaman pertama jika jauh dari awal --}}
-                @if ($startPage > 1)
-                    <button wire:click="gotoPage(1)" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        1
-                    </button>
-                    @if ($startPage > 2)
-                        <span class="px-2">...</span>
-                    @endif
-                @endif
+        {{-- Tampilkan halaman pertama jika jauh dari awal --}}
+        @if ($startPage > 1)
+            <button wire:click="gotoPage(1)" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                1
+            </button>
+            @if ($startPage > 2)
+                <span class="px-2">...</span>
+            @endif
+        @endif
 
-                {{-- Halaman di sekitar halaman aktif --}}
-                @for ($page = $startPage; $page <= $endPage; $page++)
-                    @if ($page == $currentPage)
-                        <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
-                            {{ $page }}
-                        </span>
-                    @else
-                        <button wire:click="gotoPage({{ $page }})"
-                                class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                            {{ $page }}
-                        </button>
-                    @endif
-                @endfor
+        {{-- Halaman di sekitar halaman aktif --}}
+        @for ($page = $startPage; $page <= $endPage; $page++)
+            @if ($page == $currentPage)
+                <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
+                    {{ $page }}
+                </span>
+            @else
+                <button wire:click="gotoPage({{ $page }})"
+                        class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                    {{ $page }}
+                </button>
+            @endif
+        @endfor
 
-                {{-- Tampilkan halaman terakhir jika jauh dari akhir --}}
-                @if ($endPage < $lastPage)
-                    @if ($endPage < $lastPage - 1)
-                        <span class="px-2">...</span>
-                    @endif
-                    <button wire:click="gotoPage({{ $lastPage }})" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        {{ $lastPage }}
-                    </button>
-                @endif
+        {{-- Tampilkan halaman terakhir jika jauh dari akhir --}}
+        @if ($endPage < $lastPage)
+            @if ($endPage < $lastPage - 1)
+                <span class="px-2">...</span>
+            @endif
+            <button wire:click="gotoPage({{ $lastPage }})" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                {{ $lastPage }}
+            </button>
+        @endif
 
-                {{-- Tombol Next --}}
-                @if ($permissions->hasMorePages())
-                    <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        Next
-                    </button>
-                @else
-                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Next</span>
-                @endif
-            </div>
-        </div>
+        {{-- Tombol Next --}}
+        @if ($permissions->hasMorePages())
+            <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                Next
+            </button>
+        @else
+            <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Next</span>
+        @endif
+    </div>
+</div>
 
     </div>
 </div>

@@ -8,6 +8,8 @@ use Spatie\Permission\Models\Permission;
 
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
         /**
      * destroy function
@@ -31,7 +33,12 @@ class Index extends Component
     public function render()
     {
         return view('livewire.permission.index', [
-            'permissions' => Permission::latest()->paginate(5),
+            'permissions' => Permission::where('name','like','%'.$this->search.'%')->paginate(5),
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }
