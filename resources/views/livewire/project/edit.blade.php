@@ -30,14 +30,14 @@
             <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
                  <textarea id="description" name="description" rows="4" wire:model="description"
-                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                    class="shadow-sm focus:ring-indigo-500 dark:bg-gray-700 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
                     placeholder="insert project description"></textarea>
                 @error('description')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </label>
 
-            <label for="owner_id" class="block text-sm mt-4">Owner</label>
+            <label for="owner_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Owner</label>
             <select wire:model="owner_id" id="owner_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
                 <option value="">Choose Owner</option>
@@ -49,7 +49,7 @@
                 <span class="error">{{ $message }}</span>
             @enderror
 
-            <label for="status_id" class="block text-sm mt-4">Status</label>
+            <label for="status_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Status</label>
             <select wire:model="status_id" id="status_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
                 <option value="">Choose Status</option>
