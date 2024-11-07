@@ -24,6 +24,14 @@ class Create extends Component
     public $order;
     public $estimation;
 
+    // is_default
+    public function mount()
+    {
+        // Set default status, project, type, dan priority berdasarkan is_default = true
+        $this->status_id = Statuses::where('is_default', true)->value('id');
+        $this->type_id = TaskType::where('is_default', true)->value('id');
+        $this->priority_id = Priorities::where('is_default', true)->value('id');
+    }
     // Method untuk menyimpan data
     public function store()
     {
@@ -61,7 +69,7 @@ class Create extends Component
         session()->flash('message', 'Data Berhasil disimpan');
 
         // Reset form
-        $this->reset(['owner_id','responsible_id','status_id','projects_id','type_id','priority_id']);
+        $this->reset(['owner_id','responsible_id','status_id','project_id','type_id','priority_id']);
 
         // Redirect ke halaman indeks
         return redirect()->route('tasks.index');

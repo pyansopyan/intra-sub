@@ -39,12 +39,19 @@
             </label>
 
             <!-- Owner Project -->
-            <label for="owner_id" class="block text-sm mt-4">Owner</label>
-            <x-select :options="$owners" option-label="name" option-value="id"
-    wire:model.defer="owner_id" placeholder="Choose owner" class="z-50" />
+            <!-- Owner -->
+<label for="owner_id" class="block text-sm mt-4">Owner</label>
+<select wire:model="owner_id" id="owner_id"
+    class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
+    <option value="">Choose Owner</option>
+    @foreach ($owners as $owner)
+        <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+    @endforeach
+</select>
 @error('owner_id')
     <span class="text-red-500 text-sm">{{ $message }}</span>
 @enderror
+
 
 
             <!-- Status Project -->

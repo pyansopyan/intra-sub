@@ -18,6 +18,12 @@ class Create extends Component
     public $ticket_prefix;
     public $cover_image;
 
+    public function mount()
+    {
+        // Set default status, project, type, dan priority berdasarkan is_default = true
+        $this->status_id = Statuses::where('is_default', true)->value('id');
+    }
+
     public function store()
     {
         $this->validate([
