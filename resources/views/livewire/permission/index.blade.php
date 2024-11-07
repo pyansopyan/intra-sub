@@ -24,7 +24,6 @@
     </h2>
 
 
-
     {{-- Message --}}
     @if (session()->has('message'))
         <div class="toast toast-top toast-end mt-12 transform translate-x-full transition-transform duration-500 ease-out"

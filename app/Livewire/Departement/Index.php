@@ -8,6 +8,8 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    public $search;
+
     public function destroy($departementId)
     {
         $departement = Departement::find($departementId);
@@ -26,7 +28,12 @@ class Index extends Component
     public function render()
     {
         return view('livewire.departement.index', [
-            'departements' => Departement::latest()->paginate(5)
+            'departements' => Departement::where('name', 'like', '%'.$this->search.'%')->paginate(5)
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }

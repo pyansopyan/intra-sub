@@ -5,14 +5,22 @@
             <li><a href="{{ route('jabatan.index') }}" class="text-gray-400 font-semibold">Jabatan</a></li>
         </ul>
     </div>
-    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Jabatan
-        @can('manageDepartement-create')
-            <a href="{{ route('jabatan.create') }}"
-                class="px-4 py-2 text-sm font-medium justify-end leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                + Add Data
-            </a>
-        @endcan
+     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <span>Jabatan</span>
+        @can('manageJabatan-create')
+        <a href="{{ route('jabatan.create') }}"
+        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+        + Tambah Data
+    </a>
+    <div class="relative w-1/2">
+        <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
+        <input type="text"
+               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+               wire:model.live="search"
+               placeholder="Cari Jabatan...">
+    </div>
+
+    @endcan
     </h2>
 
     {{-- Message --}}

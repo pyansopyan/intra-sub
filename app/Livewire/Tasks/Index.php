@@ -12,6 +12,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
 
     public function destroy($tasksId)
@@ -32,8 +34,13 @@ class Index extends Component
     public function render()
 {
     return view('livewire.tasks.index', [
-        'tasks' => Tasks::with(['owner', 'responsible', 'status', 'project', 'type', 'priority'])->latest()->paginate(5)
+        'tasks' => Tasks::with(['owner', 'responsible', 'status', 'project', 'type', 'priority'])->where('name','like','%'.$this->search.'%')->latest()->paginate(5)
     ]);
 }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
 }

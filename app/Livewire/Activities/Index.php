@@ -8,6 +8,8 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
 
     public function destroy($aktivitasId)
@@ -28,7 +30,13 @@ class Index extends Component
     public function render()
     {
         return view('livewire.activities.index', [
-            'aktivitas' => Activities::latest()->paginate(5),
+            'aktivitas' => Activities::where('name', 'like', '%'.$this->search.'%')->paginate(5),
         ]);
     }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
 }

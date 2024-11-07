@@ -8,6 +8,8 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
 
     public function destroy($projectId)
@@ -28,7 +30,12 @@ class Index extends Component
     public function render()
     {
         return view('livewire.project.index', [
-            'projects' => Project::with(['owner', 'status'])->latest()->paginate(5)
+            'projects' => Project::with(['owner', 'status'])->where('name','like','%'.$this->search.'%')->latest()->paginate(5)
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }

@@ -8,6 +8,8 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
 
     public function destroy($taskTypeId)
@@ -28,7 +30,12 @@ class Index extends Component
     public function render()
     {
         return view('livewire.task-type.index', [
-            'taskType' => TaskType::latest()->paginate(5),
+            'taskType' => TaskType::where('name', 'like', '%'.$this->search.'%')->paginate(5),
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }

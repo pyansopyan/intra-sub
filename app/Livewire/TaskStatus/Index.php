@@ -8,6 +8,8 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
 
 
@@ -30,7 +32,12 @@ class Index extends Component
     public function render()
     {
         return view('livewire.task-status.index', [
-            'taskStatus' => TaskStatus::latest()->paginate(5),
+            'taskStatus' => TaskStatus::where('name', 'like', '%'.$this->search.'%')->paginate(5),
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }
