@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
     public function destroy($jabatanId)
     {
         $jabatan = Jabatan::find($jabatanId);
@@ -26,7 +27,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.jabatan.index', [
-            'jabatan' => Jabatan::latest()->paginate(5)
+            'jabatans' => Jabatan::latest()->paginate(5)
         ]);
     }
 }

@@ -135,7 +135,7 @@
             </div>
             <div class="flex items-center space-x-1">
 
-                {{-- Previous Button --}}
+                {{-- Tombol Previous --}}
                 @if ($attachUser->onFirstPage())
                     <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
                 @else
@@ -143,10 +143,24 @@
                         Previous
                     </button>
                 @endif
+                @php
+                    $currentPage = $attachUser->currentPage();
+                    $lastPage = $attachUser->lastPage();
+                    $startPage = max(1, $currentPage - 2);
+                    $endPage = min($lastPage, $currentPage + 2);
+                @endphp
+                @if ($startPage > 1)
+                    <button wire:click="gotoPage(1)" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        1
+                    </button>
+                    @if ($startPage > 2)
+                        <span class="px-2">...</span>
+                    @endif
+                @endif
 
-                {{-- Pagination Numbers --}}
-                @foreach ($attachUser->getUrlRange(1, $attachUser->lastPage()) as $page => $url)
-                    @if ($page == $attachUser->currentPage())
+                {{-- Halaman di sekitar halaman aktif --}}
+                @for ($page = $startPage; $page <= $endPage; $page++)
+                    @if ($page == $currentPage)
                         <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
                             {{ $page }}
                         </span>
@@ -156,9 +170,19 @@
                             {{ $page }}
                         </button>
                     @endif
-                @endforeach
+                @endfor
 
-                {{-- Next Button --}}
+                {{-- Tampilkan halaman terakhir jika jauh dari akhir --}}
+                @if ($endPage < $lastPage)
+                    @if ($endPage < $lastPage - 1)
+                        <span class="px-2">...</span>
+                    @endif
+                    <button wire:click="gotoPage({{ $lastPage }})" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        {{ $lastPage }}
+                    </button>
+                @endif
+
+                {{-- Tombol Next --}}
                 @if ($attachUser->hasMorePages())
                     <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
                         Next

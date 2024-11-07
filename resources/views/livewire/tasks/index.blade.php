@@ -131,45 +131,68 @@
             </table>
         </div>
         {{-- paginate --}}
-       {{-- paginate --}}
-       <div class="mt-8 mb-6 p-1 flex justify-between items-center">
-        <div class="text-sm text-gray-500">
-            Showing {{ $tasks->firstItem() }} to {{ $tasks->lastItem() }} of {{ $tasks->total() }} entries
-        </div>
-        <div class="flex items-center space-x-1">
+        <div class="mt-8 mb-6 p-1 flex justify-between items-center">
+            <div class="text-sm text-gray-500">
+                Showing {{ $tasks->firstItem() }} to {{ $tasks->lastItem() }} of {{ $tasks->total() }} entries
+            </div>
+            <div class="flex items-center space-x-1">
 
-            {{-- Previous Button --}}
-            @if ($tasks->onFirstPage())
-                <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
-            @else
-                <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                    Previous
-                </button>
-            @endif
-
-            {{-- Pagination Numbers --}}
-            @foreach ($tasks->getUrlRange(1, $tasks->lastPage()) as $page => $url)
-                @if ($page == $tasks->currentPage())
-                    <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
-                        {{ $page }}
-                    </span>
+                {{-- Tombol Previous --}}
+                @if ($tasks->onFirstPage())
+                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
                 @else
-                    <button wire:click="gotoPage({{ $page }})"
-                            class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        {{ $page }}
+                    <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        Previous
                     </button>
                 @endif
-            @endforeach
+                @php
+                    $currentPage = $tasks->currentPage();
+                    $lastPage = $tasks->lastPage();
+                    $startPage = max(1, $currentPage - 2);
+                    $endPage = min($lastPage, $currentPage + 2);
+                @endphp
+                @if ($startPage > 1)
+                    <button wire:click="gotoPage(1)" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        1
+                    </button>
+                    @if ($startPage > 2)
+                        <span class="px-2">...</span>
+                    @endif
+                @endif
 
-            {{-- Next Button --}}
-            @if ($tasks->hasMorePages())
-                <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                    Next
-                </button>
-            @else
-                <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Next</span>
-            @endif
+                {{-- Halaman di sekitar halaman aktif --}}
+                @for ($page = $startPage; $page <= $endPage; $page++)
+                    @if ($page == $currentPage)
+                        <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
+                            {{ $page }}
+                        </span>
+                    @else
+                        <button wire:click="gotoPage({{ $page }})"
+                                class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                            {{ $page }}
+                        </button>
+                    @endif
+                @endfor
+
+                {{-- Tampilkan halaman terakhir jika jauh dari akhir --}}
+                @if ($endPage < $lastPage)
+                    @if ($endPage < $lastPage - 1)
+                        <span class="px-2">...</span>
+                    @endif
+                    <button wire:click="gotoPage({{ $lastPage }})" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        {{ $lastPage }}
+                    </button>
+                @endif
+
+                {{-- Tombol Next --}}
+                @if ($tasks->hasMorePages())
+                    <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
+                        Next
+                    </button>
+                @else
+                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Next</span>
+                @endif
+            </div>
         </div>
-      </div>
     </div>
 </div>
