@@ -13,7 +13,6 @@ class ChangePassword extends Component
     public $new_password;
     public $new_password_confirmation;
 
-    // Method untuk update password
     public function updatePassword()
     {
         $this->validate([
@@ -28,16 +27,13 @@ class ChangePassword extends Component
 
         $user = Auth::user();
 
-        // Verifikasi password lama
         if (!Hash::check($this->old_password, $user->password)) {
             throw ValidationException::withMessages(['old_password' => 'Password lama tidak sesuai.']);
         }
 
-        // Update password
         $user->password = Hash::make($this->new_password);
         $user->save();
 
-        // Logout dan redirect ke halaman login
         Auth::logout();
         session()->flash('message', 'Password berhasil diubah. Silakan login kembali!');
         return redirect()->route('login');
