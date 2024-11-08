@@ -5,7 +5,7 @@
             <li><a href="{{ route('project.index') }}" class="text-gray-400 font-semibold">Project</a></li>
         </ul>
     </div>
-    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
         <span>Project</span>
         @can('manageProject-create')
         <a href="{{ route('project.create') }}"
@@ -66,7 +66,7 @@
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">{{ $project->name }}</td>
                             <td class="px-4 py-3 text-sm">{{ $project->owner->name }}</td>
-                            <td class="px-4 py-3 text-sm">{{ $project->status->name }}</td>
+                            {{-- <td class="px-4 py-3 text-sm">{{ $project->status->name }}</td> --}}
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
                                     @can('manageProject-edit')

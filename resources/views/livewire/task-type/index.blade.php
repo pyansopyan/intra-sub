@@ -5,7 +5,7 @@
             <li><a href="{{ route('task-type.index') }}" class="text-gray-400 font-semibold">Task Type</a></li>
         </ul>
     </div>
-     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
         <span>Task Type</span>
         @can('manageTaskType-create')
         <a href="{{ route('task-type.create') }}"

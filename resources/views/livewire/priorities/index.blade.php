@@ -5,7 +5,7 @@
             <li><a href="{{ route('priorities.index') }}" class="text-gray-400 font-semibold">Task Priorities</a></li>
         </ul>
     </div>
-    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
         <span>Task Priorities</span>
         @can('manageTaskPriorities-create')
         <a href="{{ route('priorities.create') }}"
