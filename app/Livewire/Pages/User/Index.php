@@ -10,6 +10,8 @@ use Livewire\Attributes\Title;
 #[Title('User')]
 class Index extends Component
 {
+    public $search;
+
     use WithPagination;
 
     /**
@@ -33,10 +35,15 @@ class Index extends Component
 
     public function render()
     {
-        $users = User::latest()->paginate(20);
+        $users = User::where('name','like','%'.$this->search.'%')->paginate(20);
 
         return view('livewire.pages.user.index', [
             'users' => $users,
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }
