@@ -66,7 +66,7 @@
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">{{ $project->name }}</td>
                             <td class="px-4 py-3 text-sm">{{ $project->owner->name }}</td>
-                            {{-- <td class="px-4 py-3 text-sm">{{ $project->status->name }}</td> --}}
+                            <td class="px-4 py-3 text-sm">{{ $project->status->name }}</td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
                                     @can('manageProject-edit')
