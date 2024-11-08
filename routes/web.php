@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/project/create', App\Livewire\Project\Create::class)->name('project.create');
     Route::get('/project/edit/{projectId}', App\Livewire\Project\Edit::class)->name('project.edit');
     Route::get('/project/{projectId}', App\Livewire\Project\Show::class)->name('project.show');
+    Route::get('/project/{projectId}/attach', App\Livewire\Project\AttachUserIndex::class)->name('project.attachUser.Index');
 
     //edit profile user
     Route::get('/profile/edit', App\Livewire\Pages\User\Editprofile::class)->name('profile.edit');

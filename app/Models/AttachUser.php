@@ -15,13 +15,18 @@ class AttachUser extends Model
 
     public $timestamp = true;
 
+    // public function users()
+    // {
+    //     return $this->hasMany(User::class, 'users_id');
+    // }
+
+    // public function projects()
+    // {
+    //     return $this->hasMany(Project::class, 'projects_id');
+    // }
+
     public function users()
     {
-        return $this->hasMany(User::class, 'users_id');
-    }
-
-    public function projects()
-    {
-        return $this->hasMany(Project::class, 'projects_id');
+        return $this->belongsTo(User::class);
     }
 }
