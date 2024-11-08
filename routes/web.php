@@ -2,7 +2,6 @@
 <?php
 
 use App\Livewire\Welcome;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
-Route::middleware('auth') -> group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/', Welcome::class)->name('welcome');
 
     Route::get('/departement', App\Livewire\Departement\Index::class)->name('departement.index');
@@ -64,11 +63,11 @@ Route::middleware('auth') -> group(function () {
     Route::get('/priorities/edit/{prioritasId}', App\Livewire\Priorities\Edit::class)->name('priorities.edit');
     Route::get('/priorities/{prioritasId}', App\Livewire\Priorities\Show::class)->name('priorities.show');
 
-     // Project Task
-     Route::get('/tasks', App\Livewire\Tasks\Index::class)->name('tasks.index');
-     Route::get('/tasks/create', App\Livewire\Tasks\Create::class)->name('tasks.create');
-     Route::get('/tasks/edit/{tasksId}', App\Livewire\Tasks\Edit::class)->name('tasks.edit');
-     Route::get('/tasks/{tasksId}', App\Livewire\Tasks\Show::class)->name('tasks.show');
+    // Project Task
+    Route::get('/tasks', App\Livewire\Tasks\Index::class)->name('tasks.index');
+    Route::get('/tasks/create', App\Livewire\Tasks\Create::class)->name('tasks.create');
+    Route::get('/tasks/edit/{tasksId}', App\Livewire\Tasks\Edit::class)->name('tasks.edit');
+    Route::get('/tasks/{tasksId}', App\Livewire\Tasks\Show::class)->name('tasks.show');
 
     // Activities
     Route::get('/activities', App\Livewire\Activities\Index::class)->name('activities.index');
@@ -104,7 +103,6 @@ Route::middleware('auth') -> group(function () {
     Route::get('/jabatan/{id}', App\Livewire\Jabatan\Show::class)->name('jabatan.show');
 });
 
-
-Route::get('/changepassword', \App\Livewire\Auth\ChangePassword::class)->name('change.password');
+Route::middleware(['auth'])->get('/change-password', \App\Livewire\Auth\ChangePassword::class)->name('change-password');
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
 Route::post('/logout', \App\Http\Controllers\LogoutController::class)->name('logout');

@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Auth;
 
-use Illuminate\Support\Facades\Hash;
-use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Livewire\Component;
 
 class ChangePassword extends Component
 {
@@ -18,18 +18,24 @@ class ChangePassword extends Component
         // Validasi input
         $this->validate([
             'old_password' => 'required',
-            'new_password' => 'required|min:8|confirmed',
+            'new_password' => 'required|confirmed|min:6',
+        ], [
+            'old_password.required' => 'Password lama wajib diisi.',
+            'new_password.required' => 'Password baru wajib diisi.',
+            'new_password.confirmed' => 'Konfirmasi password baru tidak sesuai.',
+            'new_password.min' => 'Password baru minimal 6 karakter.',
         ]);
 
-        // Cek apakah password lama sesuai
-        if (!Hash::check($this->old_password, Auth::user()->password)) {
+        $user = Auth::user();
+
+        // Verifikasi apakah password lama benar
+        if (!Hash::check($this->old_password, $user->password)) {
             throw ValidationException::withMessages(['old_password' => 'Password lama tidak sesuai.']);
         }
 
-        // Update password
-        $user = Auth::user(); // Ambil data user yang sedang login
-        $user->password = Hash::make($this->new_password); // Hash password baru
-        $user->$this->save(); // Simpan perubahan ke database
+        // Update password baru
+        $user->password = Hash::make($this->new_password);
+        $user->save();
 
         // Reset field setelah berhasil
         $this->reset(['old_password', 'new_password', 'new_password_confirmation']);
