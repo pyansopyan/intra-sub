@@ -13,9 +13,9 @@ class ChangePassword extends Component
     public $new_password;
     public $new_password_confirmation;
 
+    // Method untuk update password
     public function updatePassword()
     {
-        // Validasi input
         $this->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed|min:6',
@@ -28,20 +28,19 @@ class ChangePassword extends Component
 
         $user = Auth::user();
 
-        // Verifikasi apakah password lama benar
+        // Verifikasi password lama
         if (!Hash::check($this->old_password, $user->password)) {
             throw ValidationException::withMessages(['old_password' => 'Password lama tidak sesuai.']);
         }
 
-        // Update password baru
+        // Update password
         $user->password = Hash::make($this->new_password);
         $user->save();
 
-        // Reset field setelah berhasil
-        $this->reset(['old_password', 'new_password', 'new_password_confirmation']);
-
-        // Memberikan pesan sukses
-        session()->flash('message', 'Password berhasil diubah.');
+        // Logout dan redirect ke halaman login
+        Auth::logout();
+        session()->flash('message', 'Password berhasil diubah. Silakan login kembali!');
+        return redirect()->route('login');
     }
 
     public function render()
