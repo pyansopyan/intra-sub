@@ -1,5 +1,4 @@
 <div>
-    <!-- Display flash messages for success or error -->
     @if (session()->has('message'))
         <div class="alert alert-success">{{ session('message') }}</div>
     @endif
@@ -8,9 +7,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <!-- Form to submit user -->
     <form wire:submit.prevent="update" class="space-y-4">
-        <!-- Dropdown to select a user to attach to the project -->
         <label for="users_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Attach User</label>
         <select wire:model="users_id" id="users_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
@@ -22,8 +19,7 @@
         @error('users_id')
             <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
-
-        <!-- Submit Button -->
+        
         <button type="submit" class="btn btn-md btn-primary mt-2">Update Attach User</button>
     </form>
 </div>

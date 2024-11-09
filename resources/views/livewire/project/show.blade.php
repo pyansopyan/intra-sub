@@ -1,157 +1,192 @@
 <div>
-<div x-data="{ open: false }">
-    <!-- Breadcrumbs and Back Button -->
-    <div class="breadcrumbs text-sm mt-4">
-        <ul>
-            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('project.index') }}">Project</a></li>
-            <li><a class="text-gray-400 font-semibold">Detail data Project</a></li>
-        </ul>
-    </div>
-    <a href="{{ route('project.index') }}" class="btn btn-md bg-white text-black mt-2">
-        <i class="bx bx-arrow-back text-xl"></i>
-    </a>
-
-    <!-- Project Details Section -->
-    <div class="mb-8 md:grid-cols-2 mt-4">
-        <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 flex flex-col">
-            <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-                Detail User
-            </h4>
-            <div class="flex justify-center mb-4">
-                @if ($project->cover_image)
-                    <!-- Main image with modal trigger (responsive size) -->
-                    <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover" class="rounded-lg cursor-pointer hover:shadow-lg transition-shadow max-h-80 w-auto" @click="open = true" />
-                @else
-                    <p class="text-gray-700 dark:text-gray-400">Tidak ada Cover</p>
-                @endif
-            </div>
-
-            <table class="min-w-full divide-y divide-gray-200">
-                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Name:</strong>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ $project->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Description:</strong>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ $project->description }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Ticket Prefix</strong>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ $project->ticket_prefix }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Owner:</strong>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ $project->owner->name ?? 'Tidak ada owner' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Status:</strong>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            {{ $project->status->name ?? 'Tidak ada status' }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div x-data="{ open: false }">
+        <!-- Breadcrumbs and Back Button -->
+        <div class="breadcrumbs text-sm mt-4">
+            <ul>
+                <li><a href="{{ route('welcome') }}">Dashboard</a></li>
+                <li><a href="{{ route('project.index') }}">Project</a></li>
+                <li><a class="text-gray-400 font-semibold">Detail data Project</a></li>
+            </ul>
         </div>
-    </div>
+        <a href="{{ route('project.index') }}" class="btn btn-md bg-white text-black mt-2">
+            <i class="bx bx-arrow-back text-xl"></i>
+        </a>
 
-    <!-- Modal for Enlarged Image Display -->
-    <div x-show="open" x-transition.opacity class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-64 z-64">
-        <div class="bg-white p-4 rounded-lg shadow-lg relative max-w-4xl mx-auto">
-            <!-- Close (X) Button -->
-            <button @click="open = false" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-xl font-bold">
-                &times;
-            </button>
+        <!-- Project Details Section -->
+        <div class="mb-8 md:grid-cols-2 mt-4">
+            <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 flex flex-col">
+                <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                    Detail User
+                </h4>
+                <div class="flex justify-center mb-4">
+                    @if ($project->cover_image)
+                        <!-- Main image with modal trigger (responsive size) -->
+                        <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover"
+                            class="rounded-lg cursor-pointer hover:shadow-lg transition-shadow max-h-80 w-auto"
+                            @click="open = true" />
+                    @else
+                        <p class="text-gray-700 dark:text-gray-400">Tidak ada Cover</p>
+                    @endif
+                </div>
 
-            <!-- Display the larger image in the modal -->
-            <div class="flex justify-center">
-                <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover" class="rounded-lg max-w-full max-h-screen" />
+                <table class="min-w-full divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                <strong>Name:</strong>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                {{ $project->name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                <strong>Description:</strong>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                {{ $project->description }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                <strong>Ticket Prefix</strong>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                {{ $project->ticket_prefix }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                <strong>Owner:</strong>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                {{ $project->owner->name ?? 'Tidak ada owner' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                <strong>Status:</strong>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                                {{ $project->status->name ?? 'Tidak ada status' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-    <!-- Detail Attach User Section -->
-    <div class="w-full overflow-hidden rounded-lg shadow-xs">
-        <!-- Tampilkan pesan sukses jika ada -->
-        @if (session()->has('message'))
-            <div class="p-4 mb-4 text-sm text-green-600 bg-green-100 rounded-lg">
-                {{ session('message') }}
-            </div>
-        @endif
 
-        {{-- attachUser --}}
-        <div>
-            <!-- Attach User Section moved outside of the table -->
-            <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
-                <span>Attach User</span>
-                @can('manageAttachUser-create')
-                <a href="{{ route('project.attachUser.Index', ['projectId' => $projectId]) }}"
-                   class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                    + Attach User
-                </a>
-                @endcan
-            </h2>
+        <!-- Modal for Enlarged Image Display -->
+        <div x-show="open" x-transition.opacity
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-64 z-64">
+            <div class="bg-white p-4 rounded-lg shadow-lg relative max-w-4xl mx-auto">
+                <!-- Close (X) Button -->
+                <button @click="open = false"
+                    class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-xl font-bold">
+                    &times;
+                </button>
 
-            <div class="mt-8">
-                <!-- Table for listing attached users -->
-                <div class="w-full overflow-x-auto">
-                    <table class="w-full whitespace-no-wrap">
-                        <thead>
-                            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                <th class="px-4 py-3">No.</th>
-                                <th class="px-4 py-3">User</th>
-                                <th class="px-4 py-3">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            @forelse ($attachUser as $attach)
-                            <tr class="text-gray-700 dark:text-gray-400">
-                                <td class="px-4 py-3 text-sm">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3 text-sm">{{ $attach->user->name }}</td>
-                                <td class="px-4 py-3">
-                                    <div class="flex items-center space-x-4 text-sm">
-                                        @can('manageAttachUser-edit')
-                                        <a href="{{ route('project.attachUser.Edit', ['projectId' => $projectId, 'attachUserId' => $attach->id]) }}"
-                                           class="flex items-center justify-center w-10 h-10 text-blue-500 bg-blue-100 rounded-full hover:bg-blue-200"
-                                           title="Edit">
-                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M15.232 5.232a1 1 0 00-1.415 0L7.5 11.5V14h2.5l6.318-6.318a1 1 0 000-1.415z"/>
-                                            </svg>
-                                        </a>
-                                        @endcan
-                                    </div>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="3" class="text-center text-sm text-gray-500">No users attached to this project.</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                <!-- Display the larger image in the modal -->
+                <div class="flex justify-center">
+                    <img src="{{ asset('storage/projects/' . $project->cover_image) }}" alt="cover"
+                        class="rounded-lg max-w-full max-h-screen" />
                 </div>
             </div>
         </div>
+        <!-- Detail Attach User Section -->
+        <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <!-- Tampilkan pesan sukses jika ada -->
+            @if (session()->has('message'))
+                <div class="p-4 mb-4 text-sm text-green-600 bg-green-100 rounded-lg">
+                    {{ session('message') }}
+                </div>
+            @endif
 
+            {{-- attachUser --}}
+            <div>
+                <!-- Attach User Section -->
+                <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
+                    <span>Attach User</span>
+                    @can('manageAttachUser-create')
+                        <a href="{{ route('project.attachUser.Index', ['projectId' => $projectId]) }}"
+                            class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                            + Attach User
+                        </a>
+                    @endcan
+                </h2>
+
+                <div class="mt-8">
+                    <!-- Table for listing attached users -->
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full whitespace-no-wrap">
+                            <thead>
+                                <tr
+                                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                    <th class="px-4 py-3">No</th>
+                                    <th class="px-4 py-3">User</th>
+                                    <th class="px-4 py-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                                @forelse ($attachUser as $attach)
+                                    <tr class="text-gray-700 dark:text-gray-400">
+                                        <td class="px-4 py-3 text-sm">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-3 text-sm">{{ $attach->user->name }}</td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center space-x-4 text-sm">
+                                                @can('manageAttachUser-edit')
+                                                    <a href="{{ route('project.attachUser.Edit', ['projectId' => $projectId, 'attachUserId' => $attach->id]) }}"
+                                                        class="flex items-center justify-center w-10 h-10 text-blue-500 bg-blue-100 rounded-full hover:bg-blue-200"
+                                                        title="Edit">
+                                                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M15.232 5.232a1 1 0 00-1.415 0L7.5 11.5V14h2.5l6.318-6.318a1 1 0 000-1.415z" />
+                                                        </svg>
+                                                    </a>
+                                                @endcan
+                                                @can('manageAttachUser-delete')
+                                                    <button onclick="my_modal_{{ $attach->id }}.showModal()"
+                                                        class="flex items-center justify-center w-10 h-10 text-red-500 bg-red-100 rounded-full hover:bg-red-200"
+                                                        title="Delete">
+                                                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                        </svg>
+                                                    </button>
+                                                @endcan
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Delete Confirmation Modal for Each AttachUser -->
+                                    <dialog id="my_modal_{{ $attach->id }}"
+                                        class="rounded-lg p-4 bg-white shadow-lg w-1/3">
+                                        <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Confirm
+                                            Deletion</h2>
+                                        <p class="text-gray-600 dark:text-gray-400 my-4">Are you sure you want to delete
+                                            this attachUser?</p>
+
+                                        <div class="flex justify-end space-x-2">
+                                            <button
+                                                onclick="document.getElementById('my_modal_{{ $attach->id }}').close()"
+                                                class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400">Cancel</button>
+                                            <button wire:click="delete({{ $attach->id }})"
+                                                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Delete</button>
+                                        </div>
+                                    </dialog>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center text-sm text-gray-500">No users attached
+                                            to this project.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
