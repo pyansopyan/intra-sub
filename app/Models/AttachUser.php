@@ -25,8 +25,9 @@ class AttachUser extends Model
     //     return $this->hasMany(Project::class, 'projects_id');
     // }
 
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
+    public function user()
+{
+    return $this->belongsTo(User::class, 'users_id');
+}
+
 }

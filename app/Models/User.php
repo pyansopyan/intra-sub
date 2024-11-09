@@ -70,10 +70,11 @@ class User extends Authenticatable
         return $this->hasMany(Tasks::class, 'responsible_id');
     }
 
-    public function attachUser()
+    public function attachUsers()
     {
-        return $this->hasMany(AttachUser::class);
+    return $this->hasMany(AttachUser::class, 'users_id');
     }
+
     /**
      * The attributes that should be cast.
      *

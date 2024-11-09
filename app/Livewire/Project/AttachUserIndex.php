@@ -36,12 +36,12 @@ class AttachUserIndex extends Component
 
     }
 
-    
+
 
     public function render()
     {
         return view('livewire.project.attach-user-index', [
-            'users' => $this->users, // Pass users to the view
+            'users' => $this->users, 
         ]);
     }
 }

@@ -88,22 +88,70 @@
             </div>
         </div>
     </div>
-</div>
     <!-- Detail Attach User Section -->
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
-        <div class="w-full overflow-x-auto">
-            <table class="w-full whitespace-no-wrap">
-                <thead>
-                    <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">User</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach ($attachUser as $attach)
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">{{ $attach->users_id->name }}</td>
-                        </tr>
-                    </div>
+        <!-- Tampilkan pesan sukses jika ada -->
+        @if (session()->has('message'))
+            <div class="p-4 mb-4 text-sm text-green-600 bg-green-100 rounded-lg">
+                {{ session('message') }}
+            </div>
+        @endif
+
+        {{-- attachUser --}}
+        <div>
+            <!-- Attach User Section moved outside of the table -->
+            <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
+                <span>Attach User</span>
+                @can('manageAttachUser-create')
+                <a href="{{ route('project.attachUser.Index', ['projectId' => $projectId]) }}"
+                   class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    + Attach User
+                </a>
+                @endcan
+            </h2>
+
+            <div class="mt-8">
+                <!-- Table for listing attached users -->
+                <div class="w-full overflow-x-auto">
+                    <table class="w-full whitespace-no-wrap">
+                        <thead>
+                            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                <th class="px-4 py-3">No.</th>
+                                <th class="px-4 py-3">User</th>
+                                <th class="px-4 py-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                            @forelse ($attachUser as $attach)
+                            <tr class="text-gray-700 dark:text-gray-400">
+                                <td class="px-4 py-3 text-sm">{{ $loop->iteration }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $attach->user->name }}</td>
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center space-x-4 text-sm">
+                                        @can('manageAttachUser-edit')
+                                        <a href="{{ route('project.attachUser.Edit', ['projectId' => $projectId, 'attachUserId' => $attach->id]) }}"
+                                           class="flex items-center justify-center w-10 h-10 text-blue-500 bg-blue-100 rounded-full hover:bg-blue-200"
+                                           title="Edit">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M15.232 5.232a1 1 0 00-1.415 0L7.5 11.5V14h2.5l6.318-6.318a1 1 0 000-1.415z"/>
+                                            </svg>
+                                        </a>
+                                        @endcan
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="3" class="text-center text-sm text-gray-500">No users attached to this project.</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
