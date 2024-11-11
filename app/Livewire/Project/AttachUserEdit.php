@@ -27,7 +27,8 @@ class AttachUserEdit extends Component
             return redirect()->route('project.show', ['projectId' => $this->projects_id]);
         }
 
-        $this->users = User::all();
+        $attach_user = AttachUser::where("projects_id", $this->projects_id)->pluck('users_id')->all();
+        $this->users = User::whereNotIn('id', $attach_user)->get();
 
         $this->users_id = $this->attachUser->users_id;
     }
