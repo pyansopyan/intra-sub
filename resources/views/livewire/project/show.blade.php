@@ -160,8 +160,7 @@
                                             </div>
                                         </td>
                                     </tr>
-
-                                    <!-- Delete Confirmation Modal for Each AttachUser -->
+                                    
                                     <dialog id="my_modal_{{ $attach->id }}"
                                         class="rounded-lg p-4 bg-white shadow-lg w-1/3">
                                         <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Confirm

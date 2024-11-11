@@ -29,19 +29,6 @@ class AttachUserIndex extends Component
         return redirect()->route('project.show', ['projectId' => $this->projects_id]);
     }
 
-    // Make sure this method is public
-    public function delete($attachUserId)
-    {
-        $attachment = AttachUser::find($attachUserId);
-
-        if ($attachment) {
-            $attachment->delete();
-            session()->flash('message', 'User detached from the project successfully.');
-        } else {
-            session()->flash('error', 'Attachment not found.');
-        }
-    }
-
     public function render()
     {
         return view('livewire.project.attach-user-index', [
