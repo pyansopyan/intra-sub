@@ -26,15 +26,6 @@ class Show extends Component
 
         $this->users = User::all();
 
-        $this->attachUser = AttachUser::where('projects_id', $this->projectId)
-            ->with('user')
-            ->get();
-
-        if ($this->attachUserId) {
-            $this->attachUser = AttachUser::where('projects_id', $this->projectId)
-                ->where('id', $this->attachUserId)
-                ->first();
-        }
     }
 
     public function destroy($attachUserId)
@@ -51,6 +42,17 @@ class Show extends Component
 
     public function render()
     {
+
+        $this->attachUser = AttachUser::where('projects_id', $this->projectId)
+            ->with('user')
+            ->get();
+
+        if ($this->attachUserId) {
+            $this->attachUser = AttachUser::where('projects_id', $this->projectId)
+                ->where('id', $this->attachUserId)
+                ->first();
+        }
+        
         return view('livewire.project.show', [
             'project' => $this->project,
             'attachUser' => $this->attachUser,
