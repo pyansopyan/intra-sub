@@ -9,22 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    // 
+    //
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('content');
-            $table->unsignedBigInteger('owner_id');
-            $table->unsignedBigInteger('responsible_id');
-            $table->unsignedBigInteger('status_id');
-            $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('priority_id');
-            $table->string('code');
-            $table->integer('order');
-            $table->integer('estimation');
+            $table->string('content')->nullable();
+            $table->unsignedBigInteger('owner_id')->nullable();
+            $table->unsignedBigInteger('responsible_id')->nullable();
+            $table->unsignedBigInteger('status_id')->nullable();
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->unsignedBigInteger('priority_id')->nullable();
+            $table->string('code')->nullable();
+            $table->integer('order')->nullable();
+            $table->integer('estimation')->nullable();
             $table->timestamps();
         });
     }
