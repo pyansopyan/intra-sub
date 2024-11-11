@@ -112,6 +112,12 @@
                             class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                             + Attach User
                         </a>
+                        <div class="relative w-1/2">
+                            <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
+                            <input type="text"
+                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+                                wire:model.live="search" placeholder="Cari Project...">
+                        </div>
                     @endcan
                 </h2>
 
@@ -187,16 +193,19 @@
 
                                     <dialog id="my_modal_{{ $attach->id }}"
                                         class="modal fixed inset-0 flex items-center justify-center">
-                                        <div class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+                                        <div
+                                            class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
                                             <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
-                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus Attach User ini?</h3>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus Attach User ini?
+                                            </h3>
                                             <div class="modal-action">
-                                                <button class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
+                                                <button
+                                                    class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
                                                     wire:click="destroy({{ $attach->id }})">
                                                     Hapus
                                                 </button>
@@ -215,10 +224,10 @@
                                 @endforelse
                             </tbody>
                         </table>
-
                         <div class="mt-4">
                             {{ $attachUser->links('livewire::tailwind') }}
                         </div>
+
                     </div>
                 </div>
             </div>
