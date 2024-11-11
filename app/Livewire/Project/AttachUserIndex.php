@@ -15,7 +15,10 @@ class AttachUserIndex extends Component
     public function mount($projectId)
     {
         $this->projects_id = $projectId;
-        $this->users = User::all();
+
+        // get users yang belum terdaftar
+        $attach_user = AttachUser::where("projects_id", $this->projects_id)->pluck('users_id')->all();
+        $this->users = User::whereNotIn('id', $attach_user)->get();
     }
 
     public function store()
