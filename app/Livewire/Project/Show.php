@@ -6,14 +6,16 @@ use App\Models\AttachUser;
 use App\Models\Project;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Show extends Component
 {
+    use WithPagination;
+
     public $users;
     public $projectId;
     public $project;
     public $user_id;
-    public $attachUser;
     public $attachUserId;
 
     public function mount($projectId, $attachUserId = null)
@@ -43,19 +45,19 @@ class Show extends Component
     public function render()
     {
 
-        $this->attachUser = AttachUser::where('projects_id', $this->projectId)
-            ->with('user')
-            ->get();
+        $attachUser = AttachUser::where('projects_id', $this->projectId)
+            ->with(relations: 'user')
+            ->paginate('10');
 
         if ($this->attachUserId) {
-            $this->attachUser = AttachUser::where('projects_id', $this->projectId)
+            $attachUser = AttachUser::where('projects_id', $this->projectId)
                 ->where('id', $this->attachUserId)
                 ->first();
         }
-        
+
         return view('livewire.project.show', [
             'project' => $this->project,
-            'attachUser' => $this->attachUser,
+            'attachUser' => $attachUser,
         ]);
     }
 }
