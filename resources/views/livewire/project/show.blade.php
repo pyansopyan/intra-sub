@@ -215,6 +215,10 @@
                                 @endforelse
                             </tbody>
                         </table>
+
+                        <div class="mt-4">
+                            {{ $attachUser->links('livewire::tailwind') }}
+                        </div>
                     </div>
                 </div>
             </div>
