@@ -18,6 +18,6 @@ class Statuses extends Model
 
     public function Tasks()
     {
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Tasks::class, 'status_id');
     }
 }

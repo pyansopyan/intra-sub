@@ -104,6 +104,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/jabatan/create', App\Livewire\Jabatan\Create::class)->name('jabatan.create');
     Route::get('/jabatan/edit/{id}', App\Livewire\Jabatan\Edit::class)->name('jabatan.edit');
     Route::get('/jabatan/{id}', App\Livewire\Jabatan\Show::class)->name('jabatan.show');
+
+    //kanban
+    Route::get('/board', App\Livewire\Kanban\BoardIndex::class)->name('board.index');
+    Route::get('/kanban', App\Livewire\Kanban\KanbanIndex::class)->name('kanban.index');
 });
 
 Route::middleware(['auth'])->get('/change-password', \App\Livewire\Auth\ChangePassword::class)->name('change-password');
