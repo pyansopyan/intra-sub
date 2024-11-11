@@ -2,6 +2,7 @@
 <?php
 
 use App\Livewire\Welcome;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
