@@ -37,7 +37,7 @@ class Show extends Component
         }
     }
 
-    public function delete($attachUserId)
+    public function destroy($attachUserId)
     {
         $attachment = AttachUser::find($attachUserId);
 

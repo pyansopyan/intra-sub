@@ -160,20 +160,51 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    
-                                    <dialog id="my_modal_{{ $attach->id }}"
-                                        class="rounded-lg p-4 bg-white shadow-lg w-1/3">
-                                        <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Confirm
-                                            Deletion</h2>
-                                        <p class="text-gray-600 dark:text-gray-400 my-4">Are you sure you want to delete
-                                            this attachUser?</p>
 
-                                        <div class="flex justify-end space-x-2">
-                                            <button
-                                                onclick="document.getElementById('my_modal_{{ $attach->id }}').close()"
-                                                class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400">Cancel</button>
-                                            <button wire:click="delete({{ $attach->id }})"
-                                                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Delete</button>
+                                    <!-- Modal Konfirmasi -->
+                                    {{-- <dialog id="my_modal_{{ $attach->id }}"
+                                        class="modal fixed inset-0 flex items-center justify-center">
+                                        <div class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+                                            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            </svg>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus Attach User ini?</h3>
+                                            <div class="modal-action">
+                                                <button class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
+                                                    wire:click="destroy({{ $attach->id }})">
+                                                    Hapus
+                                                </button>
+                                                <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
+                                                    onclick="my_modal_{{ $attach->id }}.close()">
+                                                    Batal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </dialog> --}}
+
+                                    <dialog id="my_modal_{{ $attach->id }}"
+                                        class="modal fixed inset-0 flex items-center justify-center">
+                                        <div class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+                                            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            </svg>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus Attach User ini?</h3>
+                                            <div class="modal-action">
+                                                <button class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
+                                                    wire:click="destroy({{ $attach->id }})">
+                                                    Hapus
+                                                </button>
+                                                <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
+                                                    onclick="my_modal_{{ $attach->id }}.close()">
+                                                    Batal
+                                                </button>
+                                            </div>
                                         </div>
                                     </dialog>
                                 @empty
