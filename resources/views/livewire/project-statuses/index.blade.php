@@ -1,28 +1,28 @@
 <div>
-     <div class="breadcrumbs text-sm mt-4">
+    <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('project-statuses.index') }}" class="text-gray-400 font-semibold">Project Status</a></li>
+            <li><a href="{{ route('project-statuses.index') }}" class="text-gray-400 font-semibold">Project Status</a>
+            </li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
         <span>Project Statuses</span>
         @can('managePermission-create')
-        <a href="{{ route('project-statuses.create') }}"
-        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-        + Tambah Data
-    </a>
-    <div class="relative w-1/2">
-        <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
-        <input type="text"
-               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
-               wire:model.live="search"
-               placeholder="Cari Project Statuses...">
-    </div>
-    @endcan
+            <a href="{{ route('project-statuses.create') }}"
+                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                + Tambah Data
+            </a>
+            <div class="relative w-1/2">
+                <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
+                <input type="text"
+                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+                    wire:model.live="search" placeholder="Cari Project Statuses...">
+            </div>
+        @endcan
     </h2>
 
-   {{-- Message --}}
+    {{-- Message --}}
     @if (session()->has('message'))
         <div class="toast toast-top toast-end mt-12 transform translate-x-full transition-transform duration-500 ease-out"
             x-data="{ show: true }" x-show="show" x-init="show = true;
@@ -148,68 +148,6 @@
             </table>
         </div>
         {{-- paginate --}}
-        <div class="mt-8 mb-6 p-1 flex justify-between items-center">
-            <div class="text-sm text-gray-500">
-                Showing {{ $status->firstItem() }} to {{ $status->lastItem() }} of {{ $status->total() }} entries
-            </div>
-            <div class="flex items-center space-x-1">
-
-                {{-- Tombol Previous --}}
-                @if ($status->onFirstPage())
-                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Previous</span>
-                @else
-                    <button wire:click="previousPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        Previous
-                    </button>
-                @endif
-                @php
-                    $currentPage = $status->currentPage();
-                    $lastPage = $status->lastPage();
-                    $startPage = max(1, $currentPage - 2);
-                    $endPage = min($lastPage, $currentPage + 2);
-                @endphp
-                @if ($startPage > 1)
-                    <button wire:click="gotoPage(1)" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        1
-                    </button>
-                    @if ($startPage > 2)
-                        <span class="px-2">...</span>
-                    @endif
-                @endif
-
-                {{-- Halaman di sekitar halaman aktif --}}
-                @for ($page = $startPage; $page <= $endPage; $page++)
-                    @if ($page == $currentPage)
-                        <span class="bg-purple-600 text-white px-4 py-2 rounded shadow-md cursor-default">
-                            {{ $page }}
-                        </span>
-                    @else
-                        <button wire:click="gotoPage({{ $page }})"
-                                class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                            {{ $page }}
-                        </button>
-                    @endif
-                @endfor
-
-                {{-- Tampilkan halaman terakhir jika jauh dari akhir --}}
-                @if ($endPage < $lastPage)
-                    @if ($endPage < $lastPage - 1)
-                        <span class="px-2">...</span>
-                    @endif
-                    <button wire:click="gotoPage({{ $lastPage }})" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        {{ $lastPage }}
-                    </button>
-                @endif
-
-                {{-- Tombol Next --}}
-                @if ($status->hasMorePages())
-                    <button wire:click="nextPage" class="bg-transparent text-purple-600 border border-purple-300 px-4 py-2 rounded hover:bg-purple-100 transition duration-300 ease-in-out">
-                        Next
-                    </button>
-                @else
-                    <span class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">Next</span>
-                @endif
-            </div>
-        </div>
+        {{ $status->links('livewire::tailwind') }}
     </div>
 </div>
