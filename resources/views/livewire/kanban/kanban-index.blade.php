@@ -1,10 +1,10 @@
 <div>
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mt-4">Kanban Board</h2>
-        <a href="{{ route('board.index') }}" class="text-blue-600 text-sm mt-4"><< Back to board</a>
-        <!-- Button to Open Create Task Modal -->
-        <button wire:click="openCreateTaskModal" class="bg-blue-500 text-white p-2 rounded">+ Create Task</button>
-    </div>
+   <div class="flex justify-between items-center mb-4 mt-4">
+    <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Kanban Board - {{$project->name ?? ''}}</h2>
+    <a href="{{ route('board.index') }}" class="text-blue-600 text-sm"><< Back to board</a>
+</div>
+<button wire:click="openCreateTaskModal" class="bg-blue-500 text-white p-2 rounded mb-4">+ Create Task</button>
+
 
     <div class="flex space-x-4">
         @foreach ($statuses as $status)
@@ -52,27 +52,7 @@
     @endif
 
     <!-- Modal for Creating Task -->
-    @if ($creatingTask)
-        <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div class="bg-white p-6 rounded-lg w-1/3 relative">
-                <button wire:click="resetCreateTask" class="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-800">
-                    &times;
-                </button>
-                <h3 class="text-xl font-semibold">Create New Task</h3>
-                <div class="mt-4">
-                    <!-- Real-time Input Field for Task Name -->
-                    <input type="text" wire:model="newTaskName" wire:keydown.enter="saveNewTask"
-                           wire:blur="saveNewTask" class="bg-gray-100 p-2 rounded w-full" autofocus placeholder="Task name (Optional)">
-                </div>
-                <div class="mt-4 flex justify-between">
-                    <!-- Cancel Button -->
-                    <button wire:click="resetCreateTask" class="bg-gray-500 text-white p-2 rounded">Cancel</button>
-                    <!-- Submit Button -->
-                    <button wire:click="saveNewTask" class="bg-blue-500 text-white p-2 rounded">Submit</button>
-                </div>
-            </div>
-        </div>
-    @endif
+
 </div>
 
 <script>

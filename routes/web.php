@@ -107,7 +107,7 @@ Route::middleware('auth')->group(function () {
 
     //kanban
     Route::get('/board', App\Livewire\Kanban\BoardIndex::class)->name('board.index');
-    Route::get('/kanban', App\Livewire\Kanban\KanbanIndex::class)->name('kanban.index');
+    Route::get('/kanban/{projectId}', App\Livewire\Kanban\KanbanIndex::class)->name('kanban.index');
 });
 
 Route::middleware(['auth'])->get('/change-password', \App\Livewire\Auth\ChangePassword::class)->name('change-password');

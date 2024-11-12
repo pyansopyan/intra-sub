@@ -215,7 +215,7 @@
                             <li
                                 class="relative px-6 py-3 {{ request()->is('kanban*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                    href="{{ route('kanban.index') }}" wire:navigate.hover>
+                                    href="{{ route('kanban.index', ['projectId' => $projectId ?? 'default']) }}" wire:navigate.hover>
                                     <i class='bx bx-table' style="font-size: 20px"></i> <!-- Changed icon here -->
                                     <span class="ml-4">Kanban</span>
                                 </a>

@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Kanban;
 
-use Livewire\Component;
+use App\Models\Project;
 use App\Models\Statuses;
 use App\Models\Tasks;
+use Livewire\Component;
 
 class KanbanIndex extends Component
 {
@@ -12,6 +13,8 @@ class KanbanIndex extends Component
     public $editedTaskName = '';
     public $creatingTask = false;
     public $newTaskName = '';
+    public $project;
+    public $projectId;
 
     public function editTask($taskId, $taskName)
     {
@@ -28,7 +31,7 @@ class KanbanIndex extends Component
             $task->save();
         }
 
-        $this->resetEdit(); // Close modal after saving
+        $this->resetEdit();
     }
 
     public function resetEdit()
@@ -45,20 +48,20 @@ class KanbanIndex extends Component
     public function resetCreateTask()
     {
         $this->creatingTask = false;
-        $this->newTaskName = ''; // Clear input when cancelling
+        $this->newTaskName = '';
     }
 
     public function saveNewTask()
     {
         if (!empty($this->newTaskName)) {
-            // Save the new task if the task name is provided
             Tasks::create([
                 'name' => $this->newTaskName,
-                'status_id' => 1, // Default status (you can change this)
+                'status_id' => 1,
+                'project_id' => $this->projectId,
             ]);
         }
 
-        $this->resetCreateTask(); // Close modal after saving or cancelling
+        $this->resetCreateTask();
     }
 
     public function updateTaskStatus($taskId, $newStatusId)
@@ -71,10 +74,18 @@ class KanbanIndex extends Component
         }
     }
 
+    public function mount($projectId)
+    {
+        $this->projectId = $projectId;
+        $this->project = Project::find($projectId);
+    }
+
     public function render()
     {
         return view('livewire.kanban.kanban-index', [
-            'statuses' => Statuses::with('tasks')->get(),
+            'statuses' => Statuses::with(['tasks' => function ($query) {
+                $query->where('project_id', $this->projectId);
+            }])->get(),
         ]);
     }
 }
