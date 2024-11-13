@@ -5,9 +5,9 @@ namespace App\Livewire\Kanban;
 use App\Models\Project;
 use App\Models\TaskStatus;
 use App\Models\Tasks;
-use App\Models\User; // Pastikan model User ada
-use App\Models\Priorities; // Pastikan model Priority ada
-use App\Models\TaskType; // Pastikan model Type ada
+use App\Models\User;
+use App\Models\Priorities;
+use App\Models\TaskType;
 use Livewire\Component;
 
 class KanbanIndex extends Component
@@ -18,12 +18,11 @@ class KanbanIndex extends Component
     public $newTask = [];
     public $project;
     public $projectId;
-    public $owners; // Menambahkan variabel owners
-    public $responsibles; // Menambahkan variabel responsibles
-    public $priorities; // Menambahkan variabel priorities
-    public $types; // Menambahkan variabel types
+    public $owners;
+    public $responsibles;
+    public $priorities;
+    public $types;
 
-    // Method untuk mengedit task
     public function editTask($taskId)
     {
         $task = Tasks::find($taskId);
@@ -33,8 +32,6 @@ class KanbanIndex extends Component
             $this->editedTask = $task->toArray();
         }
     }
-
-    // Method untuk menyimpan task yang diedit
     public function saveTask()
     {
         $task = Tasks::find($this->editingTaskId);
@@ -62,7 +59,7 @@ class KanbanIndex extends Component
             'content' => '',
             'owner_id' => '',
             'responsible_id' => '',
-            'status_id' => 1,  // Default status, adjust as needed
+            'status_id' => '',  // Initially empty
             'type_id' => '',
             'priority_id' => '',
             'code' => '',
@@ -70,7 +67,16 @@ class KanbanIndex extends Component
             'estimation' => '',
             'is_default' => true, // Set is_default to true to trigger default behavior
         ];
+
+        // Get the "To Do" status dynamically (assuming it's the default)
+        $defaultStatus = TaskStatus::where('is_default', true)->first();
+        if ($defaultStatus) {
+            $this->newTask['status_id'] = $defaultStatus->id;
+        } else {
+            session()->flash('error', 'Default status not found!');
+        }
     }
+
 
     // Method untuk mereset form create task
     public function resetCreateTask()
@@ -81,18 +87,42 @@ class KanbanIndex extends Component
 
     // Method untuk menyimpan task baru
     public function saveNewTask()
-    {
-        // Cek jika task name tidak kosong
-        if (!empty($this->newTask['name'])) {
-            // Menyimpan task baru dengan status To Do
-            $this->newTask['status_id'] = 1; // Asumsikan ID status To Do adalah 1, sesuaikan dengan ID yang sesuai
-
-            Tasks::create(array_merge($this->newTask, ['project_id' => $this->projectId]));
+{
+    // Ensure name is not empty
+    if (!empty($this->newTask['name'])) {
+        // Fetch the default "To Do" status if not already set
+        if (empty($this->newTask['status_id'])) {
+            $defaultStatus = TaskStatus::where('is_default', true)->first();
+            if ($defaultStatus) {
+                $this->newTask['status_id'] = $defaultStatus->id;
+            } else {
+                session()->flash('error', 'Default status not found!');
+                return;
+            }
         }
 
-        // Reset modal setelah task berhasil disimpan
-        $this->resetCreateTask();
+        // Create the new task and associate it with the project
+        Tasks::create(array_merge($this->newTask, ['project_id' => $this->projectId]));
     }
+
+    // Reset modal after saving the task
+    $this->resetCreateTask();
+}
+
+public function updateTaskRealTime()
+{
+    $task = Tasks::find($this->editingTaskId);
+
+    if ($task) {
+        $task->update($this->editedTask);  // Updates the task with the new values
+    }
+}
+public function closeModal()
+{
+    $this->editingTaskId = null; // This will close the modal
+}
+
+
     // Method untuk memperbarui status task
     public function updateTaskStatus($taskId, $newStatusId)
     {
