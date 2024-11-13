@@ -5,7 +5,7 @@ namespace App\Livewire\Tasks;
 use App\Models\Tasks;
 use App\Models\Project;
 use App\Models\User;
-use App\Models\Statuses;
+use App\Models\TaskStatus;
 use App\Models\TaskType;
 use App\Models\Priorities;
 use Livewire\Component;
@@ -28,7 +28,7 @@ class Create extends Component
     public function mount()
     {
         // Set default status, project, type, dan priority berdasarkan is_default = true
-        $this->status_id = Statuses::where('is_default', true)->value('id');
+        $this->status_id = TaskStatus::where('is_default', true)->value('id');
         $this->type_id = TaskType::where('is_default', true)->value('id');
         $this->priority_id = Priorities::where('is_default', true)->value('id');
     }
@@ -80,7 +80,7 @@ class Create extends Component
     {
         return view('livewire.tasks.create', [
             'users' => User::all(),
-            'statuses'=> Statuses::all(),
+            'statuses'=> TaskStatus::all(),
             'projects' => Project::all(),
             'taskType' => TaskType::all(),
             'priorities' => Priorities::all(),

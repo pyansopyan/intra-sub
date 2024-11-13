@@ -5,7 +5,7 @@ namespace App\Livewire\Tasks;
 use App\Models\Tasks;
 use App\Models\Project;
 use App\Models\User;
-use App\Models\Statuses;
+use App\Models\TaskStatus;
 use App\Models\TaskType;
 use App\Models\Priorities;
 use Livewire\Component;
