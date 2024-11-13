@@ -11,7 +11,7 @@
         <div class="flex space-x-4 items-end">
             <div>
                 <label for="types" class="form-label text-white">Types</label>
-                <select class="form-select" wire:model.live="selectedType">
+                <select class="form-select" wire:model="selectedType">
                     <option value="">Select Type</option>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -21,7 +21,7 @@
 
             <div>
                 <label for="priorities" class="form-label text-white">Priorities</label>
-                <select class="form-select" wire:model.live="selectedPriority">
+                <select class="form-select" wire:model="selectedPriority">
                     <option value="">Select Priority</option>
                     @foreach ($priorities as $priority)
                         <option value="{{ $priority->id }}">{{ $priority->name }}</option>
@@ -31,7 +31,7 @@
 
             <div>
                 <label for="responsibles" class="form-label text-white">Responsible</label>
-                <select class="form-select" wire:model.live="selectedResponsible">
+                <select class="form-select" wire:model="selectedResponsible">
                     <option value="">Select Responsible</option>
                     @foreach ($responsibles as $responsible)
                         <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="flex space-x-2">
-                <button wire:click="resetFilters" class="btn btn-dark">Reset Filters</button>
+                <button wire:click="filter" class="btn btn-primary">Filter</button>
             </div>
         </div>
     </div>
