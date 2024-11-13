@@ -11,29 +11,26 @@
         <button wire:click="openCreateTaskModal" class="bg-blue-500 text-white p-2 rounded">+ Create Task</button>
 
         <!-- Filter Panel -->
-        <div class="flex space-x-4 items-end">
-            <!-- Ticket Types Filter -->
+        <di>
             <div>
-                <label for="types" class="form-label text-white">Ticket Types</label>
+                <label for="types" class="form-label text-white">Types</label>
                 <select class="form-select" wire:model="types">
-                    <option value="">Select an option</option>
+                    {{-- <option value="">Select an option</option>
                     <option value="bug">Bug</option>
-                    <option value="feature">Feature</option>
+                    <option value="feature">Feature</option> --}}
                 </select>
             </div>
 
-            <!-- Ticket Priorities Filter -->
             <div>
-                <label for="priorities" class="form-label text-white">Ticket Priorities</label>
+                <label for="priorities" class="form-label text-white">Priorities</label>
                 <select class="form-select" wire:model="priorities">
-                    <option value="">Select an option</option>
+                    {{-- <option value="">Select an option</option>
                     <option value="high">High</option>
                     <option value="normal">Normal</option>
-                    <option value="low">Low</option>
+                    <option value="low">Low</option> --}}
                 </select>
             </div>
 
-            <!-- Filter buttons -->
             <div class="flex space-x-2">
                 <button wire:click="filter" class="bg-purple-500 text-white p-2 rounded">Filter</button>
                 <button wire:click="resetFilters" class="bg-gray-500 text-white p-2 rounded">Reset Filters</button>
@@ -70,7 +67,6 @@
         @endforeach
     </div>
 
-    <!-- Editing Task Modal -->
     @if ($editingTaskId)
     <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div class="bg-white p-6 rounded-lg w-1/2 relative">
