@@ -23,6 +23,23 @@ class KanbanIndex extends Component
     public $priorities;
     public $types;
 
+    // filter properties
+    public $selectedType = '';
+    public $selectedPriority = '';
+    public $selectedResponsible = '';
+
+    public function filter()
+    {
+
+    }
+
+    public function resetFilters()
+    {
+        $this->selectedType = '';
+        $this->selectedPriority = '';
+        $this->selectedResponsible = '';
+    }
+
     public function editTask($taskId)
     {
         $task = Tasks::find($taskId);
@@ -151,6 +168,16 @@ public function closeModal()
         return view('livewire.kanban.kanban-index', [
             'statuses' => TaskStatus::with(['tasks' => function ($query) {
                 $query->where('project_id', $this->projectId);
+
+                if ($this->selectedType) {
+                    $query->where('type_id', $this->selectedType);
+                }
+                if ($this->selectedPriority) {
+                    $query->where('priority_id', $this->selectedPriority);
+                }
+                if ($this->selectedResponsible) {
+                    $query->where('responsible_id', $this->selectedResponsible);
+                }
             }])->get(),
             'owners' => $this->owners,
             'responsibles' => $this->responsibles,
