@@ -3,7 +3,7 @@
 namespace App\Livewire\Kanban;
 
 use App\Models\Project;
-use App\Models\Statuses;
+use App\Models\TaskStatus;
 use App\Models\Tasks;
 use App\Models\User; // Pastikan model User ada
 use App\Models\Priorities; // Pastikan model Priority ada
@@ -119,7 +119,7 @@ class KanbanIndex extends Component
     public function render()
     {
         return view('livewire.kanban.kanban-index', [
-            'statuses' => Statuses::with(['tasks' => function ($query) {
+            'statuses' => TaskStatus::with(['tasks' => function ($query) {
                 $query->where('project_id', $this->projectId);
             }])->get(),
             'owners' => $this->owners,

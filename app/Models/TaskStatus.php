@@ -10,4 +10,10 @@ class TaskStatus extends Model
     use HasFactory;
 
     protected $guarded = [];
+    public $timestamps = true;
+
+    public function Tasks()
+    {
+        return $this->hasMany(Tasks::class, 'status_id');
+    }
 }

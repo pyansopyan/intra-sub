@@ -28,7 +28,7 @@ class Tasks extends Model
     // Relasi ke Statuses
     public function status()
     {
-        return $this->belongsTo(Statuses::class, 'status_id');
+        return $this->belongsTo(TaskStatus::class, 'status_id');
     }
 
     // Relasi ke Project
