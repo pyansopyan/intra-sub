@@ -40,6 +40,17 @@ class KanbanIndex extends Component
         $this->selectedResponsible = '';
     }
 
+    public function destroy($tasksId)
+    {
+        $task = Tasks::find($tasksId);
+
+        if ($task) {
+            $task->delete();
+        }
+        session()->flash('message', 'Data Berhasil Dihapus.');
+
+    }
+
     public function editTask($taskId)
     {
         $task = Tasks::find($taskId);
