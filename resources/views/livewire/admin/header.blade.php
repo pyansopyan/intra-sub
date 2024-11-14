@@ -11,7 +11,7 @@
                 </svg>
             </button>
             <ul class="flex items-center flex-shrink-0 space-x-6">
-                 <!-- Theme toggler -->
+                <!-- Theme toggler -->
                 <li class="flex">
                     <button class="rounded-md focus:outline-none focus:shadow-outline-purple" @click="toggleTheme"
                         aria-label="Toggle color mode">
@@ -34,8 +34,8 @@
                         <div
                             class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-indigo-500 rounded-full dark:bg-indigo-500">
                             @if (Auth::user()->avatar)
-                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
-                                    alt="Profile Photo" class="w-full h-full object-cover rounded-full">
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Profile Photo"
+                                    class="w-full h-full object-cover rounded-full">
                             @else
                                 <span
                                     class="font-medium text-white dark:text-gray-300">{{ strtoupper(substr($name ?? Auth::user()->name, 0, 2)) }}</span>
@@ -67,11 +67,10 @@
                                     <span class="ml-2">Change Password</span>
                                 </a>
                             </li>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
+                            <li class="flex">
                                 <button
                                     class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                    type="submit">
+                                    @click="document.getElementById('logout-modal').showModal()">
                                     <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                         stroke="currentColor">
@@ -81,8 +80,32 @@
                                     </svg>
                                     <span>Log out</span>
                                 </button>
-                            </form>
+                            </li>
                         </ul>
+                        <dialog id="logout-modal" class="modal fixed inset-0 flex items-center justify-center">
+                            <div class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+                                <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <h3 class="text-lg font-bold">Apakah Anda yakin ingin keluar?</h3>
+                                <div class="modal-action">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none">
+                                            Ya, Keluar
+                                        </button>
+                                    </form>
+                                    <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
+                                        onclick="document.getElementById('logout-modal').close()">
+                                        Batal
+                                    </button>
+                                </div>
+                            </div>
+                        </dialog>
                     </template>
                 </li>
             </ul>
