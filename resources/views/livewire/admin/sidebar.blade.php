@@ -175,7 +175,7 @@
                 <ul>
                     <ul class="pt-4 mt-1 space-y-2 font-medium">
                         @can('manageProject')
-                        <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">PROJECT MANAGEMENT
+                            <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">PROJECT MANAGEMENT
                             <li
                                 class="relative px-6 py-3 {{ request()->is('project*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -200,6 +200,7 @@
                         <li class="border-t border-gray-200 dark:border-gray-700"></li>
                     </ul>
                     <ul class="pt-4 mt-1 space-y-2 font-medium">
+                        @can('manageBoard')
                         <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">KANBAN BOARD
                         </li>
                         <li
@@ -210,18 +211,24 @@
                                 <span class="ml-4">Board</span>
                             </a>
                         </li>
+                        @endcan
                     </ul>
-                     <ul>
-                            <li
-                                class="relative px-6 py-3 {{ request()->is('kanban*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
-                                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                    href="{{ route('kanban.index', ['projectId' => $projectId ?? 'default']) }}" wire:navigate.hover>
-                                    <i class='bx bx-table' style="font-size: 20px"></i> <!-- Changed icon here -->
-                                    <span class="ml-4">Kanban</span>
-                                </a>
-                            </li>
+                    @if (!empty($projectId))
+                    <ul>
+                        @can('manageKanban')
+                        <li
+                            class="relative px-6 py-3 {{ request()->is('kanban*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
+                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                href="{{ route('kanban.index', ['projectId' => $projectId ?? 'default']) }}"
+                                wire:navigate.hover>
+                                <i class='bx bx-table' style="font-size: 20px"></i> <!-- Changed icon here -->
+                                <span class="ml-4">Kanban</span>
+                            </a>
+                        </li>
                         <li class="border-t border-gray-200 dark:border-gray-700"></li>
+                        @endcan
                     </ul>
+                    @endif
             </div>
         </aside>
         <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"

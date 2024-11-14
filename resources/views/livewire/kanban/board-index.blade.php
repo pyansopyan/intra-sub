@@ -17,10 +17,12 @@
                 Project <span class="text-red-500">*</span>
             </label>
             <select wire:model.live="selectedProject" id="project" class="w-full p-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 bg-white rounded-lg focus:ring-purple-500 focus:border-purple-500">
+                @can('manageKanban-view')
                 <option value="" class="text-gray-400 dark:text-gray-400">Select an option</option>
                 @foreach ($projects as $project)
                     <option value="{{ $project->id }}" class="text-gray-400 dark:text-gray-400">{{ $project->name }}</option>
                 @endforeach
+                @endcan
             </select>
             <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Choose a project to show its board</p>
         </div>

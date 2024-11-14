@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    // 
+    //
     public function run(): void
     {
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
@@ -33,6 +33,8 @@ class UserSeeder extends Seeder
             'Project',
             'AttachUser',
             'Tasks',
+            'Board',
+            'Kanban',
         ]);
 
         $subPermission = collect([
@@ -84,7 +86,7 @@ class UserSeeder extends Seeder
         $roleTeacher = Role::updateOrCreate(['name' => 'staff']);
 
         // Memberikan permission tertentu untuk staff
-        $roleTeacher->givePermissionTo(Permission::whereIn('id', ['16', '17'])->get());
+        $roleTeacher->givePermissionTo(Permission::whereIn('id', ['71', '76', '77'])->get());
         $userTeacher->assignRole($roleTeacher);
 
         // membuat role manager

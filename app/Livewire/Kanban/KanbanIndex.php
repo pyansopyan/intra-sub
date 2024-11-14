@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Kanban;
 
-use App\Models\Project;
-use App\Models\TaskStatus;
-use App\Models\Tasks;
-use App\Models\User;
 use App\Models\Priorities;
+use App\Models\Project;
+use App\Models\Tasks;
+use App\Models\TaskStatus;
 use App\Models\TaskType;
+use App\Models\User;
 use Livewire\Component;
 
 class KanbanIndex extends Component
@@ -76,7 +76,7 @@ class KanbanIndex extends Component
             'content' => '',
             'owner_id' => '',
             'responsible_id' => '',
-            'status_id' => '',  // Initially empty
+            'status_id' => '', // Initially empty
             'type_id' => '',
             'priority_id' => '',
             'code' => '',
@@ -94,7 +94,6 @@ class KanbanIndex extends Component
         }
     }
 
-
     // Method untuk mereset form create task
     public function resetCreateTask()
     {
@@ -104,41 +103,40 @@ class KanbanIndex extends Component
 
     // Method untuk menyimpan task baru
     public function saveNewTask()
-{
-    // Ensure name is not empty
-    if (!empty($this->newTask['name'])) {
-        // Fetch the default "To Do" status if not already set
-        if (empty($this->newTask['status_id'])) {
-            $defaultStatus = TaskStatus::where('is_default', true)->first();
-            if ($defaultStatus) {
-                $this->newTask['status_id'] = $defaultStatus->id;
-            } else {
-                session()->flash('error', 'Default status not found!');
-                return;
+    {
+        // Ensure name is not empty
+        if (!empty($this->newTask['name'])) {
+            // Fetch the default "To Do" status if not already set
+            if (empty($this->newTask['status_id'])) {
+                $defaultStatus = TaskStatus::where('is_default', true)->first();
+                if ($defaultStatus) {
+                    $this->newTask['status_id'] = $defaultStatus->id;
+                } else {
+                    session()->flash('error', 'Default status not found!');
+                    return;
+                }
             }
+
+            // Create the new task and associate it with the project
+            Tasks::create(array_merge($this->newTask, ['project_id' => $this->projectId]));
         }
 
-        // Create the new task and associate it with the project
-        Tasks::create(array_merge($this->newTask, ['project_id' => $this->projectId]));
+        // Reset modal after saving the task
+        $this->resetCreateTask();
     }
 
-    // Reset modal after saving the task
-    $this->resetCreateTask();
-}
+    public function updateTaskRealTime()
+    {
+        $task = Tasks::find($this->editingTaskId);
 
-public function updateTaskRealTime()
-{
-    $task = Tasks::find($this->editingTaskId);
-
-    if ($task) {
-        $task->update($this->editedTask);  // Updates the task with the new values
+        if ($task) {
+            $task->update($this->editedTask); // Updates the task with the new values
+        }
     }
-}
-public function closeModal()
-{
-    $this->editingTaskId = null; // This will close the modal
-}
-
+    public function closeModal()
+    {
+        $this->editingTaskId = null; // This will close the modal
+    }
 
     // Method untuk memperbarui status task
     public function updateTaskStatus($taskId, $newStatusId)
