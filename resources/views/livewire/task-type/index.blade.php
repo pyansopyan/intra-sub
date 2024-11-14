@@ -13,7 +13,7 @@
                 + Tambah Data
             </a>
             <div class="relative w-1/2">
-                <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
+                <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
                 <input type="text"
                     class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
                     wire:model.live="search" placeholder="Cari Type...">

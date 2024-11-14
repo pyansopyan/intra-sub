@@ -8,22 +8,20 @@
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
         <span>Activities</span>
         @can('manageActivities-create')
-        <a href="{{ route('activities.create') }}"
-        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-        + Tambah Data
-    </a>
-    <div class="relative w-1/2">
-        <i class='bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'></i>
-        <input type="text"
-               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
-               wire:model.live="search"
-               placeholder="Cari Activities...">
-    </div>
-
-    @endcan
+            <a href="{{ route('activities.create') }}"
+                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                + Tambah Data
+            </a>
+            <div class="relative w-1/2">
+                <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
+                <input type="text"
+                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+                    wire:model.live="search" placeholder="Cari Activities...">
+            </div>
+        @endcan
     </h2>
     {{-- Message --}}
-   {{-- Message --}}
+    {{-- Message --}}
     @if (session()->has('message'))
         <div class="toast toast-top toast-end mt-12 transform translate-x-full transition-transform duration-500 ease-out"
             x-data="{ show: true }" x-show="show" x-init="show = true;
@@ -66,9 +64,9 @@
                             <td class="px-4 py-3 text-sm">
                                 {{ $aktiv->name }}
                             </td>
-                           <td class="px-4 py-3 text-sm">
-                                 {{ $aktiv->description}}
-                           </td>
+                            <td class="px-4 py-3 text-sm">
+                                {{ $aktiv->description }}
+                            </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
                                     @can('manageActivities-edit')
@@ -140,6 +138,6 @@
         </div>
 
         {{-- paginate --}}
-      {{ $aktivitas->links('livewire::tailwind') }}
+        {{ $aktivitas->links('livewire::tailwind') }}
     </div>
 </div>
