@@ -2,10 +2,10 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('permission.index') }}" class="text-gray-400 font-semibold">Permission</a></li>
+            <li><a href="{{ route('permission.index') }}" class="text-black-400 font-semibold">Permission</a></li>
         </ul>
     </div>
-    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
+    <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-black-700 dark:text-black-200">
         <span>Permissions</span>
         @can('managePermission-create')
             <a href="{{ route('permission.create') }}"
@@ -13,9 +13,9 @@
                 + Tambah Data
             </a>
             <div class="relative w-1/2">
-                <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
+                <i class='bx bx-search absolute left-3 mt-2  transform  text-black-400'></i>
                 <input type="text"
-                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+                    class="pl-10 pr-4 py-2 border border-black-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
                     wire:model.live="search" placeholder="Cari Permission...">
             </div>
         @endcan
@@ -29,7 +29,7 @@
             setTimeout(() => show = false, 5000)">
             <div class="flex flex-col gap-2 w-60 h-60 sm:w-72 text-[10px] sm:text-xs z-50 mt-6">
                 <div
-                    class="success-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-gray-800 dark:bg-gray-900 px-[10px]">
+                    class="success-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-black-800 dark:bg-black-900 px-[10px]">
                     <div class="flex gap-2">
                         <div class="text-green-500 bg-white/10 dark:bg-white/20 p-1 rounded-lg">
                             <i class='bx bx-check-circle text-3xl'></i>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <button @click="show = false"
-                        class="text-gray-400 hover:bg-white/5 p-1 rounded-md transition-colors ease-linear">
+                        class="text-black-400 hover:bg-white/5 p-1 rounded-md transition-colors ease-linear">
                         <i class='bx bx-x text-xl'></i>
                     </button>
                 </div>
@@ -51,14 +51,14 @@
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-black-700 bg-black-50 dark:text-black-400 dark:bg-black-800">
                         <th class="px-4 py-3">Name</th>
                         <th class="px-4 py-3 text-center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                <tbody class="bg-white divide-y dark:divide-black-700 dark:bg-black-800">
                     @foreach ($permissions as $permission)
-                        <tr class="text-gray-700 dark:text-gray-400">
+                        <tr class="text-black-700 dark:text-black-400">
                             <td class="px-4 py-3 text-sm">{{ $permission->name }}</td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center justify-center space-x-4 text-sm">
@@ -98,8 +98,8 @@
                                     <dialog id="my_modal_{{ $permission->id }}"
                                         class="modal fixed inset-0 flex items-center justify-center">
                                         <div
-                                            class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
+                                            class="modal-box bg-white text-black-800 dark:bg-black-800 dark:text-black p-4 md:p-5">
+                                            <svg class="mx-auto mb-4 text-black-400 w-20 h-20 dark:text-black-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor 24 24" stroke="currentColor">
                                                 <path stroke="currentColor" stroke-linecap="round"
@@ -111,12 +111,12 @@
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                                                     wire:click="destroy({{ $permission->id }})">
-                                                    Yes
+                                                    Hapus
                                                 </button>
                                                 <button
-                                                    class="btn bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300"
+                                                    class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
                                                     onclick="my_modal_{{ $permission->id }}.close()">
-                                                    Cancel
+                                                    Batal
                                                 </button>
                                             </div>
                                         </div>

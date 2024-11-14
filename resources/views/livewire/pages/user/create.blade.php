@@ -3,13 +3,13 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('user.index') }}">Users</a></li>
-            <li><a class="text-gray-400 font-semibold">Add data Users</a></li>
+            <li><a class="text-black-400 font-semibold">Add data Users</a></li>
         </ul>
     </div>
     <a href="{{ route('user.index') }}" class="btn btn-md bg-white text-black mt-2">
         <i class="bx bx-arrow-back text-xl"></i>
     </a>
-    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mt-2">
+    <h2 class="text-2xl font-semibold text-black-700 dark:text-black-200 mt-2">
         Add User
     </h2>
     <form wire:submit.prevent="store" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
             <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <span class="text-black-700 dark:text-black-400">Name</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
                     placeholder="Insert username" wire:model="name" />
@@ -26,7 +26,7 @@
                 @enderror
             </label>
             <label class="block text-sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">NRP</span>
+                <span class="text-black-700 dark:text-black-400">NRP</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
                     placeholder="Insert NRP" wire:model="nrp" />
@@ -35,7 +35,7 @@
                 @enderror
             </label>
             <label class="block text-sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">E-mail</span>
+                <span class="text-black-700 dark:text-black-400">E-mail</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
                     placeholder="Insert E-mail" type="email" wire:model="email" />

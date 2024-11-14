@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('task-type.index') }}">Task Type</a></li>
-            <li><a class="text-gray-400 font-semibold">Detail data Task Type</a></li>
+            <li><a class="text-black-400 font-semibold">Detail data Task Type</a></li>
         </ul>
     </div>
     <a href="{{ route('task-type.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -17,15 +17,15 @@
             <table class="min-w-full divide-y divide-gray-200">
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             <strong>Type Name:</strong>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $taskType->name }}
                         </td>
                     </tr>
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             <strong>Type Color:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -33,10 +33,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             <strong>Type Default:</strong>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400 flex items-center">
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400 flex items-center">
                             {{ $taskType->is_default ? 'Ya' : 'Tidak' }}
                             <span class="mx-2">|</span>
                             @if ($taskType->is_default == 1)

@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('task-status.index') }}">Task Status</a></li>
-            <li><a class="text-gray-400 font-semibold">Edit data Task Status</a></li>
+            <li><a class="text-black-400 font-semibold">Edit data Task Status</a></li>
         </ul>
     </div>
     <a href="{{ route('task-status.index') }}" class="btn btn-md bg-white text-black mt-2">

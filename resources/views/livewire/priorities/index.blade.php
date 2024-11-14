@@ -2,7 +2,7 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('priorities.index') }}" class="text-gray-400 font-semibold">Task Priorities</a></li>
+            <li><a href="{{ route('priorities.index') }}" class="text-black-400 font-semibold">Task Priorities</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
@@ -53,7 +53,7 @@
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Type Name</th>
                         <th class="px-4 py-3">Type Color</th>
                         <th class="px-4 py-3">Default</th>

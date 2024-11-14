@@ -2,7 +2,7 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('bagian.index') }}" class="text-gray-400 font-semibold">Bagian</a></li>
+            <li><a href="{{ route('bagian.index') }}" class="text-black-400 font-semibold">Bagian</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-blackind-200">
@@ -52,7 +52,7 @@
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Bagian</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
@@ -104,14 +104,14 @@
                                         class="modal fixed inset-0 flex items-center justify-center">
                                         <div
                                             class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
+                                            <svg class="mx-auto mb-4 text-black-400 w-20 h-20 dark:text-black-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor 24 24" stroke="currentColor">
                                                 <path stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2"
                                                     d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
-                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus type ini</h3>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus bagian ini</h3>
                                             <div class="modal-action">
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"

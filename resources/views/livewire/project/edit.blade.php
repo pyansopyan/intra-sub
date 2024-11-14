@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('project.index') }}">Project</a></li>
-            <li><a class="text-gray-400 font-semibold">Edit data Project</a></li>
+            <li><a class="text-black-400 font-semibold">Edit data Project</a></li>
         </ul>
     </div>
     <a href="{{ route('project.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -30,7 +30,7 @@
             <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
                  <textarea id="description" name="description" rows="4" wire:model="description"
-                    class="shadow-sm focus:ring-indigo-500 dark:bg-gray-700 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                    class="shadow-sm focus:ring-indigo-500 dark:bg-white-700 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
                     placeholder="insert project description"></textarea>
                 @error('description')
                     <span class="text-red-500 text-sm">{{ $message }}</span>

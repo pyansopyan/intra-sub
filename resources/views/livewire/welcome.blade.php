@@ -17,10 +17,10 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <p class="mb-2 text-sm font-medium text-black-600 dark:text-black-400">
                         Total clients
                     </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-lg font-semibold text-gray-700 dark:text-black-200">
                         6389
                     </p>
                 </div>
@@ -33,7 +33,7 @@
                 <table class="w-full whitespace-no-wrap">
                     <thead>
                         <tr
-                            class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                            class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                             <th class="px-4 py-3">User</th>
                             <th class="px-4 py-3">Amount</th>
                             <th class="px-4 py-3">Status</th>
@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        <tr class="text-gray-700 dark:text-gray-400">
+                        <tr class="text-black-700 dark:text-black-400">
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <!-- Avatar with inset shadow -->
@@ -54,7 +54,7 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold">Hans Burger</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                        <p class="text-xs text-black-600 dark:text-black-400">
                                             10x Developer
                                         </p>
                                     </div>
@@ -74,7 +74,7 @@
                             </td>
                         </tr>
 
-                        <tr class="text-gray-700 dark:text-gray-400">
+                        <tr class="text-black-700 dark:text-black-400">
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <!-- Avatar with inset shadow -->
@@ -87,7 +87,7 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold">Jolina Angelie</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                        <p class="text-xs text-black-600 dark:text-black-400">
                                             Unemployed
                                         </p>
                                     </div>
@@ -107,7 +107,7 @@
                             </td>
                         </tr>
 
-                        <tr class="text-gray-700 dark:text-gray-400">
+                        <tr class="text-black-700 dark:text-black-400">
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <!-- Avatar with inset shadow -->
@@ -120,7 +120,7 @@
                                     </div>
                                     <div>
                                         <p class="font-semibold">Sarah Curry</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                        <p class="text-xs text-black-600 dark:text-black-400">
                                             Designer
                                         </p>
                                     </div>
@@ -143,7 +143,7 @@
                 </table>
             </div>
             <div
-                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-black-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-black-400 dark:bg-gray-800">
                 <span class="flex items-center col-span-3">
                     Showing 21-30 of 100
                 </span>

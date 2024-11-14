@@ -2,7 +2,7 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('user.index') }}" class="text-gray-400 font-semibold">Users</a></li>
+            <li><a href="{{ route('user.index') }}" class="text-black-400 font-semibold">Users</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
@@ -13,9 +13,9 @@
                 + Tambah Data
             </a>
             <div class="relative w-1/2">
-                <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
+                <i class='bx bx-search absolute left-3 mt-2  transform  text-black-400'></i>
                 <input type="text"
-                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
+                    class="pl-10 pr-4 py-2 border border-black-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
                     wire:model.live="search" placeholder="Cari User...">
             </div>
         @endcan
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <button @click="show = false"
-                        class="text-gray-400 hover:bg-white/5 p-1 rounded-md transition-colors ease-linear">
+                        class="text-black-400 hover:bg-white/5 p-1 rounded-md transition-colors ease-linear">
                         <i class='bx bx-x text-xl'></i>
                     </button>
                 </div>
@@ -52,7 +52,7 @@
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Name</th>
                         <th class="px-4 py-3">Nrp</th>
                         <th class="px-4 py-3">Status</th>
@@ -60,7 +60,7 @@
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                <tbody class="bg-white divide-y dark:divide-black-700 dark:bg-gray-800">
                     @foreach ($users as $user)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">{{ $user->name }}</td>
@@ -107,8 +107,8 @@
                                     <dialog id="my_modal_{{ $user->id }}"
                                         class="modal fixed inset-0 flex items-center justify-center">
                                         <div
-                                            class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
+                                            class="modal-box bg-white text-black-800 dark:bg-gray-800 dark:text-black p-4 md:p-5">
+                                            <svg class="mx-auto mb-4 text-black-400 w-20 h-20 dark:text-black-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor 24 24" stroke="currentColor">
                                                 <path stroke="currentColor" stroke-linecap="round"
