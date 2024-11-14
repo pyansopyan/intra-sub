@@ -20,7 +20,7 @@
                         class="h-60 w-30 rounded-full" />
                 @else
                      <div class="inline-flex items-center justify-center w-40 h-40 overflow-hidden bg-indigo-500 rounded-full dark:bg-indigo-500">
-                        <span class="text-6xl font-medium text-white dark:text-black-300">
+                        <span class="text-sm font-medium text-white dark:text-black-300">
                              {{ strtoupper(substr($user->name, 0, 2)) }}
                         </span>
                     </div>

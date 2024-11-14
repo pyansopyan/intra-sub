@@ -30,7 +30,7 @@
             </div>
         </div>
     @endif
-    
+
     <div class="flex items-center space-x-4 mb-4">
         <button wire:click="openCreateTaskModal" class="bg-blue-500 text-white p-2 rounded">+ Create Task</button>
 
@@ -83,10 +83,15 @@
                                     </span>
                                 </span>
                             </span>
+                            <span class="flex items-center space-x-1 text-sm text-gray-400">
+                                <i class="bx bx-user-circle text-lg"></i> <!-- Ikon user -->
+                                <span>{{ $task->responsible->name }}</span> <!-- Teks nama user -->
+                            </span>
                             <div class="flex justify-between items-center">
-                                <small class="text-gray-400">
-                                    <i>{{ $task->updated_at->format('H:i') }}</i>
-                                </small>
+                                <span class="flex items-center space-x-1 text-sm text-gray-400">
+                                    <i class="bx bx-calendar text-lg"></i> <!-- Ikon user -->
+                                    <span>{{ $task->updated_at->format('M d') }}</span> <!-- Teks nama user -->
+                                </span>
                                 <button onclick="my_modal_{{ $task->id }}.showModal()" class="flex items-center"
                                     title="Delete">
                                     <i class='bx bx-trash text-xl text-red-500'></i>
