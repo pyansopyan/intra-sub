@@ -28,7 +28,7 @@ class AttachUserIndex extends Component
             'projects_id' => $this->projects_id,
         ]);
 
-        session()->flash('message', 'User attached to the project successfully.');
+        session()->flash('message', 'Pengguna berhasil dilampirkan ke proyek.');
         return redirect()->route('project.show', ['projectId' => $this->projects_id]);
     }
 

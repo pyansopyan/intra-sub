@@ -95,18 +95,37 @@
         </div>
         <!-- Detail Attach User Section -->
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <!-- Tampilkan pesan sukses jika ada -->
+            {{-- Message --}}
             @if (session()->has('message'))
-                <div class="p-4 mb-4 text-sm text-green-600 bg-green-100 rounded-lg">
-                    {{ session('message') }}
+                <div class="toast toast-top toast-end mt-12 transform translate-x-full transition-transform duration-500 ease-out"
+                    x-data="{ show: true }" x-show="show" x-init="show = true;
+                    setTimeout(() => show = false, 5000)">
+                    <div class="flex flex-col gap-2 h-auto text-[10px] sm:text-xs z-50 mt-6">
+                        <div
+                            class="success-alert cursor-default flex items-center justify-between h-12 sm:h-14 rounded-lg bg-gray-800 dark:bg-gray-900 px-[10px]">
+                            <div class="flex gap-2">
+                                <div class="text-green-500 bg-white/10 dark:bg-white/20 p-1 rounded-lg">
+                                    <i class='bx bx-check-circle text-3xl'></i>
+                                </div>
+                                <div>
+                                    <p class="text-white mt-3">{{ session('message') }}</p>
+                                </div>
+                            </div>
+                            <button @click="show = false"
+                                class="text-gray-400 hover:bg-white/5 p-1 rounded-md transition-colors ease-linear">
+                                <i class='bx bx-x text-xl'></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             @endif
+
 
             {{-- attachUser --}}
             <div>
                 <!-- Attach User Section -->
                 <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
-                    <span>Attach User</span>
+                    <span class="ml-4">Attach User</span>
                     @can('manageAttachUser-create')
                         <a href="{{ route('project.attachUser.Index', ['projectId' => $projectId]) }}"
                             class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">

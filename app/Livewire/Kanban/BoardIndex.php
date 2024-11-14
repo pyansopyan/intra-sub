@@ -2,11 +2,10 @@
 
 namespace App\Livewire\Kanban;
 
-use App\Models\Project;
-use Livewire\Component;
 use App\Models\AttachUser;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
-
+use Livewire\Component;
 
 class BoardIndex extends Component
 {
@@ -24,8 +23,14 @@ class BoardIndex extends Component
     {
         $user = Auth::user();
 
-        $attachUser = AttachUser::where('users_id', $user->id)->pluck('projects_id');
-        $project = Project::whereIn('id', $attachUser)->get();
+        if ($user->hasRole('superadmin')) {
+            $project = Project::all();
+        } else {
+            $attachUser = AttachUser::where('users_id', $user->id)->pluck('projects_id');
+            $project = Project::whereIn('id', $attachUser)->get();
+
+        }
+
         // dd($project);
         return view('livewire.kanban.board-index', [
             'projects' => $project,
