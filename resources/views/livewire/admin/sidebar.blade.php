@@ -159,9 +159,8 @@
                     @endcan
                 </ul>
 
-                <ul class="pt-4 mt-1 space-y-2 font-medium">
+                {{-- <ul class="pt-4 mt-1 space-y-2 font-medium">
                     @can('manageActivities')
-                        <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">PROJECT MANAGEMENT
                         </li>
                         <li
                             class="relative px-6 py-3 {{ request()->is('activities*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
@@ -172,10 +171,11 @@
                             </a>
                         </li>
                     @endcan
-                </ul>
+                </ul> --}}
                 <ul>
-                    <ul>
+                    <ul class="pt-4 mt-1 space-y-2 font-medium">
                         @can('manageProject')
+                        <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">PROJECT MANAGEMENT
                             <li
                                 class="relative px-6 py-3 {{ request()->is('project*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"

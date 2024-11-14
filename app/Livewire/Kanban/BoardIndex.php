@@ -19,8 +19,9 @@ class BoardIndex extends Component
 
     public function render()
     {
+        $project = Project::all();
         return view('livewire.kanban.board-index', [
-            'projects' => Project::all(),
+            'projects' => $project,
         ]);
     }
 }
