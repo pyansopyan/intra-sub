@@ -256,6 +256,11 @@
                             placeholder="Enter Estimation" class="bg-gray-100 p-2 rounded w-full"
                             wire:keyup="updateTaskRealTime" />
                     </div>
+                    <div class="col-span-2 text-right mt-4">
+                        <button wire:click="saveTask" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Update
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
