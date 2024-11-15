@@ -33,42 +33,72 @@
 
     <div class="flex items-center space-x-4 mb-4">
         <button wire:click="openCreateTaskModal" class="bg-blue-500 text-white p-2 rounded">+ Create Task</button>
+    </div>
 
-        <div class="flex space-x-4 items-end">
-            <div>
-                <select class="bg-gray-100 p-2 rounded w-full" wire:model.live="selectedType">
-                    <option value="">Select Type</option>
-                    @foreach ($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                    @endforeach
-                </select>
+    <div x-data="{ open: false }" class="relative w-full">
+        <!-- Filters Button -->
+        <button @click="open = !open" class="text-gray-600 text-sm bg-gray-100 p-2 px-4 rounded-md mb-3 w-full flex items-center justify-between border border-gray-300">
+            <span class="flex items-center space-x-1 text-sm text-gray-400">
+                <i class="bx bx-filter text-xl"></i> <!-- Ikon user -->
+                <span>Filter</span> <!-- Teks nama user -->
+            </span>
+            <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+        </button>
+
+        <!-- Dropdown Menu for Filters -->
+        <div x-show="open" x-transition.origin.top.duration.300ms class="mt-2 bg-white border border-gray-300 rounded-md shadow-lg w-full p-4" wire:ignore>
+            <div class="flex flex-wrap gap-4">
+                <!-- Owners / Responsibles Filter -->
+                <div class="w-1/4">
+                    <label class="block text-gray-600 text-sm mb-1">Owners / Responsibles</label>
+                    <select class="bg-gray-100 p-2 rounded w-full border border-gray-300" wire:model.live="selectedResponsible">
+                        <option value="">Select an option</option>
+                        @foreach ($responsibles as $responsible)
+                            <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Ticket Types Filter -->
+                <div class="w-1/4">
+                    <label class="block text-gray-600 text-sm mb-1">Task types</label>
+                    <select class="bg-gray-100 p-2 rounded w-full border border-gray-300" wire:model.live="selectedType">
+                        <option value="">Select an option</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Task Priorities Filter -->
+                <div class="w-1/4">
+                    <label class="block text-gray-600 text-sm mb-1">Task priorities</label>
+                    <select class="bg-gray-100 p-2 rounded w-full border border-gray-300" wire:model.live="selectedPriority">
+                        <option value="">Select an option</option>
+                        @foreach ($priorities as $priority)
+                            <option value="{{ $priority->id }}">{{ $priority->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Additional Filter Options -->
+                <div class="w-1/4 flex items-center">
+                    <input type="checkbox" class="form-checkbox text-blue-600" wire:model.live="showOnlyNotAffected">
+                </div>
             </div>
 
-            <div>
-                <select class="form-select bg-gray-100 p-2 rounded w-full" wire:model.live="selectedPriority">
-                    <option value="">Select Priority</option>
-                    @foreach ($priorities as $priority)
-                        <option value="{{ $priority->id }}">{{ $priority->name }}</option>
-                    @endforeach
-                </select>
+            <!-- Filter and Reset Buttons -->
+            <div class="flex justify-end space-x-2 mt-4">
+                <button @click="open = false" class="bg-gray-500 text-white px-4 py-2 rounded">Reset filters</button>
             </div>
-
-            <div>
-                <select class="form-select bg-gray-100 p-2 rounded w-full" wire:model.live="selectedResponsible">
-                    <option value="">Select Responsible</option>
-                    @foreach ($responsibles as $responsible)
-                        <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
         </div>
     </div>
 
-
     <div class="flex space-x-4">
         @foreach ($statuses as $status)
-            <div class="w-1/3 text-white p-4 rounded shadow-2xl" style="background-color: {{ $status->color }}"
+            <div class="w-1/3 text-white p-4 mt-4 rounded shadow-2xl" style="background-color: {{ $status->color }}"
                 ondrop="drop(event, {{ $status->id }})" ondragover="allowDrop(event)">
                 <h2 class="font-bold mb-2">{{ $status->name }}</h2>
                 <div class="space-y-2">
