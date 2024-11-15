@@ -54,10 +54,28 @@
 
 
             <div>
-                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <button type="button" onclick="document.getElementById('confirm-modal').showModal()" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Ganti Password
                 </button>
             </div>
         </form>
     </div>
+
+    <dialog id="confirm-modal" class="modal fixed inset-0 flex items-center justify-center">
+        <div class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
+            <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <h3 class="text-lg font-bold">Apakah Anda yakin ingin mengganti password?</h3>
+            <small class="text-sm text-gray-500"><i>*Ini akan membawa anda ke halaman login jika yakin</i></small>
+            <div class="modal-action">
+                <button wire:click="updatePassword" class="btn bg-indigo-600 text-white hover:bg-indigo-700 border-none">
+                    Ya, Ganti Password
+                </button>
+                <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white" onclick="document.getElementById('confirm-modal').close()">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </dialog>
 </div>
