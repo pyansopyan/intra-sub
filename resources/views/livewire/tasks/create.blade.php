@@ -3,14 +3,14 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('tasks.index') }}">Task</a></li>
-            <li><a class="text-black-400 font-semibold">Add data Task</a></li>
+            <li><a class="text-black-400 font-semibold">Tambah data Task</a></li>
         </ul>
     </div>
     <a href="{{ route('tasks.index') }}" class="btn btn-md bg-white text-black mt-2">
         <i class="bx bx-arrow-back text-xl"></i>
     </a>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Add Tasks
+        Tambah Tasks
     </h2>
 
     <form wire:submit.prevent="store">
@@ -19,7 +19,7 @@
 
             <!-- Task Name -->
             <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Task Name</span>
+                <span class="text-gray-700 dark:text-gray-400">Task Nama</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
                     placeholder="Insert task name" wire:model="name" />
@@ -30,7 +30,7 @@
 
             <!-- Task Content -->
             <label class="block text-sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Content</span>
+                <span class="text-gray-700 dark:text-gray-400">Isi</span>
                 <textarea id="content" name="content" rows="4" wire:model="content"
                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
                     placeholder="Insert task content"></textarea>
@@ -40,10 +40,10 @@
             </label>
 
             <!-- Owner -->
-            <label for="owner_id" class="block text-sm mt-4">Owner</label>
+            <label for="owner_id" class="block text-sm mt-4">Pemilik</label>
             <select wire:model="owner_id" id="owner_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
-                <option value="">Choose Owner</option>
+                <option value="">Pilih Pemilik</option>
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach

@@ -18,7 +18,7 @@
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
             <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <span class="text-gray-700 dark:text-gray-400">Nama</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
                     placeholder="Insert name project" wire:model="name" />
@@ -28,7 +28,7 @@
             </label>
 
             <label class="block text-sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Description</span>
+                <span class="text-gray-700 dark:text-gray-400">Deskripsi</span>
                  <textarea id="description" name="description" rows="4" wire:model="description"
                     class="shadow-sm focus:ring-indigo-500 dark:bg-white-700 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
                     placeholder="insert project description"></textarea>
@@ -37,10 +37,10 @@
                 @enderror
             </label>
 
-            <label for="owner_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Owner</label>
+            <label for="owner_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Pemilik</label>
             <select wire:model="owner_id" id="owner_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
-                <option value="">Choose Owner</option>
+                <option value="">Pilih Pemilik</option>
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
@@ -52,7 +52,7 @@
             <label for="status_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Status</label>
             <select wire:model="status_id" id="status_id"
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray text-black">
-                <option value="">Choose Status</option>
+                <option value="">Pilih Status</option>
                 @foreach ($statuses as $status)
                     <option value="{{ $status->id }}">{{ $status->name }}</option>
                 @endforeach
@@ -62,7 +62,7 @@
             @enderror
 
             <label class="block text-sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Cover</span>
+                <span class="text-gray-700 dark:text-gray-400">Gambar</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                     type="file" wire:model="cover_image" />

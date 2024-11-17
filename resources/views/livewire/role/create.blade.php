@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('role.index') }}">Role</a></li>
-            <li><a class="text-black-400 font-semibold">Add data Roles</a></li>
+            <li><a class="text-black-400 font-semibold">Tambah data Role</a></li>
         </ul>
     </div>
     <a href="{{ route('role.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -36,11 +36,11 @@
 
             <!-- Checkbox untuk Permissions -->
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Permissions:</label>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Permission:</label>
                 <!-- Check All / Uncheck All -->
                 <div class="flex items-center mb-4">
                     <input type="checkbox" id="checkAll" wire:click="toggleSelectAllPermissions" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                    <label for="checkAll" class="ml-2 text-sm text-gray-700">Check All</label>
+                    <label for="checkAll" class="ml-2 text-sm text-gray-700">Periksa Semua</label>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -59,7 +59,7 @@
 
             <!-- Tombol Save dan Back -->
             <button type="reset" class="btn btn-md btn-warning text-white">Reset</button>
-            <button type="submit" class="btn btn-md btn-primary">Save</button>
+            <button type="submit" class="btn btn-md btn-primary">Simpan</button>
         </div>
     </form>
 </div>

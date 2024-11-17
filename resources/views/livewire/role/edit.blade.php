@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('role.index') }}">Role</a></li>
-            <li><a class="text-black-400 font-semibold">Edit data Roles</a></li>
+            <li><a class="text-black-400 font-semibold">Edit data Role</a></li>
         </ul>
     </div>
     <a href="{{ route('role.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -36,16 +36,16 @@
 
             <!-- Checkbox untuk Permissions -->
             <div class="mb-4">
-                <label class="block text-sm font-medium text-black-700 mb-2">Permissions:</label>
+                <label class="block text-sm font-medium text-black-700 mb-2">Permission:</label>
 
                 <!-- Tombol Check All / Uncheck All -->
                 <div class="flex items-center mb-4">
                     @if (count($Getpermissions) === $permissions->count())
                         <input type="checkbox" id="checkAll" wire:click="toggleSelectAllPermissions" class="h-4 w-4 text-blue-600 border-black-300 rounded" checked>
-                        <label for="checkAll" class="ml-2 text-sm text-black-700">Uncheck All</label>
+                        <label for="checkAll" class="ml-2 text-sm text-black-700">Hapus centang Semua</label>
                     @else
                         <input type="checkbox" id="checkAll" wire:click="toggleSelectAllPermissions" class="h-4 w-4 text-blue-600 border-black-300 rounded">
-                        <label for="checkAll" class="ml-2 text-sm text-black-700">Check All</label>
+                        <label for="checkAll" class="ml-2 text-sm text-black-700">Periksa Semua</label>
                     @endif
                 </div>
 

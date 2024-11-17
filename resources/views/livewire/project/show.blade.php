@@ -33,7 +33,7 @@
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                                <strong>Name:</strong>
+                                <strong>Nama:</strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                                 {{ $project->name }}
@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                                <strong>Description:</strong>
+                                <strong>Deskripsi:</strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                                 {{ $project->description }}
@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                                <strong>Owner:</strong>
+                                <strong>Pemilik:</strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                                 {{ $project->owner->name ?? 'Tidak ada owner' }}
@@ -148,8 +148,8 @@
                                 <tr
                                     class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                                     <th class="px-4 py-3">No</th>
-                                    <th class="px-4 py-3">User</th>
-                                    <th class="px-4 py-3">Actions</th>
+                                    <th class="px-4 py-3">Pengguna</th>
+                                    <th class="px-4 py-3">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -237,8 +237,8 @@
                                     </dialog>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center text-sm text-gray-500">No users attached
-                                            to this project.</td>
+                                        <td colspan="3" class="text-center text-sm text-gray-500">Tidak ada pengguna yang terikat
+                                            untuk proyek ini.</td>
                                     </tr>
                                 @endforelse
                             </tbody>

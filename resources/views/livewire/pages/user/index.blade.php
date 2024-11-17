@@ -2,7 +2,7 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('user.index') }}" class="text-black-400 font-semibold">Users</a></li>
+            <li><a href="{{ route('user.index') }}" class="text-black-400 font-semibold">User</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
@@ -53,11 +53,11 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Name</th>
+                        <th class="px-4 py-3">Nama</th>
                         <th class="px-4 py-3">Nrp</th>
                         <th class="px-4 py-3">Status</th>
                         <th class="px-4 py-3">Role</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3" >Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-black-700 dark:bg-gray-800">

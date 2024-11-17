@@ -18,7 +18,7 @@
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Name:</strong>
+                            <strong>Nama:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->name }}
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Content:</strong>
+                            <strong>Isi:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->content }}
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Owner:</strong>
+                            <strong>Pemilik:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->owner->name ?? 'N/A' }}
@@ -82,7 +82,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Code:</strong>
+                            <strong>Kode:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->code }}
@@ -90,7 +90,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Order:</strong>
+                            <strong>Pesanan:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->order }}
@@ -98,7 +98,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Estimation:</strong>
+                            <strong>Estimasi</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->estimation }}

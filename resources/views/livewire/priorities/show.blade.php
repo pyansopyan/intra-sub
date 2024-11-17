@@ -18,7 +18,7 @@
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Statuses Name:</strong>
+                            <strong>Nama Status:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $prioritas->name }}
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Type Color:</strong>
+                            <strong>Tipe Warna:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div style="width: 25px; height: 25px; background-color: {{ $prioritas->color }}; border-radius: 3px;"></div>
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Type Default:</strong>
+                            <strong>Tipe Bawaan:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400 flex items-center">
                             {{ $prioritas->is_default ? 'Ya' : 'Tidak' }}

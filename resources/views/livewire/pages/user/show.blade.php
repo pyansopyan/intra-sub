@@ -2,8 +2,8 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('user.index') }}">Users</a></li>
-            <li><a class="text-black-400 font-semibold">Detail data Users</a></li>
+            <li><a href="{{ route('user.index') }}">User</a></li>
+            <li><a class="text-black-400 font-semibold">Detail data User</a></li>
         </ul>
     </div>
     <a href="{{ route('user.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -30,7 +30,7 @@
                 <tbody class="bg-white divide-y divide-black-200 dark:bg-black-700 dark:divide-black-600">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Name:</strong>
+                            <strong>Nama:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $user->name }}
@@ -62,7 +62,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Departement:</strong>
+                            <strong>Departemen  :</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $user->departement->name ?? 'Tidak ada departemen' }}

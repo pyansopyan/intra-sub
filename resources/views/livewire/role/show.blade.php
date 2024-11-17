@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('role.index') }}">Role</a></li>
-            <li><a class="text-black-400 font-semibold">Detail data Roles</a></li>
+            <li><a class="text-black-400 font-semibold">Detail data Role</a></li>
         </ul>
     </div>
     <a href="{{ route('role.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Role Name:</strong>
+                            <strong>Role Nama:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $role->name }}
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Permissions:</strong>
+                            <strong>Permission:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-600">
                             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 ">

@@ -54,7 +54,7 @@
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Bagian</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -111,7 +111,7 @@
                                                     stroke-linejoin="round" stroke-width="2"
                                                     d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
-                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus bagian ini</h3>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus bagian ini?</h3>
                                             <div class="modal-action">
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"

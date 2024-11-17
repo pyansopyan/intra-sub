@@ -54,10 +54,10 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Type Name</th>
-                        <th class="px-4 py-3">Type Color</th>
-                        <th class="px-4 py-3">Default</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3">Tipe Nama</th>
+                        <th class="px-4 py-3">Tipe Warna</th>
+                        <th class="px-4 py-3">Bawaan</th>
+                        <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">

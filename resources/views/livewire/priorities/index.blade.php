@@ -2,11 +2,11 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('priorities.index') }}" class="text-black-400 font-semibold">Task Priorities</a></li>
+            <li><a href="{{ route('priorities.index') }}" class="text-black-400 font-semibold">Task Prioritias</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
-        <span>Task Priorities</span>
+        <span>Task Prioritias</span>
         @can('manageTaskPriorities-create')
             <a href="{{ route('priorities.create') }}"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
@@ -54,10 +54,10 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Type Name</th>
-                        <th class="px-4 py-3">Type Color</th>
-                        <th class="px-4 py-3">Default</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3">Tipe Nama</th>
+                        <th class="px-4 py-3">Tipe Warna</th>
+                        <th class="px-4 py-3">Tipe Bawaan</th>
+                        <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">

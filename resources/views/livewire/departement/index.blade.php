@@ -2,11 +2,11 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('departement.index') }}" class="text-black-400 font-semibold">Departement</a></li>
+            <li><a href="{{ route('departement.index') }}" class="text-black-400 font-semibold">Departemen</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
-        <span>Departement</span>
+        <span>Departemen</span>
         @can('manageDepartement-create')
             <a href="{{ route('departement.create') }}"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
@@ -16,7 +16,7 @@
                 <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
                 <input type="text"
                     class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
-                    wire:model.live="search" placeholder="Cari departement...">
+                    wire:model.live="search" placeholder="Cari departemen...">
             </div>
         @endcan
     </h2>
@@ -54,8 +54,8 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Departement</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3">Departemen</th>
+                        <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -112,7 +112,7 @@
                                                     stroke-linejoin="round" stroke-width="2"
                                                     d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
-                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus departement ini</h3>
+                                            <h3 class="text-lg font-bold">Apakah anda mau menghapus departement ini?</h3>
                                             <div class="modal-action">
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"

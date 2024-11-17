@@ -18,7 +18,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-black-600 dark:text-black-400">
-                        Total clients
+                        Total klien
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-black-200">
                         6389
@@ -35,9 +35,9 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                             <th class="px-4 py-3">User</th>
-                            <th class="px-4 py-3">Amount</th>
+                            <th class="px-4 py-3">Jumlah</th>
                             <th class="px-4 py-3">Status</th>
-                            <th class="px-4 py-3">Date</th>
+                            <th class="px-4 py-3">Tanggal</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">

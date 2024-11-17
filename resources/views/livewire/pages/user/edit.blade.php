@@ -2,8 +2,8 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('user.index') }}">Users</a></li>
-            <li><a class="text-black-400 font-semibold">Edit data Users</a></li>
+            <li><a href="{{ route('user.index') }}">User</a></li>
+            <li><a class="text-black-400 font-semibold">Edit data User</a></li>
         </ul>
     </div>
     <a href="{{ route('user.index') }}" class="btn btn-md text-black">
@@ -16,7 +16,7 @@
     <form wire:submit.prevent="update" enctype="multipart/form-data">
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-black-800">
             <label class="block text-sm">
-                <span class="text-black-700 dark:text-black-400">Name</span>
+                <span class="text-black-700 dark:text-black-400">Nama</span>
                 <input
                     class="block w-full mt-1 text-sm dark:border-black-600 dark:bg-black-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-black-300 dark:focus:shadow-outline-black form-input text-black"
                     placeholder="Masukkan nama user" wire:model="name" />
@@ -68,7 +68,7 @@
                 @enderror
             </label>
 
-            <label for="departement_id" class="block text-sm mt-4">Departement</label>
+            <label for="departement_id" class="block text-sm mt-4">Departemen</label>
             <select wire:model="departement_id" id="departement_id"
                 class="block w-full mt-1 text-sm dark:border-black-600 dark:bg-black-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-black-300 dark:focus:shadow-outline-black form-input text-black">
                 <option value="">Pilih Departement</option>
