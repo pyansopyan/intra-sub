@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
+
 class Welcome extends Component
 {
 
@@ -13,6 +14,18 @@ class Welcome extends Component
     public bool $drawer = false;
 
     public array $sortBy = ['column' => 'name', 'direction' => 'asc'];
+
+    public string $currentTime = '';
+
+    public function mount(): void
+    {
+        $this->updateClock();
+    }
+
+    public function updateClock(): void
+    {
+        $this->currentTime = now()->locale('id')->isoFormat('dddd, D MMMM YYYY HH:mm:ss');
+    }
 
     // Clear filters
     public function clear(): void
@@ -51,7 +64,7 @@ class Welcome extends Component
             ['id' => 2, 'name' => 'Giovanna', 'email' => 'giovanna@mary-ui.com', 'age' => 7],
             ['id' => 3, 'name' => 'Marina', 'email' => 'marina@mary-ui.com', 'age' => 5],
         ])
-            ->sortBy([[...array_values($this->sortBy)]])
+            ->sortBy([[ ...array_values($this->sortBy)]])
             ->when($this->search, function (Collection $collection) {
                 return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
             });
@@ -61,7 +74,7 @@ class Welcome extends Component
     {
         return view('livewire.welcome', [
             'users' => $this->users(),
-            'headers' => $this->headers()
+            'headers' => $this->headers(),
         ]);
     }
 }
