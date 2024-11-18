@@ -8,6 +8,7 @@ use App\Models\Tasks;
 use App\Models\TaskStatus;
 use App\Models\TaskType;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class KanbanIndex extends Component
@@ -30,7 +31,7 @@ class KanbanIndex extends Component
 
     public function filter()
     {
-
+        // Implement filter functionality if needed
     }
 
     public function resetFilters()
@@ -48,7 +49,6 @@ class KanbanIndex extends Component
             $task->delete();
         }
         session()->flash('message', 'Data Berhasil Dihapus.');
-
     }
 
     public function editTask($taskId)
@@ -60,8 +60,24 @@ class KanbanIndex extends Component
             $this->editedTask = $task->toArray();
         }
     }
+
     public function saveTask()
     {
+        // Validasi untuk tanggal
+        $this->validate([
+            'editedTask.start_date' => 'nullable|date',
+            'editedTask.end_date' => 'nullable|date|after_or_equal:editedTask.start_date',
+        ]);
+
+        // Pastikan tanggal start_date dan end_date adalah objek Carbon jika ada
+        if (isset($this->editedTask['start_date'])) {
+            $this->editedTask['start_date'] = Carbon::parse($this->editedTask['start_date']);
+        }
+
+        if (isset($this->editedTask['end_date'])) {
+            $this->editedTask['end_date'] = Carbon::parse($this->editedTask['end_date']);
+        }
+
         $task = Tasks::find($this->editingTaskId);
 
         if ($task) {
@@ -71,14 +87,12 @@ class KanbanIndex extends Component
         $this->resetEdit();
     }
 
-    // Method untuk mereset form edit
     public function resetEdit()
     {
         $this->editingTaskId = null;
         $this->editedTask = [];
     }
 
-    // Method untuk membuka modal create task
     public function openCreateTaskModal()
     {
         $this->creatingTask = true;
@@ -87,13 +101,15 @@ class KanbanIndex extends Component
             'content' => '',
             'owner_id' => '',
             'responsible_id' => '',
-            'status_id' => '', // Initially empty
+            'status_id' => '',
             'type_id' => '',
             'priority_id' => '',
             'code' => '',
             'order' => '',
             'estimation' => '',
-            'is_default' => true, // Set is_default to true to trigger default behavior
+            'is_default' => true,
+            'start_date' => null,  // Add start_date field
+            'end_date' => null,    // Add end_date field
         ];
 
         // Get the "To Do" status dynamically (assuming it's the default)
@@ -105,16 +121,29 @@ class KanbanIndex extends Component
         }
     }
 
-    // Method untuk mereset form create task
     public function resetCreateTask()
     {
         $this->creatingTask = false;
         $this->newTask = [];
     }
 
-    // Method untuk menyimpan task baru
     public function saveNewTask()
     {
+        $this->validate([
+            'newTask.name' => 'required|string|max:255',
+            'newTask.start_date' => 'nullable|date',
+            'newTask.end_date' => 'nullable|date|after_or_equal:newTask.start_date',
+        ]);
+
+        // Pastikan tanggal start_date dan end_date adalah objek Carbon jika ada
+        if (isset($this->newTask['start_date'])) {
+            $this->newTask['start_date'] = Carbon::parse($this->newTask['start_date']);
+        }
+
+        if (isset($this->newTask['end_date'])) {
+            $this->newTask['end_date'] = Carbon::parse($this->newTask['end_date']);
+        }
+
         // Ensure name is not empty
         if (!empty($this->newTask['name'])) {
             // Fetch the default "To Do" status if not already set
@@ -144,12 +173,12 @@ class KanbanIndex extends Component
             $task->update($this->editedTask); // Updates the task with the new values
         }
     }
+
     public function closeModal()
     {
         $this->editingTaskId = null; // This will close the modal
     }
 
-    // Method untuk memperbarui status task
     public function updateTaskStatus($taskId, $newStatusId)
     {
         $task = Tasks::find($taskId);
@@ -160,18 +189,16 @@ class KanbanIndex extends Component
         }
     }
 
-    // Method untuk menginisialisasi data ketika komponen dimuat
     public function mount($projectId)
     {
         $this->projectId = $projectId;
         $this->project = Project::find($projectId);
         $this->owners = User::all();
         $this->responsibles = User::all();
-        $this->priorities = Priorities::all(); // Ambil semua data priority
-        $this->types = TaskType::all(); // Ambil semua data type
+        $this->priorities = Priorities::all();
+        $this->types = TaskType::all();
     }
 
-    // Method untuk render view
     public function render()
     {
         return view('livewire.kanban.kanban-index', [
@@ -190,8 +217,8 @@ class KanbanIndex extends Component
             }])->get(),
             'owners' => $this->owners,
             'responsibles' => $this->responsibles,
-            'priorities' => $this->priorities, // Kirim data priority ke view
-            'types' => $this->types, // Kirim data type ke view
+            'priorities' => $this->priorities,
+            'types' => $this->types,
         ]);
     }
 }
