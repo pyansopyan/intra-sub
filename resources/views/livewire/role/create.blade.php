@@ -3,7 +3,7 @@
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="{{ route('role.index') }}">Role</a></li>
-            <li><a class="text-black-400 font-semibold">Tambah data Role</a></li>
+            <li><a class="text-black-400 font-semibold">Add data Role</a></li>
         </ul>
     </div>
     <a href="{{ route('role.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -25,8 +25,8 @@
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <!-- Input untuk Nama Role -->
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Role</label>
-                <input id="name" name="name" type="text" placeholder="Masukan Nama Role" autocomplete="off"
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name Role</label>
+                <input id="name" name="name" type="text" placeholder="Input Name Role" autocomplete="off"
                     wire:model="name" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900">
                 @error('name')
@@ -40,7 +40,7 @@
                 <!-- Check All / Uncheck All -->
                 <div class="flex items-center mb-4">
                     <input type="checkbox" id="checkAll" wire:click="toggleSelectAllPermissions" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                    <label for="checkAll" class="ml-2 text-sm text-gray-700">Periksa Semua</label>
+                    <label for="checkAll" class="ml-2 text-sm text-gray-700">Check All</label>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -59,7 +59,7 @@
 
             <!-- Tombol Save dan Back -->
             <button type="reset" class="btn btn-md btn-warning text-white">Reset</button>
-            <button type="submit" class="btn btn-md btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-md btn-primary">Save</button>
         </div>
     </form>
 </div>

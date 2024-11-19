@@ -30,7 +30,7 @@
                 <tbody class="bg-white divide-y divide-black-200 dark:bg-black-700 dark:divide-black-600">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Nama:</strong>
+                            <strong>Name:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $user->name }}

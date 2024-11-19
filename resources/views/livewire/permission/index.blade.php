@@ -10,13 +10,13 @@
         @can('managePermission-create')
             <a href="{{ route('permission.create') }}"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                + Tambah Data
+                + Add Data
             </a>
             <div class="relative w-1/2">
                 <i class='bx bx-search absolute left-3 mt-2  transform  text-black-400'></i>
                 <input type="text"
                     class="pl-10 pr-4 py-2 border border-black-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
-                    wire:model.live="search" placeholder="Cari Permission...">
+                    wire:model.live="search" placeholder="Search Permission...">
             </div>
         @endcan
     </h2>
@@ -52,8 +52,8 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-black-700 bg-black-50 dark:text-black-400 dark:bg-black-800">
-                        <th class="px-4 py-3">Nama</th>
-                        <th class="px-4 py-3 text-center">Aksi</th>
+                        <th class="px-4 py-3">Name</th>
+                        <th class="px-4 py-3 text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-black-700 dark:bg-black-800">
@@ -111,12 +111,12 @@
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                                                     wire:click="destroy({{ $permission->id }})">
-                                                    Hapus
+                                                    Delete
                                                 </button>
                                                 <button
                                                     class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
                                                     onclick="my_modal_{{ $permission->id }}.close()">
-                                                    Batal
+                                                    Cancel
                                                 </button>
                                             </div>
                                         </div>
