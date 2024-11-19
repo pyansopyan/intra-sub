@@ -130,6 +130,12 @@
                                 <span>{{ $task->responsible->name }}</span>
                             </div>
 
+                            {{-- info prioritas --}}
+                            <div class="flex items-center space-x-1 text-sm text-gray-400">
+                                <i class="bx bxs-flag-alt text-lg " style="color: {{ $task->priority->color }}"></i>
+                                <span>{{ $task->priority->name }}</span>
+                            </div>
+
                             <!-- Tanggal Task -->
                             <div class="flex justify-between items-center">
                                 <div
