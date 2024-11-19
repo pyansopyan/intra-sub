@@ -130,10 +130,22 @@
                                 <span>{{ $task->responsible->name }}</span>
                             </div>
 
+                            {{-- info status --}}
+                            <div class="flex items-center space-x-1 text-sm text-gray-400">
+                                <i class="bx bx-task text-lg" style="color: {{ $task->status->color }}"></i>
+                                <span>{{ $task->status->name }}</span>
+                            </div>
+
                             {{-- info prioritas --}}
                             <div class="flex items-center space-x-1 text-sm text-gray-400">
                                 <i class="bx bxs-flag-alt text-lg " style="color: {{ $task->priority->color }}"></i>
                                 <span>{{ $task->priority->name }}</span>
+                            </div>
+
+                            {{-- info prioritas --}}
+                            <div class="flex items-center space-x-1 text-sm text-gray-400">
+                                <i class="bx bx-purchase-tag text-lg " style="color: {{ $task->type->color }}"></i>
+                                <span>{{ $task->type->name }}</span>
                             </div>
 
                             <!-- Tanggal Task -->
@@ -150,6 +162,7 @@
                                         {{ $task->end_date ? \Carbon\Carbon::parse($task->end_date)->format('M d') : 'ga ada' }}
                                     </span>
                                 </div>
+                                
 
                                 <!-- Tombol Delete -->
                                 <button onclick="my_modal_{{ $task->id }}.showModal()" class="flex items-center"
