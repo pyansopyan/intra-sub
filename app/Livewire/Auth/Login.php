@@ -15,6 +15,7 @@ class Login extends Component
         'nrp'=>'',
         'password' => '',
     ];
+     public $showPassword = false;
 
     #[Layout('components.layouts.app-auth')]
     public function login()
@@ -24,6 +25,8 @@ class Login extends Component
             'form.nrp' => 'required',
             'form.password' => 'required|min:6',
         ]);
+
+        
 
         // Memeriksa apakah NRP terdaftar
         $user = User::where('nrp', $this->form['nrp'])->first();
@@ -38,8 +41,15 @@ class Login extends Component
         }
     }
 
+     public function togglePassword()
+    {
+        $this->showPassword = !$this->showPassword;
+    }
+
     public function render()
     {
-        return view('livewire.auth.login');
+        return view('livewire.auth.login', [
+            'showPassword' => $this->showPassword
+        ]);
     }
 }
