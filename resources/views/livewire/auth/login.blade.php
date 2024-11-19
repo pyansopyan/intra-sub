@@ -23,11 +23,7 @@
                     <label for="nrp" class="block text-sm font-medium leading-6 text-gray-900">NRP</label>
                     <div class="mt-2 relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 17h5l-1.5 5h-6l-1.5-5h5zM5 20a1 1 0 011-1h12a1 1 0 011 1H5zM12 7a3 3 0 100-6 3 3 0 000 6zM12 12c-4.418 0-8 2.686-8 6v2h16v-2c0-3.314-3.582-6-8-6z" />
-                            </svg>
+                            <i class='bx bxs-user-account text-xl'></i>
                         </div>
                         <input id="nrp" name="nrp" type="text" placeholder="Masukan NRP"
                             wire:model="form.nrp" required
@@ -39,11 +35,7 @@
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                     <div class="mt-2 relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 3C6.48 3 2 9 2 12s4.48 9 10 9 10-6 10-9-4.48-9-10-9zm0 12a3 3 0 100-6 3 3 0 000 6z" />
-                            </svg>
+                            <i class='bx bx-key text-xl'></i>
                         </div>
                         <input id="password" name="password" type="{{ $showPassword ? 'text' : 'password' }}"
                             placeholder="Masukan Password" wire:model="form.password" required
