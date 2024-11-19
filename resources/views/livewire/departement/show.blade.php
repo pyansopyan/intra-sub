@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
-                            <strong>Nama Departemen:</strong>
+                            <strong>Name Departemen:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $departement->name }}
