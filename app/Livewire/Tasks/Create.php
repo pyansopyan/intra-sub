@@ -38,7 +38,7 @@ class Create extends Component
         // Validasi input
         $this->validate([
             'name' => 'required|string|max:255',
-            'content' => 'required',
+            'content' => 'required|string',
             'owner_id' => 'required|exists:users,id',
             'responsible_id' => 'required|exists:users,id',
             'status_id' => 'required|exists:statuses,id',

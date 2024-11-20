@@ -16,6 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.tiny.cloud/1/8mp7nfo7i7runqvirtyoy4p8agfr6lkx13k7biday3sffl2r/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 </head>
 
