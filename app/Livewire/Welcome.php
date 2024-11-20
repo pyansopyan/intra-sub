@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-
 
 class Welcome extends Component
 {
@@ -16,15 +16,77 @@ class Welcome extends Component
     public array $sortBy = ['column' => 'name', 'direction' => 'asc'];
 
     public string $currentTime = '';
+    public int $currentMonth;
+    public int $currentYear;
+    public array $calendar = [];
 
     public function mount(): void
     {
         $this->updateClock();
+
+        // Inisialisasi bulan dan tahun saat ini
+        $this->currentMonth = now()->month;
+        $this->currentYear = now()->year;
+
+// Generate kalender
+        $this->generateCalendar();
+
     }
 
     public function updateClock(): void
     {
         $this->currentTime = now()->locale('id')->isoFormat('dddd, D MMMM YYYY HH:mm:ss');
+    }
+
+    public function generateCalendar(): void
+    {
+        Carbon::setWeekStartsAt(Carbon::SUNDAY);
+        Carbon::setWeekEndsAt(Carbon::SATURDAY);
+
+        // Mulai dari tanggal 1 bulan ini
+        $startOfMonth = Carbon::createFromDate($this->currentYear, $this->currentMonth, 1);
+
+        // Tentukan tanggal awal minggu untuk tampilan kalender
+        $startOfCalendar = $startOfMonth->copy()->startOfWeek();
+
+        // Tentukan tanggal akhir minggu dari akhir bulan
+        $endOfMonth = $startOfMonth->copy()->endOfMonth();
+        $endOfCalendar = $endOfMonth->copy()->endOfWeek();
+
+        // Debugging untuk memastikan range
+        logger('Start of calendar: ' . $startOfCalendar->toDateString());
+        logger('End of calendar: ' . $endOfCalendar->toDateString());
+
+        // Hasilkan semua tanggal dari awal sampai akhir
+        $dates = collect($startOfCalendar->daysUntil($endOfCalendar)->toArray());
+
+        // Bagi tanggal ke dalam minggu
+        $this->calendar = $dates->chunk(7)->map(function ($week) {
+            return $week->map(function ($date) {
+                return [
+                    'day' => $date->day,
+                    'isToday' => $date->isToday(),
+                    'isCurrentMonth' => $date->month === $this->currentMonth,
+                ];
+            })->toArray();
+        })->toArray();
+    }
+
+    public function changeMonth(int $direction): void
+    {
+        // Ubah bulan berdasarkan arah (+1 untuk maju, -1 untuk mundur)
+        $this->currentMonth += $direction;
+
+        if ($this->currentMonth > 12) {
+            $this->currentMonth = 1;
+            $this->currentYear++;
+        } elseif ($this->currentMonth < 1) {
+            $this->currentMonth = 12;
+            $this->currentYear--;
+        }
+
+        // Generate kalender untuk bulan baru
+        $this->generateCalendar();
     }
 
     // Clear filters
@@ -75,6 +137,9 @@ class Welcome extends Component
         return view('livewire.welcome', [
             'users' => $this->users(),
             'headers' => $this->headers(),
+            'currentMonthName' => Carbon::createFromDate($this->currentYear, $this->currentMonth, 1)
+                ->locale('id')
+                ->isoFormat('MMMM'),
         ]);
     }
 }
