@@ -9,7 +9,7 @@
                     LOGIN
                 </h2>
                 <p class="mt-2 text-center text-sm text-gray-600">
-                    Silakan masuk untuk mengakses web SMPL Intra
+                    Please login to access the SMPL Intra website
                 </p>
             </div>
 
@@ -27,7 +27,7 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <i class='bx bxs-user-account text-xl'></i>
                             </div>
-                            <input id="nrp" name="nrp" type="text" placeholder="Masukan NRP"
+                            <input id="nrp" name="nrp" type="text" placeholder="Insert NRP"
                                 wire:model="form.nrp" required
                                 class="block w-full pl-10 rounded-md border-gray-300 py-2 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
@@ -40,7 +40,7 @@
                                 <i class='bx bx-key text-xl'></i>
                             </div>
                             <input id="password" name="password" type="{{ $showPassword ? 'text' : 'password' }}"
-                                placeholder="Masukan Password" wire:model="form.password" required
+                                placeholder="Insert Password" wire:model="form.password" required
                                 class="block w-full pl-10 rounded-md border-gray-300 py-2 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             <button type="button" wire:click="togglePassword"
                                 class="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -57,7 +57,7 @@
                     <div>
                         <button type="submit"
                             class="flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            Masuk
+                            Login
                         </button>
                     </div>
                 </form>
