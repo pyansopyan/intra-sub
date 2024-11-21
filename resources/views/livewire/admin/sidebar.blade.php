@@ -103,7 +103,7 @@
                             class="relative px-6 py-3 {{ request()->is('task-status*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('task-status.index') }}" wire:navigate.hover>
-                                <i class='bx bxs-check-circle' style="font-size: 20px;"></i>
+                                <i class='bx bx-task ' style="font-size: 20px;"></i>
                                 <span class="ml-4">Task Status</span>
                             </a>
                         </li>
@@ -116,10 +116,7 @@
                             class="relative px-6 py-3 {{ request()->is('task-type*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('task-type.index') }}" wire:navigate.hover>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M9 3h6v4H9V3zm0 8h6v4H9v-4zm0 8h6v4H9v-4z" />
-                                </svg>
+                                <i class='bx bx-purchase-tag' style="font-size: 20px;"></i>
                                 <span class="ml-4">Task Type</span>
                             </a>
                         </li>
@@ -131,11 +128,7 @@
                             class="relative px-6 py-3 {{ request()->is('priorities*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('priorities.index') }}" wire:navigate.hover>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path
-                                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                </svg>
+                                <i class='bx bxs-flag-alt' style="font-size: 20px;"></i>
                                 <span class="ml-4">Task Priorities</span>
                             </a>
                         </li>
@@ -148,10 +141,7 @@
                             class="relative px-6 py-3 {{ request()->is('statuses*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('project-statuses.index') }}" wire:navigate.hover>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M3 12l2-2 4 4 8-8 2 2-10 10-4-4z" />
-                                </svg>
+                                <i class='bx bxs-check-circle' style="font-size: 20px;"></i>
                                 <span class="ml-4">Project Statuses</span>
                             </a>
                         </li>
@@ -201,33 +191,33 @@
                     </ul>
                     <ul class="pt-4 mt-1 space-y-2 font-medium">
                         @can('manageBoard')
-                        <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">KANBAN BOARD
-                        </li>
-                        <li
-                            class="relative px-6 py-3 {{ request()->is('board*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="{{ route('board.index') }}" wire:navigate.hover>
-                                <i class='bx bxs-dashboard' style="font-size: 22px;"></i>
-                                <span class="ml-4">Board</span>
-                            </a>
-                        </li>
+                            <li class="px-6 py-2 font-semibold text-xs text-gray-600 dark:text-gray-400">KANBAN BOARD
+                            </li>
+                            <li
+                                class="relative px-6 py-3 {{ request()->is('board*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
+                                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                    href="{{ route('board.index') }}" wire:navigate.hover>
+                                    <i class='bx bxs-dashboard' style="font-size: 22px;"></i>
+                                    <span class="ml-4">Board</span>
+                                </a>
+                            </li>
                         @endcan
                     </ul>
                     @if (!empty($projectId))
-                    <ul>
-                        @can('manageKanban')
-                        <li
-                            class="relative px-6 py-3 {{ request()->is('kanban*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="{{ route('kanban.index', ['projectId' => $projectId ?? 'default']) }}"
-                                wire:navigate.hover>
-                                <i class='bx bx-table' style="font-size: 20px"></i> <!-- Changed icon here -->
-                                <span class="ml-4">Kanban</span>
-                            </a>
-                        </li>
-                        <li class="border-t border-gray-200 dark:border-gray-700"></li>
-                        @endcan
-                    </ul>
+                        <ul>
+                            @can('manageKanban')
+                                <li
+                                    class="relative px-6 py-3 {{ request()->is('kanban*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
+                                    <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                                        href="{{ route('kanban.index', ['projectId' => $projectId ?? 'default']) }}"
+                                        wire:navigate.hover>
+                                        <i class='bx bx-table' style="font-size: 20px"></i> <!-- Changed icon here -->
+                                        <span class="ml-4">Kanban</span>
+                                    </a>
+                                </li>
+                                <li class="border-t border-gray-200 dark:border-gray-700"></li>
+                            @endcan
+                        </ul>
                     @endif
             </div>
         </aside>
