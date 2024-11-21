@@ -1,3 +1,12 @@
+    @php
+        $isActive = fn($routes) => collect((array) $routes)->contains(fn($route) => request()->routeIs($route))
+            ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700'
+            : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200';
+
+        $isBorderActive = fn($routes) => collect((array) $routes)->contains(fn($route) => request()->routeIs($route))
+            ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg'
+            : '';
+    @endphp
     <div class="overflow-hidden">
         <aside class="flex z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 h-screen">
             <div class="py-4 text-gray-500 dark:text-gray-400">
@@ -165,11 +174,11 @@
                 <ul>
                     @can('manageProjectStatuses')
                         <li
-                            class="relative px-6 py-3 {{ request()->is('statuses*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
+                            class="relative px-6 py-3 {{ $isActive(['project-statuses.index', 'project-statuses.edit', 'project-statuses.show', 'project-statuses.create']) }}">
                             <span
-                                class="{{ request()->routeIs('statuses*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ $isBorderActive(['project-statuses.index', 'project-statuses.edit', 'project-statuses.show', 'project-statuses.create']) }}"
                                 aria-hidden="true"></span>
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
                                 href="{{ route('project-statuses.index') }}" wire:navigate.hover>
                                 <i class='bx bx-check' style="font-size: 20px;"></i>
                                 <span class="ml-4">Project Statuses</span>
@@ -185,18 +194,19 @@
                             PROJECT MANAGEMENT
                         </li>
                         <li
-                            class="relative px-6 py-3 {{ request()->is('project*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
+                            class="relative px-6 py-3 {{ $isActive(['project.index', 'project.create', 'project.edit', 'project.show']) }}">
                             <span
-                                class="{{ request()->routeIs('project*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ $isBorderActive(['project.index', 'project.create', 'project.edit', 'project.show']) }}"
                                 aria-hidden="true"></span>
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
                                 href="{{ route('project.index') }}" wire:navigate.hover>
-                                <i class='bx bxl-product-hunt' style="font-size: 20px"></i>
+                                <i class='bx bxl-product-hunt' style="font-size: 20px;"></i>
                                 <span class="ml-4">Project</span>
                             </a>
                         </li>
                     @endcan
                 </ul>
+
                 <ul>
                     @can('manageTasks')
                         <li
