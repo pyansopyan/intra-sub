@@ -103,7 +103,7 @@
                             class="relative px-6 py-3 {{ request()->is('task-status*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('task-status.index') }}" wire:navigate.hover>
-                                <i class='bx bx-task ' style="font-size: 20px;"></i>
+                                <i class='bx bxs-check-circle ' style="font-size: 20px;"></i>
                                 <span class="ml-4">Task Status</span>
                             </a>
                         </li>
@@ -141,7 +141,7 @@
                             class="relative px-6 py-3 {{ request()->is('statuses*') ? 'text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('project-statuses.index') }}" wire:navigate.hover>
-                                <i class='bx bxs-check-circle' style="font-size: 20px;"></i>
+                                <i class='bx bx-check' style="font-size: 20px;"></i>
                                 <span class="ml-4">Project Statuses</span>
                             </a>
                         </li>
