@@ -6,7 +6,7 @@
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
-        <span>Task Prioritias</span>
+        <span>Task Priority</span>
         @can('manageTaskPriorities-create')
             <a href="{{ route('priorities.create') }}"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
