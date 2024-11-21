@@ -26,6 +26,19 @@
                         <span class="text-blue-500 font-semibold">{{ Auth::user()->name }}</span>!
                     </p>
                 </div>
+
+                @if ($totalUsers)
+                    <div class="flex items-center bg-white rounded-lg shadow-md p-4 mt-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-blue-500 rounded-full text-white">
+                            <i class='bx bxs-user text-2xl'></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-800">Total User</p>
+                            <p class="text-2xl font-bold text-gray-900">{{ $totalUsers }}</p>
+                        </div>
+                    </div>
+                @endif
+
             </div>
 
             <!-- Kalender Card tetap di sebelah jam digital -->

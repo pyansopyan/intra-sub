@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Welcome extends Component
@@ -19,6 +21,7 @@ class Welcome extends Component
     public int $currentMonth;
     public int $currentYear;
     public array $calendar = [];
+    public ?int $totalUsers = null;
 
     public function mount(): void
     {
@@ -134,12 +137,20 @@ class Welcome extends Component
 
     public function render()
     {
+        $user = Auth::user();
+
+// Pastikan totalUsers diperbarui di sini
+        if ($user && $user->hasRole('superadmin')) {
+            $this->totalUsers = User::count();
+        }
+
         return view('livewire.welcome', [
             'users' => $this->users(),
             'headers' => $this->headers(),
             'currentMonthName' => Carbon::createFromDate($this->currentYear, $this->currentMonth, 1)
                 ->locale('id')
                 ->isoFormat('MMMM'),
+            'totalUsers' => $this->totalUsers,
         ]);
     }
 }
