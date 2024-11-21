@@ -2,8 +2,8 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('priorities.index') }}">Task Priorities</a></li>
-            <li><a class="text-black-400 font-semibold">Detail data Task Priorities</a></li>
+            <li><a href="{{ route('priorities.index') }}">Task Priority</a></li>
+            <li><a class="text-black-400 font-semibold">Detail data Task Priority</a></li>
         </ul>
     </div>
     <a href="{{ route('priorities.index') }}" class="btn btn-md bg-white text-black mt-2">
@@ -18,7 +18,7 @@
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Nama Status:</strong>
+                            <strong>Name:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $prioritas->name }}
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Tipe Warna:</strong>
+                            <strong>Color:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div style="width: 25px; height: 25px; background-color: {{ $prioritas->color }}; border-radius: 3px;"></div>
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                            <strong>Tipe Bawaan:</strong>
+                            <strong>Default:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400 flex items-center">
                             {{ $prioritas->is_default ? 'Ya' : 'Tidak' }}

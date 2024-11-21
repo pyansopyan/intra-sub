@@ -2,7 +2,7 @@
     <div class="breadcrumbs text-sm mt-4">
         <ul>
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="{{ route('priorities.index') }}" class="text-black-400 font-semibold">Task Prioritias</a></li>
+            <li><a href="{{ route('priorities.index') }}" class="text-black-400 font-semibold">Task Priority</a></li>
         </ul>
     </div>
     <h2 class="flex items-center space-x-4 my-6 text-2xl font-semibold text-gray-700 dark:text-black-200">
@@ -10,13 +10,13 @@
         @can('manageTaskPriorities-create')
             <a href="{{ route('priorities.create') }}"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                + Tambah Data
+                + Add Data
             </a>
             <div class="relative w-1/2">
                 <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
                 <input type="text"
                     class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
-                    wire:model.live="search" placeholder="Cari Priorities..">
+                    wire:model.live="search" placeholder="Search Priority..">
             </div>
         @endcan
     </h2>
@@ -54,10 +54,10 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Tipe Nama</th>
-                        <th class="px-4 py-3">Tipe Warna</th>
-                        <th class="px-4 py-3">Tipe Bawaan</th>
-                        <th class="px-4 py-3">Aksi</th>
+                        <th class="px-4 py-3">Name</th>
+                        <th class="px-4 py-3">Color</th>
+                        <th class="px-4 py-3">Default</th>
+                        <th class="px-4 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -131,11 +131,11 @@
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
                                                     wire:click="destroy({{ $prioriti->id }})">
-                                                    Hapus
+                                                    Delete
                                                 </button>
                                                 <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
                                                     onclick="my_modal_{{ $prioriti->id }}.close()">
-                                                    Batal
+                                                    Cancel
                                                 </button>
                                             </div>
                                         </div>

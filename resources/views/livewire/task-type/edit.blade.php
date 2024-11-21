@@ -26,7 +26,7 @@
             </div>
 
              <div class="mb-4">
-                <label for="color" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tipe Warna</label>
+                <label for="color" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Color</label>
                 <div class="flex items-center">
                     <input type="color" id="head" wire:model.live="color" name="head"
                         class="w-12 h-10 p-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -42,7 +42,7 @@
             <div class="mb-4 flex items-center">
                 <input type="checkbox" id="is_default" wire:model="is_default"
                     class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                <label for="is_default" class="ml-2 block text-sm text-gray-900 dark:text-gray-400">Tipe Bawaan</label>
+                <label for="is_default" class="ml-2 block text-sm text-gray-900 dark:text-gray-400">Default</label>
             </div>
 
             <div class="flex">

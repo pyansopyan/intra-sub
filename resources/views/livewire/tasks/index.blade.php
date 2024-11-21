@@ -10,13 +10,13 @@
         @can('manageTasks-create')
             <a href="{{ route('tasks.create') }}"
                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                + Tambah Data
+                + Add Data
             </a>
             <div class="relative w-1/2">
                 <i class='bx bx-search absolute left-3 mt-2  transform  text-gray-400'></i>
                 <input type="text"
                     class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-purple-500 text-sm w-full"
-                    wire:model.live="search" placeholder="Cari Task...">
+                    wire:model.live="search" placeholder="Search Task...">
             </div>
         @endcan
     </h2>
@@ -53,12 +53,12 @@
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Nama</th>
-                        <th class="px-4 py-3">Isi</th>
-                        <th class="px-4 py-3">Kode</th>
-                        <th class="px-4 py-3">Pesanan</th>
-                        <th class="px-4 py-3">Estimasi</th>
-                        <th class="px-4 py-3">Aksi</th>
+                        <th class="px-4 py-3">Name</th>
+                        <th class="px-4 py-3">Content</th>
+                        <th class="px-4 py-3">Code</th>
+                        <th class="px-4 py-3">Order</th>
+                        <th class="px-4 py-3">Estimation</th>
+                        <th class="px-4 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -123,11 +123,11 @@
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
                                                     wire:click="destroy({{ $task->id }})">
-                                                    Hapus
+                                                    Delete
                                                 </button>
                                                 <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
                                                     onclick="my_modal_{{ $task->id }}.close()">
-                                                    Batal
+                                                    cancel
                                                 </button>
                                             </div>
                                         </div>

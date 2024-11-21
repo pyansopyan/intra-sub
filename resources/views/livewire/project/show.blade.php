@@ -33,7 +33,7 @@
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                                <strong>Nama:</strong>
+                                <strong>Name:</strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                                 {{ $project->name }}
@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                                <strong>Deskripsi:</strong>
+                                <strong>Description:</strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                                 {{ $project->description }}
@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
-                                <strong>Pemilik:</strong>
+                                <strong>Owner:</strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                                 {{ $project->owner->name ?? 'Tidak ada owner' }}
@@ -148,8 +148,8 @@
                                 <tr
                                     class="text-xs font-semibold tracking-wide text-left text-black-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-black-400 dark:bg-gray-800">
                                     <th class="px-4 py-3">No</th>
-                                    <th class="px-4 py-3">Pengguna</th>
-                                    <th class="px-4 py-3">Aksi</th>
+                                    <th class="px-4 py-3">Owner</th>
+                                    <th class="px-4 py-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -226,19 +226,18 @@
                                                 <button
                                                     class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
                                                     wire:click="destroy({{ $attach->id }})">
-                                                    Hapus
+                                                    Delete
                                                 </button>
                                                 <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
                                                     onclick="my_modal_{{ $attach->id }}.close()">
-                                                    Batal
+                                                    Cancel
                                                 </button>
                                             </div>
                                         </div>
                                     </dialog>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center text-sm text-gray-500">Tidak ada pengguna yang terikat
-                                            untuk proyek ini.</td>
+                                        <td colspan="3" class="text-center text-sm text-gray-500">No users are bound for this project.</td>
                                     </tr>
                                 @endforelse
                             </tbody>
