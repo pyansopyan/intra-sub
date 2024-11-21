@@ -27,6 +27,6 @@
             </label>
         </div>
         <button type="reset" class="btn btn-md btn-warning text-black hover:text-white dark:text-white">Reset</button>
-        <button type="submit" class="btn btn-md btn-primary text-black hover:text-white dark:text-white">Simpan</button>
+        <button type="submit" class="btn btn-md btn-primary text-black hover:text-white dark:text-white">Save</button>
     </form>
 </div>
