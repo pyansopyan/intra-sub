@@ -1,12 +1,3 @@
-    @php
-        $isActive = fn($routes) => collect((array) $routes)->contains(fn($route) => request()->routeIs($route))
-            ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700'
-            : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200';
-
-        $isBorderActive = fn($routes) => collect((array) $routes)->contains(fn($route) => request()->routeIs($route))
-            ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg'
-            : '';
-    @endphp
     <div class="overflow-hidden">
         <aside class="flex z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 h-screen">
             <div class="py-4 text-gray-500 dark:text-gray-400">
@@ -33,7 +24,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('user*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('user*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('user*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
                                 wire:navigate.hover href="{{ route('user.index') }}">
@@ -48,7 +39,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('role*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('role*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('role*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 wire:navigate.hover href="{{ route('role.index') }}">
@@ -64,7 +55,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('permissions*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('permissions*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('permissions*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 wire:navigate.hover href="{{ route('permission.index') }}">
@@ -84,7 +75,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('departement*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('departement*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('departement*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('departement.index') }}" wire:navigate.hover>
@@ -97,7 +88,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('bagian*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('bagian*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('bagian*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('bagian.index') }}" wire:navigate.hover>
@@ -110,7 +101,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('jabatan*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('jabatan*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('jabatan*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('jabatan.index') }}" wire:navigate.hover>
@@ -129,7 +120,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('task-status*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('task-status*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('task-status*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('task-status.index') }}" wire:navigate.hover>
@@ -145,7 +136,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('task-type*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('task-type*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('task-type*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('task-type.index') }}" wire:navigate.hover>
@@ -160,7 +151,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('priorities*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                             <span
-                                class="{{ request()->routeIs('priorities*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('priorities*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('priorities.index') }}" wire:navigate.hover>
@@ -174,9 +165,9 @@
                 <ul>
                     @can('manageProjectStatuses')
                         <li
-                            class="relative px-6 py-3 {{ $isActive(['project-statuses.index', 'project-statuses.edit', 'project-statuses.show', 'project-statuses.create']) }}">
+                            class="relative px-6 py-3 {{ request()->is('statuses*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                             <span
-                                class="{{ $isBorderActive(['project-statuses.index', 'project-statuses.edit', 'project-statuses.show', 'project-statuses.create']) }}"
+                                class="{{ request()->is('statuses*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
                                 href="{{ route('project-statuses.index') }}" wire:navigate.hover>
@@ -194,9 +185,9 @@
                             PROJECT MANAGEMENT
                         </li>
                         <li
-                            class="relative px-6 py-3 {{ $isActive(['project.index', 'project.create', 'project.edit', 'project.show']) }}">
+                            class="relative px-6 py-3 {{ request()->is('project*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                             <span
-                                class="{{ $isBorderActive(['project.index', 'project.create', 'project.edit', 'project.show']) }}"
+                                class="{{ request()->is('project*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150"
                                 href="{{ route('project.index') }}" wire:navigate.hover>
@@ -212,7 +203,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('tasks*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                             <span
-                                class="{{ request()->routeIs('tasks*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('tasks*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('tasks.index') }}" wire:navigate.hover>
@@ -230,7 +221,7 @@
                         <li
                             class="relative px-6 py-3 {{ request()->is('board*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}"">
                             <span
-                                class="{{ request()->routeIs('board*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                class="{{ request()->is('board*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                 aria-hidden="true"></span>
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="{{ route('board.index') }}" wire:navigate.hover>
@@ -246,7 +237,7 @@
                             <li
                                 class="relative px-6 py-3 {{ request()->is('kanban*') ? 'text-blue-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700' : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200' }}">
                                 <span
-                                    class="{{ request()->routeIs('kanban*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
+                                    class="{{ request()->is('kanban*') ? 'absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg' : '' }}"
                                     aria-hidden="true"></span>
                                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                     href="{{ route('kanban.index', ['projectId' => $projectId ?? 'default']) }}"
