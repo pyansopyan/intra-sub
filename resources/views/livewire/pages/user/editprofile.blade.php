@@ -51,7 +51,7 @@
         </div>
 
         <div class="mb-4">
-            <label class="block text-gray-700 dark:text-gray-400">Nama</label>
+            <label class="block text-gray-700 dark:text-gray-400">Name</label>
             <input type="text" wire:model="name"
                    class="mt-1 block w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm dark:text-gray-300 dark:focus:shadow-outline-gray text-black"
                    required>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="mb-4">
-            <label class="block text-gray-700 dark:text-gray-400">Email</label>
+            <label class="block text-gray-700 dark:text-gray-400">E-mail</label>
             <input type="email" wire:model="email"
                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray text-black"
                    required>
