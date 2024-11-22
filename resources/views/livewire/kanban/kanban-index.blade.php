@@ -162,7 +162,7 @@
                                         {{ $task->end_date ? \Carbon\Carbon::parse($task->end_date)->format('M d') : 'ga ada' }}
                                     </span>
                                 </div>
-                                
+
 
                                 <!-- Tombol Delete -->
                                 <button onclick="my_modal_{{ $task->id }}.showModal()" class="flex items-center"
@@ -175,7 +175,7 @@
                                     class="modal fixed inset-0 flex items-center justify-center">
                                     <div
                                         class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
-                                        <svg class="mx-auto mb-4 text-black-400 w-20 h-20 dark:text-black-200"
+                                        <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
