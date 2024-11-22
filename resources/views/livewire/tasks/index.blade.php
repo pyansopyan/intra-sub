@@ -65,7 +65,7 @@
                     @foreach ($tasks as $task)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">{{ $task->name }}</td>
-                            <td class="px-4 py-3 text-sm">{{ $task->content }}</td>
+                            <td class="px-4 py-3 text-sm">{!! $task->content !!}</td>
                             <td class="px-4 py-3 text-sm">{{ $task->code }}</td>
                             <td class="px-4 py-3 text-sm">{{ $task->order }}</td>
                             <td class="px-4 py-3 text-sm">{{ $task->estimation }}</td>
