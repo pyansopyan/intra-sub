@@ -28,7 +28,7 @@
             </label>
 
             <!-- Deskripsi Project -->
-            <label class="block text-sm mt-4">
+            {{-- <label class="block text-sm mt-4">
                 <span class="text-black-700 dark:text-black-400">Description</span>
                 <textarea id="description" name="description" rows="4" wire:model="description"
                     class="shadow-sm focus:ring-indigo-500 dark:text-400 dark:bg-white-700 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
@@ -36,7 +36,26 @@
                 @error('description')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
-            </label>
+            </label> --}}
+
+             <div>
+                <label class="block text-sm mt-4">
+                    <span class="text-gray-700 dark:text-gray-400">Descripion</span>
+                </label>
+
+                <!-- Integrasi CKEditor -->
+                <div wire:ignore>
+                    <textarea wire:model.defer="description"
+                              class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
+                              name="description"
+                              id="description"></textarea>
+                </div>
+
+                @error('description')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
 
             <!-- Owner Project -->
             <!-- Owner -->
@@ -96,3 +115,20 @@
         <button type="submit" class="btn btn-md btn-primary">Save</button>
     </form>
 </div>
+
+@push('scripts')
+
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#description'))
+        .then(editor => {
+            editor.model.document.on('change:data', () => {
+                @this.set('description', editor.getData());
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+@endpush
