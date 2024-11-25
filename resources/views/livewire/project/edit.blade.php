@@ -27,7 +27,7 @@
                 @enderror
             </label>
 
-            <label class="block text-sm mt-4">
+            {{-- <label class="block text-sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
                  <textarea id="description" name="description" rows="4" wire:model="description"
                     class="shadow-sm focus:ring-indigo-500 dark:bg-white-700 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
@@ -35,7 +35,25 @@
                 @error('description')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
-            </label>
+            </label> --}}
+
+            <div>
+                <label class="block text-sm mt-4">
+                    <span class="text-gray-700 dark:text-gray-400">Descripion</span>
+                </label>
+
+                <!-- Integrasi CKEditor -->
+                <div wire:ignore>
+                    <textarea wire:model.defer="description"
+                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
+                        name="description" id="description"></textarea>
+                </div>
+
+                @error('description')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
 
             <label for="owner_id" class="block text-sm mt-4 text-gray-700 dark:text-gray-400">Owner</label>
             <select wire:model="owner_id" id="owner_id"
@@ -76,10 +94,30 @@
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
                     placeholder="Insert ticket prefix" type="text" wire:model="ticket_prefix" />
-                @error('ticket_prefix') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                @error('ticket_prefix')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </label>
         </div>
         <button type="reset" class="btn btn-md btn-warning dark:text-white text-black hover:text-white">Reset</button>
-        <button type="submit" class="btn btn-md btn-primary dark:text-white text-black hover:text-white">Update</button>
+        <button type="submit"
+            class="btn btn-md btn-primary dark:text-white text-black hover:text-white">Update</button>
     </form>
 </div>
+
+@push('scripts')
+
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#description'))
+        .then(editor => {
+            editor.model.document.on('change:data', () => {
+                @this.set('description', editor.getData());
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+@endpush
