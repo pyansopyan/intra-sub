@@ -28,15 +28,32 @@
             </label>
 
             <!-- Task Content -->
-            <label class="block text-sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Isi</span>
+            {{-- <label class="block text-sm mt-4">
+                <span class="text-gray-700 dark:text-gray-400">Content</span>
                 <textarea id="content" name="content" rows="4" wire:model="content"
                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
                     placeholder="Edit task content"></textarea>
                 @error('content')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
-            </label>
+            </label> --}}
+
+            <div>
+                <label class="block text-sm mt-4">
+                    <span class="text-gray-700 dark:text-gray-400">Content</span>
+                </label>
+
+                <!-- Integrasi CKEditor -->
+                <div wire:ignore>
+                    <textarea wire:model.defer="content"
+                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
+                        name="content" id="content"></textarea>
+                </div>
+
+                @error('content')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
 
             <!-- Owner -->
             <label for="owner_id" class="block text-sm mt-4">Pemilik</label>
@@ -153,3 +170,18 @@
         <button type="submit" class="btn btn-md btn-primary">Save Changes</button>
     </form>
 </div>
+
+@push('scripts')
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#content'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    @this.set('content', editor.getData()); // Sinkronkan dengan $content
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+@endpush

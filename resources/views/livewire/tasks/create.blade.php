@@ -37,9 +37,8 @@
                 <!-- Integrasi CKEditor -->
                 <div wire:ignore>
                     <textarea wire:model.defer="content"
-                              class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
-                              name="content"
-                              id="content"></textarea>
+                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
+                        name="content" id="content"></textarea>
                 </div>
 
                 @error('content')
@@ -189,19 +188,16 @@
 
 </div>
 @push('scripts')
-
-
-<script>
-    ClassicEditor
-        .create(document.querySelector('#content'))
-        .then(editor => {
-            editor.model.document.on('change:data', () => {
-                @this.set('content', editor.getData()); // Sinkronkan dengan $content
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#content'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    @this.set('content', editor.getData()); // Sinkronkan dengan $content
+                });
+            })
+            .catch(error => {
+                console.error(error);
             });
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+    </script>
 @endpush
-
