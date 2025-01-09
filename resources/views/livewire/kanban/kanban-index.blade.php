@@ -209,247 +209,176 @@
 
 
     @if ($editingTaskId)
-        <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div class="bg-white p-6 rounded-lg w-1/2 relative">
-                <!-- Modal Header -->
-                <h3 class="text-xl font-semibold">Edit Task</h3>
-                <button wire:click="closeModal"
-                    class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" wire:click.self="closeModal">
+        <div class="bg-white p-6 rounded-lg w-1/2 relative max-h-screen overflow-y-auto">
+            <!-- Modal Header -->
+            <h3 class="text-xl font-semibold">Edit Task</h3>
+            <button wire:click="closeModal"
+                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-                <!-- Form Fields -->
-                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Task Name -->
-                    <div class="col-span-1">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Task Name</label>
-                        <input id="name" type="text" wire:model="editedTask.name"
-                            placeholder="Enter task name" class="bg-gray-100 p-2 rounded w-full"
-                            wire:keyup="updateTaskRealTime" />
-                    </div>
+            <!-- Form Fields -->
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Task Name -->
+                <div class="col-span-1">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Task Name</label>
+                    <input id="name" type="text" wire:model="editedTask.name"
+                        placeholder="Enter task name" class="bg-gray-100 p-2 rounded w-full"
+                        wire:keyup="updateTaskRealTime" />
+                </div>
 
-                    <!-- Content -->
-                    <div class="col-span-1">
-                        <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea id="content" wire:model="editedTask.content" placeholder="Enter task content"
-                            class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime"></textarea>
-                    </div>
+                <!-- Content -->
+                <div class="col-span-1">
+                    <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+                    <textarea id="content" wire:model="editedTask.content" placeholder="Enter task content"
+                        class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime"></textarea>
+                </div>
 
-                    <!-- Owner -->
-                    <div class="col-span-1">
-                        <label for="owner_id" class="block text-sm font-medium text-gray-700">Owner</label>
-                        <select id="owner_id" wire:model="editedTask.owner_id"
-                            class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime">
-                            <option value="">Select Owner</option>
-                            @foreach ($owners as $owner)
-                                <option value="{{ $owner->id }}">{{ $owner->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Owner -->
+                <div class="col-span-1">
+                    <label for="owner_id" class="block text-sm font-medium text-gray-700">Owner</label>
+                    <select id="owner_id" wire:model="editedTask.owner_id"
+                        class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime">
+                        <option value="">Select Owner</option>
+                        @foreach ($owners as $owner)
+                            <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                    <!-- Start Date -->
-                    <div class="col-span-1">
-                        <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
-                        <input type="date" id="start-date" wire:model="editedTask.start_date"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
+                <!-- Start Date -->
+                <div class="col-span-1">
+                    <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                    <input type="date" id="start-date" wire:model="editedTask.start_date"
+                        class="bg-gray-100 p-2 rounded w-full" />
+                </div>
 
-                    <!-- End Date -->
-                    <div class="col-span-1">
-                        <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
-                        <input type="date" id="end-date" wire:model="editedTask.end_date"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
+                <!-- End Date -->
+                <div class="col-span-1">
+                    <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
+                    <input type="date" id="end-date" wire:model="editedTask.end_date"
+                        class="bg-gray-100 p-2 rounded w-full" />
+                </div>
 
-                    <!-- Responsible -->
-                    <div class="col-span-1">
-                        <label for="responsible_id"
-                            class="block text-sm font-medium text-gray-700">Responsible</label>
-                        <select id="responsible_id" wire:model="editedTask.responsible_id"
-                            class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime">
-                            <option value="">Select Responsible</option>
-                            @foreach ($responsibles as $responsible)
-                                <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Responsible -->
+                <div class="col-span-1">
+                    <label for="responsible_id"
+                        class="block text-sm font-medium text-gray-700">Responsible</label>
+                    <select id="responsible_id" wire:model="editedTask.responsible_id"
+                        class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime">
+                        <option value="">Select Responsible</option>
+                        @foreach ($responsibles as $responsible)
+                            <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                    <!-- Type -->
-                    <div class="col-span-1">
-                        <label for="type_id" class="block text-sm font-medium text-gray-700">Type</label>
-                        <select id="type_id" wire:model="editedTask.type_id" class="bg-gray-100 p-2 rounded w-full"
-                            wire:keyup="updateTaskRealTime">
-                            <option value="">Select Type</option>
-                            @foreach ($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Type -->
+                <div class="col-span-1">
+                    <label for="type_id" class="block text-sm font-medium text-gray-700">Type</label>
+                    <select id="type_id" wire:model="editedTask.type_id" class="bg-gray-100 p-2 rounded w-full"
+                        wire:keyup="updateTaskRealTime">
+                        <option value="">Select Type</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                    <!-- Priority -->
-                    <div class="col-span-1">
-                        <label for="priority_id" class="block text-sm font-medium text-gray-700">Priority</label>
-                        <select id="priority_id" wire:model="editedTask.priority_id"
-                            class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime">
-                            <option value="">Select Priority</option>
-                            @foreach ($priorities as $priority)
-                                <option value="{{ $priority->id }}">{{ $priority->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Priority -->
+                <div class="col-span-1">
+                    <label for="priority_id" class="block text-sm font-medium text-gray-700">Priority</label>
+                    <select id="priority_id" wire:model="editedTask.priority_id"
+                        class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime">
+                        <option value="">Select Priority</option>
+                        @foreach ($priorities as $priority)
+                            <option value="{{ $priority->id }}">{{ $priority->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                    <!-- Code -->
-                    <div class="col-span-1">
-                        <label for="code" class="block text-sm font-medium text-gray-700">Code</label>
-                        <input id="code" type="text" wire:model="editedTask.code" placeholder="Enter Code"
-                            class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime" />
-                    </div>
+                <!-- Code -->
+                <div class="col-span-1">
+                    <label for="code" class="block text-sm font-medium text-gray-700">Code</label>
+                    <input id="code" type="text" wire:model="editedTask.code" placeholder="Enter Code"
+                        class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime" />
+                </div>
 
-                    <!-- Order -->
-                    <div class="col-span-1">
-                        <label for="order" class="block text-sm font-medium text-gray-700">Order</label>
-                        <input id="order" type="number" wire:model="editedTask.order" placeholder="Enter Order"
-                            class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime" />
-                    </div>
+                <!-- Order -->
+                <div class="col-span-1">
+                    <label for="order" class="block text-sm font-medium text-gray-700">Order</label>
+                    <input id="order" type="number" wire:model="editedTask.order" placeholder="Enter Order"
+                        class="bg-gray-100 p-2 rounded w-full" wire:keyup="updateTaskRealTime" />
+                </div>
 
-                    <!-- Estimation -->
-                    <div class="col-span-1">
-                        <label for="estimation" class="block text-sm font-medium text-gray-700">Estimation</label>
-                        <input id="estimation" type="number" wire:model="editedTask.estimation"
-                            placeholder="Enter Estimation" class="bg-gray-100 p-2 rounded w-full"
-                            wire:keyup="updateTaskRealTime" />
-                    </div>
+                <!-- Estimation -->
+                <div class="col-span-1">
+                    <label for="estimation" class="block text-sm font-medium text-gray-700">Estimation</label>
+                    <input id="estimation" type="number" wire:model="editedTask.estimation"
+                        placeholder="Enter Estimation" class="bg-gray-100 p-2 rounded w-full"
+                        wire:keyup="updateTaskRealTime" />
+                </div>
 
-                    <!-- Update Button -->
-                    <div class="col-span-2 text-right mt-4">
-                        <button wire:click="saveTask"
-                            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            Update
-                        </button>
-                    </div>
+                <!-- Update Button -->
+                <div class="col-span-2 text-right mt-4">
+                    <button wire:click="saveTask"
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Update
+                    </button>
                 </div>
             </div>
         </div>
-    @endif
+    </div>
+@endif
     <!-- Modal for Creating Task -->
+    @can('manageTasks-create')
     @if ($creatingTask)
         <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div class="bg-white p-6 rounded-lg w-1/2 relative">
-                <!-- Close Button -->
+            <div class="bg-white p-6 rounded-lg w-1/2 relative overflow-y-auto max-h-screen">
                 <button wire:click="resetCreateTask"
-                    class="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-800">
-                    &times;
+                    class="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-800">&times;
                 </button>
 
-                <!-- Modal Header -->
                 <h3 class="text-xl font-semibold">Create Task</h3>
 
-                <!-- Form Fields -->
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Task Name -->
-                    <div class="col-span-1">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Task Name</label>
-                        <input id="name" type="text" wire:model="newTask.name" placeholder="Enter task name"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
+                    @foreach ([
+                        ['label' => 'Task Name', 'model' => 'newTask.name', 'type' => 'text'],
+                        ['label' => 'Content', 'model' => 'newTask.content', 'type' => 'textarea'],
+                        ['label' => 'Owner', 'model' => 'newTask.owner_id', 'type' => 'select', 'options' => $owners],
+                        ['label' => 'Start Date', 'model' => 'newTask.start_date', 'type' => 'date'],
+                        ['label' => 'End Date', 'model' => 'newTask.end_date', 'type' => 'date'],
+                        ['label' => 'Responsible', 'model' => 'newTask.responsible_id', 'type' => 'select', 'options' => $responsibles],
+                        ['label' => 'Type', 'model' => 'newTask.type_id', 'type' => 'select', 'options' => $types],
+                        ['label' => 'Priority', 'model' => 'newTask.priority_id', 'type' => 'select', 'options' => $priorities],
+                        ['label' => 'Code', 'model' => 'newTask.code', 'type' => 'text'],
+                        ['label' => 'Order', 'model' => 'newTask.order', 'type' => 'number'],
+                        ['label' => 'Estimation', 'model' => 'newTask.estimation', 'type' => 'number']
+                    ] as $field)
+                        <div class="col-span-1">
+                            <label for="{{ $field['model'] }}" class="block text-sm font-medium text-gray-700">{{ $field['label'] }}</label>
+                            @if($field['type'] == 'select')
+                                <select id="{{ $field['model'] }}" wire:model="{{ $field['model'] }}" class="bg-gray-100 p-2 rounded w-full">
+                                    <option value="">Select {{ $field['label'] }}</option>
+                                    @foreach ($field['options'] as $option)
+                                        <option value="{{ $option->id }}">{{ $option->name }}</option>
+                                    @endforeach
+                                </select>
+                            @elseif($field['type'] == 'textarea')
+                                <textarea id="{{ $field['model'] }}" wire:model="{{ $field['model'] }}" placeholder="Enter {{ $field['label'] }}" class="bg-gray-100 p-2 rounded w-full"></textarea>
+                            @else
+                                <input id="{{ $field['model'] }}" type="{{ $field['type'] }}" wire:model="{{ $field['model'] }}" placeholder="Enter {{ $field['label'] }}" class="bg-gray-100 p-2 rounded w-full"/>
+                            @endif
+                        </div>
+                    @endforeach
 
-                    <!-- Content -->
-                    <div class="col-span-1">
-                        <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea id="content" wire:model="newTask.content" placeholder="Enter task content"
-                            class="bg-gray-100 p-2 rounded w-full"></textarea>
-                    </div>
-
-                    <!-- Owner -->
-                    <div class="col-span-1">
-                        <label for="owner_id" class="block text-sm font-medium text-gray-700">Owner</label>
-                        <select id="owner_id" wire:model="newTask.owner_id" class="bg-gray-100 p-2 rounded w-full">
-                            <option value="">Select Owner</option>
-                            @foreach ($owners as $owner)
-                                <option value="{{ $owner->id }}">{{ $owner->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Start Date -->
-                    <div class="col-span-1">
-                        <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
-                        <input type="date" id="start-date" wire:model="newTask.start_date"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
-
-                    <!-- End Date -->
-                    <div class="col-span-1">
-                        <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
-                        <input type="date" id="end-date" wire:model="newTask.end_date"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
-
-                    <!-- Responsible -->
-                    <div class="col-span-1">
-                        <label for="responsible_id"
-                            class="block text-sm font-medium text-gray-700">Responsible</label>
-                        <select id="responsible_id" wire:model="newTask.responsible_id"
-                            class="bg-gray-100 p-2 rounded w-full">
-                            <option value="">Select Responsible</option>
-                            @foreach ($responsibles as $responsible)
-                                <option value="{{ $responsible->id }}">{{ $responsible->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Type -->
-                    <div class="col-span-1">
-                        <label for="type_id" class="block text-sm font-medium text-gray-700">Type</label>
-                        <select id="type_id" wire:model="newTask.type_id" class="bg-gray-100 p-2 rounded w-full">
-                            <option value="">Select Type</option>
-                            @foreach ($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Priority -->
-                    <div class="col-span-1">
-                        <label for="priority_id" class="block text-sm font-medium text-gray-700">Priority</label>
-                        <select id="priority_id" wire:model="newTask.priority_id"
-                            class="bg-gray-100 p-2 rounded w-full">
-                            <option value="">Select Priority</option>
-                            @foreach ($priorities as $priority)
-                                <option value="{{ $priority->id }}">{{ $priority->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Code -->
-                    <div class="col-span-1">
-                        <label for="code" class="block text-sm font-medium text-gray-700">Code</label>
-                        <input id="code" type="text" wire:model="newTask.code" placeholder="Enter Code"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
-
-                    <!-- Order -->
-                    <div class="col-span-1">
-                        <label for="order" class="block text-sm font-medium text-gray-700">Order</label>
-                        <input id="order" type="number" wire:model="newTask.order" placeholder="Enter Order"
-                            class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
-
-                    <!-- Estimation -->
-                    <div class="col-span-1">
-                        <label for="estimation" class="block text-sm font-medium text-gray-700">Estimation</label>
-                        <input id="estimation" type="number" wire:model="newTask.estimation"
-                            placeholder="Enter Estimation" class="bg-gray-100 p-2 rounded w-full" />
-                    </div>
-
-                    <!-- Create Button -->
                     <div class="col-span-2 text-right mt-4">
-                        <button wire:click="saveNewTask"
-                            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full">
+                        <button wire:click="saveNewTask" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full">
                             Create Task
                         </button>
                     </div>
@@ -457,6 +386,8 @@
             </div>
         </div>
     @endif
+@endcan
+
 
 
 
