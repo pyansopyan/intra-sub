@@ -104,47 +104,50 @@
 
     <div class="flex space-x-4">
         @foreach ($statuses as $status)
-            <div class="w-1/3 text-white p-4 mt-4 rounded shadow-2xl" style="background-color: {{ $status->color }}"
+            <!-- Kontainer Status -->
+            <div class="w-1/3 text-white p-4 mt-4 rounded shadow-2xlx"
                 ondrop="drop(event, {{ $status->id }})" ondragover="allowDrop(event)">
-                <!-- Nama Status -->
-                <h2 class="font-bold mb-2">{{ $status->name }}</h2>
+                <!-- Nama Status dengan Warna -->
+                <h2 class="font-bold mb-2 p-2 rounded text-center" style="background-color: {{ $status->color }}">
+                    {{ $status->name }}
+                </h2>
 
-                <!-- Container Tasks -->
-                <div class="space-y-2" id="status-{{ $status->id }}">
+                <!-- Kontainer Tugas -->
+                <div id="status-{{ $status->id }}" class="bg-gray-300 space-y-2 max-h-[500px] overflow-y-auto">
                     @foreach ($status->tasks as $task)
-                        <div class="bg-gray-800 p-2 rounded shadow-lg" draggable="true"
-                            ondragstart="drag(event, {{ $task->id }})" id="task-{{ $task->id }}">
+                        <!-- Task dengan Background Putih, Border, Shadow, dan Teks Hitam -->
+                        <div id="task-{{ $task->id }}" class="bg-white border border-gray-300 p-2 rounded shadow-lg text-black" draggable="true"
+                            ondragstart="drag(event, {{ $task->id }})">
                             <!-- Nama Task -->
                             <div class="flex justify-between items-center mb-4">
                                 <span class="space-x-4 flex">
-                                    <span wire:click="editTask({{ $task->id }}, '{{ $task->name }}')"
-                                        class="cursor-pointer">
+                                    <span wire:click="editTask({{ $task->id }}, '{{ $task->name }}')" class="cursor-pointer font-medium">
                                         {{ $task->name }}
                                     </span>
                                 </span>
                             </div>
 
                             <!-- Info Task -->
-                            <div class="flex items-center space-x-1 text-sm text-gray-400">
+                            <div class="flex items-center space-x-1 text-sm text-gray-700">
                                 <i class="bx bx-user-circle text-lg"></i>
                                 <span>{{ $task->responsible->name }}</span>
                             </div>
 
-                            {{-- info status --}}
-                            <div class="flex items-center space-x-1 text-sm text-gray-400">
+                            <!-- Info Status -->
+                            <div class="flex items-center space-x-1 text-sm text-gray-700">
                                 <i class="bx bx-task text-lg" style="color: {{ $task->status->color }}"></i>
                                 <span>{{ $task->status->name }}</span>
                             </div>
 
-                            {{-- info prioritas --}}
-                            <div class="flex items-center space-x-1 text-sm text-gray-400">
-                                <i class="bx bxs-flag-alt text-lg " style="color: {{ $task->priority->color }}"></i>
+                            <!-- Info Prioritas -->
+                            <div class="flex items-center space-x-1 text-sm text-gray-700">
+                                <i class="bx bxs-flag-alt text-lg" style="color: {{ $task->priority->color }}"></i>
                                 <span>{{ $task->priority->name }}</span>
                             </div>
 
-                            {{-- info prioritas --}}
-                            <div class="flex items-center space-x-1 text-sm text-gray-400">
-                                <i class="bx bx-purchase-tag text-lg " style="color: {{ $task->type->color }}"></i>
+                            <!-- Info Tipe -->
+                            <div class="flex items-center space-x-1 text-sm text-gray-700">
+                                <i class="bx bx-purchase-tag text-lg" style="color: {{ $task->type->color }}"></i>
                                 <span>{{ $task->type->name }}</span>
                             </div>
 
@@ -152,49 +155,22 @@
                             <div class="flex justify-between items-center">
                                 <div
                                     class="flex items-center space-x-1 text-sm
-                                    {{ $task->end_date && \Carbon\Carbon::parse($task->end_date)->isPast() ? 'text-red-500' : 'text-gray-400' }}">
+                                    {{ $task->end_date && \Carbon\Carbon::parse($task->end_date)->isPast() ? 'text-red-500' : 'text-gray-700' }}">
                                     <i class="bx bx-calendar text-lg"></i>
                                     <span>
-                                        {{ $task->start_date ? \Carbon\Carbon::parse($task->start_date)->format('M d') : 'ga ada' }}
+                                        {{ $task->start_date ? \Carbon\Carbon::parse($task->start_date)->format('M d') : '' }}
                                     </span>
                                     <span>
                                         -
-                                        {{ $task->end_date ? \Carbon\Carbon::parse($task->end_date)->format('M d') : 'ga ada' }}
+                                        {{ $task->end_date ? \Carbon\Carbon::parse($task->end_date)->format('M d') : '' }}
                                     </span>
                                 </div>
-
 
                                 <!-- Tombol Delete -->
                                 <button onclick="my_modal_{{ $task->id }}.showModal()" class="flex items-center"
                                     title="Delete">
                                     <i class="bx bx-trash text-xl text-red-500"></i>
                                 </button>
-
-                                <!-- Modal Konfirmasi -->
-                                <dialog id="my_modal_{{ $task->id }}"
-                                    class="modal fixed inset-0 flex items-center justify-center">
-                                    <div
-                                        class="modal-box bg-white text-gray-800 dark:bg-gray-800 dark:text-white p-4 md:p-5">
-                                        <svg class="mx-auto mb-4 text-gray-400 w-20 h-20 dark:text-gray-200"
-                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                        <h3 class="text-lg font-bold">Apakah anda mau menghapus task ini?</h3>
-                                        <div class="modal-action">
-                                            <button
-                                                class="btn bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 border-none"
-                                                wire:click="destroy({{ $task->id }})">
-                                                Hapus
-                                            </button>
-                                            <button class="btn hover:bg-gray-900 dark:bg-gray-700 dark:text-white"
-                                                onclick="my_modal_{{ $task->id }}.close()">
-                                                Batal
-                                            </button>
-                                        </div>
-                                    </div>
-                                </dialog>
                             </div>
                         </div>
                     @endforeach
@@ -202,7 +178,6 @@
             </div>
         @endforeach
     </div>
-
 
 
     @if ($editingTaskId)
@@ -485,14 +460,3 @@
             }
         }
     </script>
-
-    <style>
-        .task {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .task.dragging {
-            opacity: 0.5;
-            transform: scale(0.95);
-        }
-    </style>
