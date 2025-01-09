@@ -167,10 +167,12 @@
                                 </div>
 
                                 <!-- Tombol Delete -->
+                                @if ($status->name === 'Archived')
                                 <button onclick="my_modal_{{ $task->id }}.showModal()" class="flex items-center"
                                     title="Delete">
                                     <i class="bx bx-trash text-xl text-red-500"></i>
                                 </button>
+                                @endif
 
                                   <!-- Modal Konfirmasi -->
                                 <dialog id="my_modal_{{ $task->id }}"

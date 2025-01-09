@@ -9,6 +9,7 @@ use App\Models\TaskStatus;
 use App\Models\TaskType;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class KanbanIndex extends Component
@@ -45,10 +46,13 @@ class KanbanIndex extends Component
     {
         $task = Tasks::find($tasksId);
 
-        if ($task) {
+        if ($task && $task->status->name === 'Archived') {
             $task->delete();
+            session()->flash('message', 'Data Berhasil Dihapus.');
+        } else {
+            session()->flash('error', 'Tugas hanya dapat dihapus jika berada di status Archived.');
         }
-        session()->flash('message', 'Data Berhasil Dihapus.');
+
     }
 
     public function editTask($taskId)
@@ -108,8 +112,8 @@ class KanbanIndex extends Component
             'order' => '',
             'estimation' => '',
             'is_default' => true,
-            'start_date' => null,  // Add start_date field
-            'end_date' => null,    // Add end_date field
+            'start_date' => null, // Add start_date field
+            'end_date' => null, // Add end_date field
         ];
 
         // Get the "To Do" status dynamically (assuming it's the default)
@@ -201,24 +205,38 @@ class KanbanIndex extends Component
 
     public function render()
     {
-        return view('livewire.kanban.kanban-index', [
-            'statuses' => TaskStatus::with(['tasks' => function ($query) {
-                $query->where('project_id', $this->projectId);
+        $user = Auth::user();
 
-                if ($this->selectedType) {
-                    $query->where('type_id', $this->selectedType);
-                }
-                if ($this->selectedPriority) {
-                    $query->where('priority_id', $this->selectedPriority);
-                }
-                if ($this->selectedResponsible) {
-                    $query->where('responsible_id', $this->selectedResponsible);
-                }
-            }])->get(),
+        // Periksa apakah pengguna memiliki peran 'superadmin'
+        $isSuperAdmin = $user && $user->hasRole('superadmin');
+
+        // Ambil semua status, kecuali Archived jika pengguna bukan superadmin
+        $statuses = TaskStatus::with(['tasks' => function ($query) {
+            $query->where('project_id', $this->projectId);
+
+            if ($this->selectedType) {
+                $query->where('type_id', $this->selectedType);
+            }
+            if ($this->selectedPriority) {
+                $query->where('priority_id', $this->selectedPriority);
+            }
+            if ($this->selectedResponsible) {
+                $query->where('responsible_id', $this->selectedResponsible);
+            }
+        }])
+            ->when(!$isSuperAdmin, function ($query) {
+                // Sembunyikan status "Archived" jika bukan superadmin
+                $query->where('name', '!=', 'Archived');
+            })
+            ->get();
+
+        return view('livewire.kanban.kanban-index', [
+            'statuses' => $statuses,
             'owners' => $this->owners,
             'responsibles' => $this->responsibles,
             'priorities' => $this->priorities,
             'types' => $this->types,
         ]);
     }
+
 }
