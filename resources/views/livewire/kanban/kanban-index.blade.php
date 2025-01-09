@@ -31,9 +31,12 @@
         </div>
     @endif
 
+    @if(auth()->user()->can('manageTasks-create'))
     <div class="flex items-center space-x-4 mb-4">
         <button wire:click="openCreateTaskModal" class="bg-blue-500 text-white p-2 rounded">+ Create Task</button>
     </div>
+@endif
+
 
     <div x-data="{ open: false }" class="relative w-full">
         <!-- Filters Button -->

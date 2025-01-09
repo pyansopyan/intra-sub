@@ -57,6 +57,11 @@ class KanbanIndex extends Component
 
     public function editTask($taskId)
     {
+        if (!Auth::user()->can('manageTasks-edit')) {
+            session()->flash('error', 'You do not have permission to edit tasks.');
+            return;
+        }
+
         $task = Tasks::find($taskId);
 
         if ($task) {
@@ -133,6 +138,10 @@ class KanbanIndex extends Component
 
     public function saveNewTask()
     {
+        if (!Auth::user()->can('manageTasks-create')) {
+            session()->flash('error', 'Anda tidak memiliki izin untuk membuat tugas.');
+            return;
+        }
         $this->validate([
             'newTask.name' => 'required|string|max:255',
             'newTask.start_date' => 'nullable|date',
