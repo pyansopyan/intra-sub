@@ -165,6 +165,12 @@
                                     </span>
                                 </div>
 
+                                <!-- Tombol Show -->
+                                <button onclick="" class="flex items-center"
+                                    title="Show">
+                                    <i class='bx bx-show text-xl text-green-500'></i>
+                                </button>
+
                                 <!-- Tombol Delete -->
                                 @if ($status->name === 'Archived')
                                 <button onclick="my_modal_{{ $task->id }}.showModal()" class="flex items-center"
