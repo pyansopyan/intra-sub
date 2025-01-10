@@ -92,10 +92,6 @@
                     </select>
                 </div>
 
-                <!-- Additional Filter Options -->
-                <div class="w-1/4 flex items-center">
-                    <input type="checkbox" class="form-checkbox text-blue-600" wire:model.live="showOnlyNotAffected">
-                </div>
             </div>
 
             <!-- Filter and Reset Buttons -->
