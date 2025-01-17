@@ -166,10 +166,10 @@
                                 </div>
 
                                 <!-- Tombol Show -->
-                                <button onclick="" class="flex items-center"
-                                    title="Show">
-                                    <i class='bx bx-show text-xl text-green-500'></i>
+                                <button onclick="" class="flex items-center" title="Show">
+                                    <i class='bx bx-show text-xl' style="color: {{ $status->color }}"></i>
                                 </button>
+
 
                                 <!-- Tombol Delete -->
                                 @if ($status->name === 'Archived')

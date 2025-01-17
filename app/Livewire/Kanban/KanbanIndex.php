@@ -202,6 +202,7 @@ class KanbanIndex extends Component
         }
     }
 
+
     public function mount($projectId)
     {
         $this->projectId = $projectId;

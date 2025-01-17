@@ -47,13 +47,14 @@
                 <div wire:ignore>
                     <textarea wire:model.defer="content"
                         class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
-                        name="content" id="content"></textarea>
+                        name="content" id="content">{{ $task->content ?? '' }}</textarea>
                 </div>
 
                 @error('content')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
+
 
             <!-- Owner -->
             <label for="owner_id" class="block text-sm mt-4">Pemilik</label>

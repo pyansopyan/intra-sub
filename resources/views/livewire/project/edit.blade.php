@@ -39,14 +39,14 @@
 
             <div>
                 <label class="block text-sm mt-4">
-                    <span class="text-gray-700 dark:text-gray-400">Descripion</span>
+                    <span class="text-gray-700 dark:text-gray-400">Description</span>
                 </label>
 
                 <!-- Integrasi CKEditor -->
                 <div wire:ignore>
                     <textarea wire:model.defer="description"
                         class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 min-h-fit h-48"
-                        name="description" id="description"></textarea>
+                        name="description" id="description">{{ $description }}</textarea>
                 </div>
 
                 @error('description')

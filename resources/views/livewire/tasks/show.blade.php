@@ -47,13 +47,29 @@
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->responsible->name ?? 'N/A' }}
                         </td>
-                    </tr>
+                    </tr>z
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             <strong>Status:</strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
                             {{ $task->status->name ?? 'N/A' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
+                            <strong>Start Date:</strong>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
+                            {{ $task->start_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
+                            <strong>End Date:</strong>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-black-600 dark:text-black-400">
+                            {{ $task->end_date }}
                         </td>
                     </tr>
                     <tr>

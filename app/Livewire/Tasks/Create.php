@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\TaskStatus;
 use App\Models\TaskType;
 use App\Models\Priorities;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Create extends Component
@@ -23,6 +24,8 @@ class Create extends Component
     public $code;
     public $order;
     public $estimation;
+    public $start_date;
+    public $end_date;
 
     // is_default
     public function mount()
@@ -32,6 +35,7 @@ class Create extends Component
         $this->type_id = TaskType::where('is_default', true)->value('id');
         $this->priority_id = Priorities::where('is_default', true)->value('id');
     }
+
     // Method untuk menyimpan data
     public function store()
     {
@@ -48,6 +52,8 @@ class Create extends Component
             'code'=> 'required',
             'order'=> 'required',
             'estimation'=> 'required',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
 
         // Menyimpan data ke dalam database
@@ -63,16 +69,44 @@ class Create extends Component
             'code' => $this->code,
             'order' => $this->order,
             'estimation' => $this->estimation,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
         ]);
 
         // Menampilkan pesan sukses
         session()->flash('message', 'Data Berhasil disimpan');
 
         // Reset form
-        $this->reset(['owner_id','responsible_id','status_id','project_id','type_id','priority_id']);
+        $this->reset(['owner_id','responsible_id','status_id','project_id','type_id','priority_id', 'start_date', 'end_date']);
 
         // Redirect ke halaman indeks
         return redirect()->route('tasks.index');
+    }
+
+    public function saveTask()
+    {
+        // Validasi untuk tanggal
+        $this->validate([
+            'editedTask.start_date' => 'nullable|date',
+            'editedTask.end_date' => 'nullable|date|after_or_equal:editedTask.start_date',
+        ]);
+
+        // Pastikan tanggal start_date dan end_date adalah objek Carbon jika ada
+        if (isset($this->editedTask['start_date'])) {
+            $this->editedTask['start_date'] = Carbon::parse($this->editedTask['start_date']);
+        }
+
+        if (isset($this->editedTask['end_date'])) {
+            $this->editedTask['end_date'] = Carbon::parse($this->editedTask['end_date']);
+        }
+
+        $task = Tasks::find($this->editingTaskId);
+
+        if ($task) {
+            $task->update($this->editedTask);
+        }
+
+        $this->resetEdit();
     }
 
     // Method untuk render tampilan

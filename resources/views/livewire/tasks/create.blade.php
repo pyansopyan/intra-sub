@@ -111,6 +111,29 @@
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
 
+            <!-- Start Date -->
+<label class="block text-sm mt-4">
+    <span class="text-gray-700 dark:text-gray-400">Start Date</span>
+    <input
+        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
+        type="date" wire:model="start_date" />
+    @error('start_date')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+    @enderror
+</label>
+
+<!-- End Date -->
+<label class="block text-sm mt-4">
+    <span class="text-gray-700 dark:text-gray-400">End Date</span>
+    <input
+        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input text-black"
+        type="date" wire:model="end_date" />
+    @error('end_date')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+    @enderror
+</label>
+
+
             <!-- Priority -->
             <label for="priority_id" class="block text-sm mt-4">Priority</label>
             <select wire:model="priority_id" id="priority_id"
